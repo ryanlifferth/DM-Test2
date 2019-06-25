@@ -1,0 +1,195 @@
+@import 'variables';
+
+nav {
+  //position: fixed;
+  width: inherit;
+
+  .user-info {
+    margin: 20px auto 10px;
+
+    .user-icon {
+      display: block;
+
+      img {
+        background-color: rgba(255,255,255,0.5);
+        border: 1px solid rgba(255,255,255,0);
+        border-radius: 55px;
+        display: block;
+        height: 40px;
+        margin: 0 auto;
+        width: 40px;
+      }
+
+      .icon { // This is the font-awesome user icon
+        color: rgba(255,255,255,0.5);
+        cursor: pointer;
+        display: block;
+        text-align: center;
+
+        &:hover {
+          transform: rotate(8deg);
+          transition: all .2s ease;
+          /*color: #30a8d8;*/
+          //background-color: rgba(207,220,66,0.5);
+        }
+      }
+    }
+
+    .name,
+    .title,
+    .company {
+      display: none;
+    }
+  }
+
+  &.expanded {
+    .user-info {
+
+      .user-icon {
+        img {
+          border: 2px solid rgba(255,255,255,0);
+          height: 110px;
+          width: 110px;
+        }
+      }
+
+      .name {
+        color: rgba(255, 255, 255, 0.5);
+        display: block;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .title {
+        color: rgba(255,255,255,0.4);
+        display: block;
+        font-size: 13px;
+        font-style: italic;
+        margin-top: -5px;
+        text-align: center;
+      }
+
+      .company {
+        color: rgba(255,255,255,0.4);
+        display: block;
+        font-size: 13px;
+        font-style: italic;
+        margin-top: -4px;
+        text-align: center;
+      }
+    }
+  }
+
+  .sb-item {
+    $border-left-size: 4px;
+
+    border-left: $border-left-size solid transparent;
+    color: rgba(255, 255, 255, 0.53);
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 15px 10px 14px 0;
+    white-space: nowrap;
+
+    .sb-icon {
+      //padding: 0 9px 0 15px;
+      padding-left: 4px;
+      text-align: center;
+      width: 48px;
+    }
+
+    label {
+      margin-bottom: 0;
+      padding-right: 25px;
+      text-transform: uppercase;
+      //display: none;
+    }
+
+
+    &.expand-contract {
+      position: absolute;
+      right: 25px;
+      top: calc(100vh - 50%);
+    }
+
+    &.active, &:hover {
+      background-color: rgba(255,255,255,0.06);
+      border-left: $border-left-size solid #30a8d8;
+      text-decoration: none;
+      color: #30a8d8;
+
+      .sb-icon {
+        color: #30a8d8;
+      }
+
+      label {
+        color: rgba(255, 255, 255, 0.9);
+        cursor: pointer;
+      }
+    }
+
+    &.active {
+      .sb-icon {
+        cursor: default;
+
+        label {
+          cursor: default;
+        }
+      }
+    }
+  }
+}
+
+.toggle-sidebar {
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  //bottom: 30vh;
+  top: 70vh;
+}
+
+/*.sidebar {
+  //background-color: #102a43;
+  background-color: rgba(16, 42, 67, 0.85);
+  position: relative;
+  //height: 100%;
+  height: calc(100% - (#{$footer-height} + #{$footer-margin} + 29px));
+  left: 0;
+  top: 49px;
+  width: 64px;
+
+
+  .sb-item {
+    $border-left-size: 4px;
+
+    border-left: $border-left-size solid transparent;
+    color: rgba(255, 255, 255, 0.85);
+    display: block;
+    margin: 0;
+    padding: 10px 6px 10px 0;
+    text-align: center;
+
+    .sb-icon {
+      //font-size: 27px;
+    }
+
+    &.expand-contract {
+      position: absolute;
+      right: 25px;
+      top: calc(100vh - 50%);
+    }
+
+    &.active {
+      background-color: rgba(255,255,255,0.06);
+      border-left: $border-left-size solid #30a8d8;
+      color: #30a8d8;
+    }
+
+    &:first-child {
+      //margin-top: 20px;
+    }
+  }
+}*/

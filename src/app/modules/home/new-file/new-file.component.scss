@@ -1,0 +1,25 @@
+@import 'variables';
+
+.new-file {
+
+  .form-group {
+    label {
+      display: block;
+      font-size: 14px;
+      margin: 0 0 0 2px;
+    }
+
+    small {
+      font-style: italic;
+      margin-top: 0;
+    }
+
+    input[type=text],
+    input[type=file],
+    select {
+      border: 1px solid rgba(0,0,0,.125);
+      background-color: $body-bg-color;
+      //box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+    }
+  }
+}

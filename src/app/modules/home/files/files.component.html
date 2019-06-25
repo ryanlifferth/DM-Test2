@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card-header">
+    <h3>Appraisals</h3>
+
+    <a routerLink="/Subject" class="btn btn-outline-primary d-none">
+      <span class="far fa-plus"></span>
+      New Appraisal
+    </a>
+
+    <div class="tab-slider-tabs">
+      <span class="tab" [class.active]="viewMode == 'tab1'" rel="tab1" (click)="viewMode ='tab1'">Recent</span>
+      <span class="tab" [class.active]="viewMode == 'tab2'" rel="tab2" (click)="viewMode ='tab2'">Pinned</span>
+      <span class="tab" [class.active]="viewMode == 'tab3'" rel="tab3" (click)="viewMode ='tab3'">Search</span>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="tab-slider-container" [ngSwitch]="viewMode">
+      <div id="tab1" class="tab-slider-body" *ngSwitchCase="'tab1'">
+
+        <div class="file-container">
+
+          <a *ngFor="let info of fileInfos" routerLink="/Subject/detail/{{info.id}}" class="file-item">
+            <span class="file-info">
+              <span class="file-type badge badge-secondary">{{info.fileType}}</span>
+              <span class="file-name">{{info.fileName}}</span>
+              <span class="file-address">{{info.address.addressLine1}}, {{info.address.city}}, {{info.address.state}} {{info.address.zip}}</span>
+            </span>
+
+            <span class="file-info info-footer">
+              <span class="last-accessed">{{getDynamicDateLabel(info.lastModified)}}<!--6 hours ago--></span>
+              <span class="export-count"><b>{{info.exportCount}}</b> {{getDynamicExportLabel(info.exportCount)}} to {{info.exportTargets}}</span>
+            </span>
+            <!--<span class="ismage"></span>-->
+          </a>
+
+        </div>
+        <span class="more-files" (click)="loadAllFiles()">Load more files...</span>
+
+      </div>
+      <div id="tab2" class="tab-slider-body" *ngSwitchCase="'tab2'">
+
+        <div class="file-container">
+
+          <a *ngFor="let info of pinnedFileInfos" routerLink="/Subject/detail/{{info.id}}" class="file-item">
+            <span class="file-info">
+              <span class="file-type badge badge-secondary">{{info.fileType}}</span>
+              <span class="file-name">{{info.fileName}}</span>
+              <span class="file-address">{{info.address.addressLine1}}, {{info.address.city}}, {{info.address.state}} {{info.address.zip}}</span>
+            </span>
+
+            <span class="file-info info-footer">
+              <span class="last-accessed">6 hours ago</span>
+              <span class="export-count"><b>{{info.exportCount}}</b> {{getDynamicExportLabel(info.exportCount)}} to {{info.exportTargets}}</span>
+            </span>
+            <!--<span class="ismage"></span>-->
+          </a>
+
+        </div>
+
+      </div>
+      <div id="tab3" class="tab-slider-body" *ngSwitchCase="'tab3'">
+        Tab 3
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,45 @@
+
+<nav class="side-navbar {{sidebarExpanded ? 'expanded' : ''}}" #sideNavBar>
+
+  <div class="user-info">
+    <div class="user-icon">
+      <img src="{{userInfo.iconPath}}" *ngIf="hasUserIcon" />
+      <span class="fal fa-user-circle {{sidebarExpanded ? 'fa-3x' : 'fa-2x' }} icon" *ngIf="hasUserIcon == false"></span>
+    </div>
+    <div class="name">{{userInfo.firstName}} {{userInfo.lastName}}</div>
+    <!--<span class="company">{{userInfo.companyName}}</span>-->
+    <span class="title">{{userInfo.title}}</span>
+  </div>
+  
+  <a class="sb-item" routerLink="/Home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <span class="far fa-home fa-lg sb-icon"></span>
+    <label class="label" *ngIf="sidebarExpanded">Dashboard</label>
+  </a>
+
+  <a class="sb-item" routerLink="/Help" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <span class="fal fa-question fa-lg sb-icon"></span>
+    <label class="label" *ngIf="sidebarExpanded">Help</label>
+  </a>
+
+  <a class="sb-item" routerLink="/Info" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <span class="fal fa-info fa-lg sb-icon"></span>
+    <label class="label" *ngIf="sidebarExpanded">About</label>
+  </a>
+
+  <a class="sb-item" routerLink="/Tutorial" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <span class="fal fa-life-ring fa-lg sb-icon"></span>
+    <label class="label" *ngIf="sidebarExpanded">Tutorials</label>
+  </a>
+
+  <a class="sb-item" routerLink="/Settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <span class="fal fa-cog fa-lg sb-icon"></span>
+    <label class="label" *ngIf="sidebarExpanded">Settings</label>
+  </a>
+
+
+
+  <div class="toggle-sidebar" (click)="toggleMenu()">
+    <span class="fas {{sidebarExpanded ? 'fa-chevron-circle-left' : 'fa-chevron-circle-right' }} fa-lg" title="{{sidebarExpanded ? 'Collapse sidebar' : 'Expand sidebar'}}"></span>
+  </div>
+
+</nav>

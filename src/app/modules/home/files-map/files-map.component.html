@@ -1,0 +1,35 @@
+<div class="card google-card">
+  <div class="card-header">
+    <h3>My activity - past 30 days</h3>
+    <div class="map-detail-options">
+      <span class="tab-option just-map {{showAnalytics ? '' : 'active'}}" (click)="toggleAnalytics(false)">
+        <i class="far fa-map fa-xs"></i>
+      </span>
+      <span class="tab-option with-analytics {{showAnalytics ? 'active' : ''}}" (click)="toggleAnalytics(true)">
+        <i class="fal fa-analytics fa-xs"></i>
+      </span>
+    </div>
+  </div>
+  <div class="card-body">
+    <agm-map [latitude]="lat"
+             [longitude]="lng"
+             [zoom]="zoom" [fitBounds]="true"
+             class="google-map {{showAnalytics ? 'with-analytics' : ''}}">
+      <agm-marker *ngFor="let m of markers; let i = index"
+                  [latitude]="m.lat"
+                  [longitude]="m.lng"
+                  [agmFitBounds]="true"
+                  [label]="m.label">
+      </agm-marker>
+      <agm-circle [latitude]="lat + 0.3" [longitude]="lng"
+                  [radius]="5000">
+      </agm-circle>
+    </agm-map>
+
+
+  </div>
+  <div class="card-footer" *ngIf="showAnalytics">
+    <div class="gradient"></div>
+    <div class="detail">[additional details or graphs here]</div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="card {{isHomeAlt ? 'top-margin' : ''}}">
+  <div class="card-header">
+    <h3>Appraisal News</h3>
+  </div>
+  <div class="card-body">
+
+
+    <div class="news-container">
+
+      <ng-container *ngIf="items else loading">
+        <div *ngFor="let item of items| slice:0:articlesToShow" class="news-item">
+          <a href="{{item.link}}" target="_blank" class="title">{{item.title}}</a>
+          <!--<div class="desc" [innerHtml]="item.description"></div>-->
+          <div class="news-source">{{item.feedDisplayName}}</div>
+          <div class="publish-date">{{getDynamicDateLabel(item.publishDate)}}</div>
+          <span class="bullet"></span>
+          <span class="story-line"></span>
+        </div>
+      </ng-container>
+
+    </div>
+
+    <span class="show-more" (click)="showMoreArticles()" *ngIf="this.articlesToShow < this.items?.length">Load more articles...</span>
+
+  </div>
+</div>
+
+<ng-template #loading>
+
+  <ng-container *ngIf="!newsError else newsErrorTemplate">
+    <div class="app-loading news-loader">
+      <div class="logo"></div>
+      <svg class="spinner" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+      </svg>
+    </div>
+  </ng-container>
+
+</ng-template>
+
+<ng-template #newsErrorTemplate>
+  <div class="connection-error">
+    <!--<span class="fal fa-exclamation-triangle fa-lg"></span>-->
+
+    <span class="fal fa-surprise fa-3x emoji"></span>
+    <div class="err-information">
+      <div class="err-exclamation">Oh no!</div>
+      <div class="err-message">{{newsErrorMessage}}</div>
+    </div>
+  </div>
+
+</ng-template>
+

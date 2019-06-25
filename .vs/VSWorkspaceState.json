@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\core",
+    "\\src\\app\\core\\models\\mocks",
+    "\\src\\app\\modules",
+    "\\src\\app\\modules\\home",
+    "\\src\\app\\modules\\home\\news",
+    "\\src\\assets",
+    "\\src\\assets\\style",
+    "\\src\\environments"
+  ],
+  "SelectedNode": "\\src\\app\\modules\\home\\news\\news.component.scss",
+  "PreviewInSolutionExplorer": false
+}

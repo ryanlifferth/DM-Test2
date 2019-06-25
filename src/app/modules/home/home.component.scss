@@ -1,0 +1,89 @@
+$news-widget-width: 335px;
+
+.news {
+  //bottom: 0;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $news-widget-width;
+}
+
+
+.home-cards {
+  //margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-right: $news-widget-width; // the width of the news widget
+  padding: 1% 0;
+  position: relative;
+
+  .my-row {
+    padding: 0 1%;
+    margin: 0;
+
+    .my-col {
+      flex: 1;
+      //max-width: 33%;
+      min-width: 450px;
+      padding: 0 0 1%;
+
+      &.left-col {
+        margin-right: 0.5%;
+      }
+
+      &.right-col {
+        margin-left: 0.5%;
+      }
+    }
+  }
+}
+
+:host .card {
+  border: none;
+  box-shadow: 0 0 7px rgba(0,0,0,0.1);
+
+
+  .card-header {
+    //background-color: rgba(0,0,0,.03);
+    background-color: transparent;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    padding-bottom: 0;
+    padding-top: 0.50rem;
+
+    h3 {
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      font-weight: 500;
+    }
+
+    .tab-slider-tabs {
+      .tab {
+        border-bottom: 3px solid transparent;
+        color: #3c4c5d;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding: 9px 20px 5px;
+
+        &.active {
+          border-bottom: 3px solid #4098d7;
+          font-weight: 600;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  .card-body {
+    padding: 0;
+  }
+}
