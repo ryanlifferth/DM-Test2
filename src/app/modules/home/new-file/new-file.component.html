@@ -2,28 +2,69 @@
   <div class="card-header">
     <h3>Create a new Work File</h3>
   </div>
-  <div class="card-body new-file">
+  <div class="card-body new-file {{readyToDrop == true ? 'drop' : ''}}" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="doneDropping($event)">
 
-    <form>
+    <form id="newFileForm" [formGroup]="newFileForm">
       <div class="form-group">
-        <label>Enter your file number/name</label>
-        <input type="text" name="fileName" />
-        <small class="form-text text-muted">That's ok if you don't have one, we can create one for you.</small>
+        <label for="fileName">
+          Enter your file name/number
+          <span class="required" *ngIf="(newFileForm.controls['fileName'].invalid && newFileForm.controls['fileName'].touched)">required</span>
+        </label>
+        <input type="text" placeholder="file name/number" formControlName="fileName" />
+        <a href="#" onclick="return false;" class="create-file-name">[create one for me]</a>
+        <!--<small class="form-text text-muted">That's ok if you don't have one, we can create one for you.</small>-->
       </div>
       <div class="form-group">
-        <div class="form-vendor"><i>a la mode</i> <span class="change">[change]</span></div>
-      </div>
-      <div class="form-group">
-        <label>Select your appraisal type</label>
-        <select name="formType">
-          <option id="1004">1004 URAR - UAD</option>
-          <option id="1073">1073</option>
-        </select>
+
+        <div class="custom-input-group">
+          <label for="formType">
+            Select your appraisal type
+            <span class="required" *ngIf="(newFileForm.controls['formType'].invalid && newFileForm.controls['formType'].touched)">required</span>
+          </label>
+          <!--<select formControlName="formType" [value]="1004">
+            <option id="1004">1004 URAR - UAD</option>
+            <option id="1073">1073</option>
+          </select>-->
+          <select formControlName="formType">
+            <option *ngFor="let type of appraisalFormTypes" [ngValue]="type.value">{{type.text}}</option>
+          </select>
+        </div>
+        <div class="custom-input-group form-vendor">
+          <div class="dropdown show">
+            <div class="selected-item dropdown-toggle" data-toggle="dropdown">
+              <img src="{{selectedVendorImgSrc}}" alt="{{selectedVendorImgAlt}}" #selectedVendor height="{{selectedVendorImgHeight}}" />
+              <a href="#" onclick="return false;" class="change">[change]</a>
+            </div>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" (click)="updateVendor($event)">
+                <img src="/assets/images/vendors/alamode.png" alt="a la mode" height="30" />
+              </a>
+              <a class="dropdown-item" (click)="updateVendor($event)">
+                <img src="/assets/images/vendors/aci.png" alt="ACI" width="50" />
+              </a>
+              <a class="dropdown-item" (click)="updateVendor($event)">
+                <img src="/assets/images/vendors/bradford.png" alt="Bradford" height="36" />
+              </a>
+              <a class="dropdown-item" (click)="updateVendor($event)">
+                <img src="/assets/images/vendors/sfrep.png" alt="SFREP" height="22" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
       </div>
       <div class="form-group">
         <label>Open an MLS export file (<i>optional</i>)</label>
-        <input type="file" name="mlsExportFile" style="background-color: #f2f6fa;"  />
+        <input type="file" style="background-color: #f2f6fa;" class="file-upload" formControlName="mlsFileUpload" />
       </div>
+
+      <button type="submit" class="btn btn-success btn-go" (click)="validate()">
+        <!--<span class="fal fa-file-plus"></span>-->
+        Create new file
+        <span class="fal fa-arrow-circle-right"></span>
+      </button>
 
     </form>
 
@@ -38,6 +79,6 @@
       <label>The name/number of this file will be </label>
       <input type="text" name="fileName" />
     </div>-->
-    
+
   </div>
 </div>

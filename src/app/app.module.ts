@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { HeaderComponent } from './ui/header/header.component';
 import { FooterComponent } from './ui/footer/footer.component';
 import { SidebarComponent } from './ui/sidebar/sidebar.component';
 import { NewFileComponent } from './modules/home/new-file/new-file.component';
+import { AnalyticsComponent } from './modules/home/analytics/analytics.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,13 @@ import { NewFileComponent } from './modules/home/new-file/new-file.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    NewFileComponent
+    NewFileComponent,
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyAs_Y6kGdxcrtXwIaNvaexYCMsiw4o22i0' })

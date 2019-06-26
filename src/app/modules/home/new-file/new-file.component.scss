@@ -1,12 +1,43 @@
 @import 'variables';
 
+.card-header {
+  border-bottom: none;
+}
+
 .new-file {
+  border: 2px dashed transparent;
+
+  &.card-body {
+    margin: 5px;
+    padding: 5px 15px !important;
+  }
+
+  &.drop {
+    border: 2px dashed rgba(0,0,0,0.6);
+  }
 
   .form-group {
+    margin-bottom: 12px;
+
     label {
       display: block;
-      font-size: 14px;
+      font-size: 12px;
       margin: 0 0 0 2px;
+      position: relative;
+
+      .required {
+        color:rgba(255,0,0,0.6);
+        font-style: italic;
+        position: absolute;
+        right: 0;
+      }
+
+      &[for=fileName] {
+        .required {
+          right: auto;
+          left: 260px;
+        }
+      }
     }
 
     small {
@@ -19,7 +50,85 @@
     select {
       border: 1px solid rgba(0,0,0,.125);
       background-color: $body-bg-color;
-      //box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+      font-size: 14px;
+
+      &.ng-touched {
+        &.ng-invalid {
+          border-color: rgba(255,0,0,0.6);
+        }
+      }
     }
+
+    input[type=text] {
+      width: 310px;
+      padding: 3px 6px;
+    }
+
+    input[type=file] {
+      width: 310px;
+    }
+
+    select {
+      padding: 3px 6px;
+      width: 225px;
+    }
+
+    .create-file-name,
+    .change {
+      color: #4098D7;
+      font-size: 13px;
+      margin-left: 8px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: #0A558C;
+        text-decoration: none;
+      }
+    }
+
+    .custom-input-group {
+      display: inline-block;
+      margin-left: 25px;
+
+      &.form-vendor {
+        //margin-left: 40px;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .dropdown {
+
+      .dropdown-toggle {
+        &:after {
+          content: none;
+        }
+      }
+
+      .selected-item {
+        .change {
+          display: block;
+          float: right;
+          margin-top: 10px;
+        }
+      }
+
+      .dropdown-menu {
+        .dropdown-item {
+          &:hover {
+            background-color: rgba(15, 96, 153, 0.08);
+          }
+        }
+      }
+    }
+  }
+
+  .btn-go {
+    color: #fff;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
   }
 }
