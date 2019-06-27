@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validator, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-file',
@@ -18,7 +19,7 @@ export class NewFileComponent implements OnInit {
 
   @Input('newFileForm') newFileForm: FormGroup;
 
-  constructor() {
+  constructor(private router: Router) {
 
     //this.form = this.formBuilder.group({ mlsExportFileUpload: '' });
   }
@@ -46,6 +47,10 @@ export class NewFileComponent implements OnInit {
         //console.log(this.newFileForm.controls[item]);
         this.newFileForm.controls[item].markAsTouched();
       }
+    } else {
+      // TODO: create the new work file
+
+      this.router.navigate(['/Comparables']);
     }
   }
 
@@ -81,9 +86,11 @@ export class NewFileComponent implements OnInit {
     console.log(e.dataTransfer.files[0].name);
 
     //this.newFileForm.controls['fileName'].setValue(e.dataTransfer.files[0].name);
+    //this.newFileForm.controls['mlsFileUpload'].setValue(e.dataTransfer.files[0].name);
     //this.newFileForm.controls['mlsFileUpload'].files = e.dataTransfer.files;
-    document.querySelector('.file-upload').files = e.dataTransfer.files;  // kind of a hack - but it works
-    
-    
+
+
+    //document.querySelector('.file-upload').files = e.dataTransfer.files;  // this is a hack and it throws a TS error - but it works
+
   }
 }

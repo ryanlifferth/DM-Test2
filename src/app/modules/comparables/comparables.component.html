@@ -1,0 +1,29 @@
+<div class="sub-menu">
+  <div class="navbar-nav container">
+    <a class="nav-item navbar-link " routerLink="./upload" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <span class="far fa-file-upload"></span>
+      Load Comps
+    </a>
+    <a class="nav-item navbar-link {{isActive()}}" routerLink="./grid">
+      <span class="fa fa-th"></span>
+      Comp Grid
+    </a>
+    <a class="nav-item navbar-link " routerLink="./deeds" routerLinkActive="active">
+      <span class="far fa-file-alt"></span>
+      Deeds
+    </a>
+    <a class="nav-item navbar-link " routerLink="./map" routerLinkActive="active">
+      <span class="far fa-map"></span>
+      Map
+    </a>
+    <a class="nav-item navbar-link " routerLink="./addenda" routerLinkActive="active">
+      <span class="far fa-edit"></span>
+      Addenda
+    </a>
+  </div>
+</div>
+
+<p>
+  comparables works!
+</p>
+<router-outlet></router-outlet>

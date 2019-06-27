@@ -1,0 +1,27 @@
+<div class="sub-menu">
+  <div class="navbar-nav container">
+    <a class="nav-item navbar-link " routerLink="./import" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <span class="far fa-file-import"></span>
+      Import
+    </a>
+    <a class="nav-item navbar-link {{isActive()}}" routerLink="./report">
+      <span class="far fa-file-alt"></span>
+      Report
+    </a>
+    <a class="nav-item navbar-link " routerLink="./detail" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <span class="far fa-bars"></span>
+      Details
+    </a>
+    <a class="nav-item navbar-link " routerLink="./graphs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <span class="far fa-chart-line"></span>
+      Graphs
+    </a>
+  </div>
+</div>
+
+<p>
+  market-conditions works!
+</p>
+
+<router-outlet></router-outlet>
+

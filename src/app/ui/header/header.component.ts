@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 //import { HeaderServiceService } from './core/services/header-service.service';
 //import { SidebarLogoService } from '../../../core/services/sidebar-logo.service';
 import { SidebarLogoService } from '../../core/services/sidebar-logo.service';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { DistinctSubscriber } from 'rxjs/internal/operators/distinct';
+import { HeaderNavService } from '../../core/services/header-nav.service';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,8 +18,12 @@ export class HeaderComponent implements OnInit {
   logoSrcExpanded = '/assets/images/web-logo-white.png';
   logoSrcCollapsed = '/assets/images/dm-icon-white.png';
   logoSize = '30';
+  navVisible: boolean = false;
 
-  constructor(private sidebarLogoService: SidebarLogoService) { }
+  constructor(private sidebarLogoService: SidebarLogoService,
+    private headerNavService: HeaderNavService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -30,11 +36,25 @@ export class HeaderComponent implements OnInit {
       this.logoSrc = val == true ? this.logoSrcExpanded : this.logoSrcCollapsed;
     });
 
+    this.headerNavService.isNavVisible.subscribe(val => {
+      this.navVisible = val;
+    });
+
     this.sidebarLogoService.sidebarWidth
       .subscribe(val => {
         //console.log(val);
         (document.querySelector('.logo') as HTMLElement).style.width = val + 'px';
         //(document.querySelector('.logo') as HTMLElement).style.minWidth = val + 'px';
+      });
+
+    // This is used to get the parent route to determine whether or not the top nav header menu should be shown
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((value: NavigationEnd) => {
+        //https://stackoverflow.com/questions/48058681/how-to-get-active-child-route-in-parent-component-angular-2
+        //console.log(value['url']);
+        //console.log(this.activatedRoute.firstChild.routeConfig.path);
+        this.headerNavService.setShowNav(this.activatedRoute.firstChild.routeConfig.path);
       });
 
 

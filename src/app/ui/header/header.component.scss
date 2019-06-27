@@ -1,7 +1,8 @@
 @import 'variables';
 @import 'theme';
 
-header {
+header,
+.sub-menu {
   padding: 0;
   background-color: $header-bgcolor;
   //border-bottom: 1px solid rgba(0,0,0,0.3);
@@ -12,17 +13,60 @@ header {
   //padding: 0;
   .navbar {
     padding: 0;
+  }
 
-    .navbar-brand {
-      //background-color: #102a43;
-      background-color: rgba(16, 42, 67, 0.8);
-      margin: 0;
-      padding: 8px 18px 8px 14px;
-      border-bottom: 1px solid rgba(16, 42, 67, 0.4);
-      margin-bottom: -1px;
+  .navbar-brand {
+    //background-color: #102a43;
+    background-color: rgba(16, 42, 67, 0.8);
+    margin: 0;
+    padding: 8px 18px 8px 14px;
+    border-bottom: 1px solid rgba(16, 42, 67, 0.4);
+    margin-bottom: -1px;
+  }
+
+  a {
+    //color: hsla(67, 34%, 99%, 0.5);
+    color: $nav-link-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
     }
   }
 
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: normal;
+    padding-top: 3px;
+
+    a.nav-item {
+      border-bottom: $nav-item-border-bottom;
+      font-size: 14px;
+      font-weight: $nav-item-font-weight;
+      letter-spacing: 0.5px;
+      text-align: center;
+      //padding: 14px 16px 9px;
+      padding: 11px 30px 11px;
+
+      &:hover {
+        //border-bottom: 2px solid #c3d500;
+        border-bottom: $nav-item-hover-border-bottom;
+        //border-bottom: 3px solid hsla(67, 34%, 94%, 0.5);  // More of a gray color
+        color: $nav-item-hover-font-color;
+      }
+
+      &.active {
+        border-bottom: $nav-item-active-border-bottom;
+        //border-bottom: 3px solid rgba(255,255,255,0.9);
+        color: $nav-item-active-font-color;
+        //color: hsla(67, 34%, 92%, 1);
+        cursor: default;
+        font-weight: $nav-item-active-font-weight;
+      }
+    }
+  }
+
+  
   .nav-right {
     position: absolute;
     right: 30px;
@@ -81,6 +125,38 @@ header {
           font-weight: bold;
           font-family: 'Open Sans';
         }
+      }
+    }
+  }
+}
+
+.sub-menu {
+  .navbar-nav {
+    padding-top: 0;
+    //margin-left: 113px;  // uncomment if you remove .container class from .navbar-nav element
+
+    a.nav-item {
+      //border-bottom: none;
+      border-bottom: 2px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 30px 6px;
+
+      span[class*="fa-"] {
+        margin-right: 4px;
+      }
+
+      &:hover {
+        background-color: $nav-submenu-item-hover-bg-color;
+        border-bottom: none;
+      }
+
+      &.active {
+        background-color: $nav-submenu-item-active-bg-color;
+        //border-bottom: none;
+        border-bottom: $nav-submenu-item-active-border-bottom;
+        color: $nav-submenu-item-active-font-color;
+        font-weight: 600;
       }
     }
   }

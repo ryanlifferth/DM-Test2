@@ -2,10 +2,27 @@
 
   <nav class="navbar">
 
-        <a class="navbar-brand logo" routerLink="/home-sb">
-          <img src="{{logoSrc}}" height="{{logoSize}}" />
-          <!-- <img src="~/images/logo-web.png" height="50" /> -->
-        </a>
+    <a class="navbar-brand logo" routerLink="/home-sb">
+      <img src="{{logoSrc}}" height="{{logoSize}}" />
+      <!-- <img src="~/images/logo-web.png" height="50" /> -->
+    </a>
+
+
+    <div class="navbar-nav container" *ngIf="navVisible">
+      <a class="nav-item navbar-link " routerLink="/Comparables" routerLinkActive="active">
+        Comparables
+      </a>
+      <a class="nav-item navbar-link " routerLink="/Subject" routerLinkActive="active" #subjectactive="routerLinkActive">
+        Subject
+      </a>
+      <a class="nav-item navbar-link " routerLink="/market-conditions" routerLinkActive="active" #mcactive="routerLinkActive">
+        Market Conditions
+      </a>
+      <a class="nav-item navbar-link " routerLink="/Summary" routerLinkActive="active" #summaryactive="routerLinkActive">
+        Report Summary
+      </a>
+    </div>
+
 
   </nav>
 

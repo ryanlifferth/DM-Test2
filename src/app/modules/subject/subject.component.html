@@ -1,0 +1,23 @@
+<div class="sub-menu">
+  
+  <div class="navbar-nav container">
+    <a class="nav-item navbar-link " routerLink="./search" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <span class="fas fa-search"></span>
+      Property Search
+    </a>
+    <a class="nav-item navbar-link {{isActive()}}" routerLink="./detail" >
+      <span class="far fa-bars"></span>
+      Property Detail
+    </a>
+    <a class="nav-item navbar-link " routerLink="./deeds" routerLinkActive="active">
+      <span class="far fa-file-alt"></span>
+      Deeds
+    </a>
+  </div>
+</div>
+
+
+<p>
+  subject works!
+</p>
+<router-outlet></router-outlet>
