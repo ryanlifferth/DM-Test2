@@ -4,7 +4,7 @@
       <span class="far fa-file-upload"></span>
       Load Comps
     </a>
-    <a class="nav-item navbar-link {{isActive()}}" routerLink="./grid">
+    <a class="nav-item navbar-link {{isActiveLink}}" routerLink="./grid">
       <span class="fa fa-th"></span>
       Comp Grid
     </a>
@@ -22,8 +22,42 @@
     </a>
   </div>
 </div>
+<div class="clear"></div>
 
-<p>
-  comparables works!
-</p>
+<div class="grid-header row">
+  <div class="col">
+
+    <div class="form">
+      <label>Form</label>
+      <span class="text">{{formType}}</span>
+    </div>
+
+    <div class="comp-summary">
+      <span class="comp-count">
+        <label>Comp Count</label>
+        <span class="count">{{compCount}}</span>
+      </span>
+      <a href="#" class="btn btn-primary btn-add-comps d-none" data-toggle="modal" data-target="#addComps">Add Comps</a>
+    </div>
+  </div>
+  <div class="col">
+
+    <div class="data-source-list" *ngIf="dataSources.length > 0">
+      <h6 class="background-fade-out">
+        Data sources loaded
+      </h6>
+      <div class="source-list background-fade-out">
+        <div class="row" *ngFor="let source of dataSources">
+          <div class="table-layout">
+            <div class="source-name">{{source.displayName}}</div>
+            <label>{{source.type}}</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <router-outlet></router-outlet>

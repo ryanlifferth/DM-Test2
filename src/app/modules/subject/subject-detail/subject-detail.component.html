@@ -1,3 +1,1318 @@
-<p>
-  subject-detail works!
-</p>
+<div class="subject-container">
+  <form class="subject-form">
+
+    <!--<div class="well well-sm map-canvas-container">
+    <div id="google-mapCanvas" class="map-canvas"></div>
+    <div id="google-streetMapCanvas" class="street-map-canvas"></div>
+  </div>-->
+
+    <div class="well subject-detail">
+
+      <span class="vert-label">
+        <span class="rotated-text">Subject</span>
+      </span>
+      <div class="form-group">
+        <label>Subject Address</label>
+        <input type="text" placeholder="Address" class="text-wide" />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="City" class="text-medium" />
+        <!--@Html.DropDownList("SubjectAddressState", DropdownData.GetStates("UT"), new { @class = "", ng_model = "subject.State", ng_init = "subject.State = subject.State || 'UT'" })-->
+        <input type="text" placeholder="Zip Code" class="text-small" maxlength="10" pattern="^\d{5}(?:[-\s]\d{4})?$" />
+      </div>
+
+      <div class="row row-top-spacer">
+        <div class="col-md-4">
+          <label>Borrower</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-4">
+          <label>Owner of Public Record</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-4">
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label>Legal Description</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          <!--@Helpers.ParcelHelpers.DataSourcePopoverLabel("Assessor's Pracel #", "Apn", subject, "subject.Apn")-->
+          <label>Assessors Parcel</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <label>Tax Year</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-4">
+          <label>R.E. Taxes</label>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text" placeholder="" class="form-control" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <label>Occupant</label>
+          <select class="form-control">
+            <option value="owner">Owner</option>
+            <option value="tenant">Tenant</option>
+            <option value="vacant">Vacant</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label>Special Assessments</label>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-9 no-right-padding">
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input type="text" placeholder="" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-3 no-right-padding">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" class="checkbox">
+                    PUD
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label>HOA</label>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-7 no-right-padding">
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input type="text" placeholder="" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-5 no-right-padding">
+                <div class="radio">
+                  <label>
+                    <input type="radio" class="radio" name="hoa-payment-schedule" value="year">
+                    per year
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" class="radio" name="hoa-payment-schedule" value="month">
+                    per month
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label>Property Rights Appraised</label>
+          <div class="container-fluid">
+            <div class="row min-text-height">
+              <div class="col-md-4">
+                <div class="radio">
+                  <label class="no-left-padding">
+                    <input type="radio" name="PropertyRights" value="feesimple" class="radio" iradio>
+                    Fee Simple
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="PropertyRights" value="leasehold" class="radio" iradio>
+                    Leasehold
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="PropertyRights" value="other" class="radio" iradio>
+                    Other (describe)
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-8 no-right-padding">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label>Lender/Client</label>
+          <input type="text" class="form-control" />
+        </div>
+        <div class="col-md-8">
+          <label>Address</label>
+          <input type="text" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row row-inline-label">
+        <div class="col-md-12">
+          <label class="inline-label vert-spacing">
+            Is the subject property currently offered for sale or has it been offered for sale in the twelve months prior to the effective date of this appraisal?
+          </label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="SubjectForSale" value="yes" class="radio">
+              Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label class="no-left-padding">
+              <input type="radio" name="SubjectForSale" value="no" class="radio">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-bottom-spacer">
+        <div class="col-md-12">
+          <label>
+            Report data source(s) used, offering price(s), and date(s)
+          </label>
+          <textarea rows="2" class="form-control"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="well subject-detail">
+
+      <span class="vert-label">
+        <span class="rotated-text">Contract</span>
+      </span>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label class="inline-label">
+            I
+          </label>
+          <div class="radio inline-radio">
+            <label class="no-left-padding">
+              <input type="radio" name="AnalyzePurchaseTransaction" value="did" class="radio">
+              did
+            </label>
+          </div>
+          <div class="radio inline-radio">
+            <label class="no-left-padding">
+              <input type="radio" name="AnalyzePurchaseTransaction" value="didnot" class="radio">
+              did not
+            </label>
+          </div>
+          <label class="full-inline">
+            analyze the contract for sale for the subject purchase transaction.  Explain the results
+            of the analysis of the contract for sale or why the analysis was not performed.
+          </label>
+          <textarea rows="2" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <label>Contract Price</label>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="input-group">
+            <input id="ContractDate" type="text" placeholder="" class="date-picker form-control" date-format="MM/dd/yyyy" />
+            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+          </div>
+        </div>
+        <div class="col-md-5 middle-align-label">
+          <label class="inline-label">
+            Is the property seller the owner of the public record?
+          </label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="SellerOwnerOfPublicRecord" value="yes" class="radio">
+              Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label class="no-left-padding">
+              <input type="radio" name="SellerOwnerOfPublicRecord " value="no" class="radio">
+              No
+            </label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label>Data Source(s)</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row row-inline-label">
+        <div class="col-md-12">
+          <label class="inline-label vert-spacing">
+            Is there any financial assistance (loan charges, sales concessions, gift or downpayment assistance, etc.) to be paid by any party on
+            behalf of the borrower?
+          </label>
+          <div class="radio">
+            <input type="radio" name="FinancialAssistanceToBorrower" value="yes" class="radio grow-container-fix" />
+            <label>
+              Yes
+            </label>
+          </div>
+          <div class="radio">
+            <input type="radio" name="FinancialAssistanceToBorrower" value="no" class="radio grow-container-fix" />
+            <label class="no-left-padding">
+              No
+            </label>
+          </div>
+          <div class="">
+            <label>If Yes, report the total dollar amount and describe the terms to paid.</label>
+            <textarea rows="2" class="form-control"></textarea>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="well well-sm subject-detail well-header-label">
+      <span class="vert-label">
+        <span class="rotated-text">Neighborhood</span>
+      </span>
+
+      <div class="row row-header-label">
+        <div class="col-md-12">
+          <label>Note: Race and the racial composition of the neighborhood are not appraisal factors.</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <h6>Neighborhood Characteristics</h6>
+          <div class="container-fluid inline-radio-grid">
+
+          </div>
+        </div>
+        <div class="col-md-5">
+          <h6>One-Unit Housing Trends</h6>
+          <div class="container-fluid inline-radio-grid">
+
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h6 class="with-sub-title">One-Unit Housing</h6>
+          <div class="container-fluid one-unit">
+            <div class="row sub-title">
+              <div class="col-md-5">
+                <label>Price<span class="measure">($000)</span></label>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="col-md-5">
+                <label>Age<span class="measure">(yrs)</span></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-md-2">
+                <label>Low</label>
+              </div>
+              <div class="col-md-5">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-md-2">
+                <label>High</label>
+              </div>
+              <div class="col-md-5">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-md-2">
+                <label>Pred.</label>
+              </div>
+              <div class="col-md-5">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <div class="row boundary-row">
+            <div class="col-md-12">
+              <label>Neighborhood Boundaries</label>
+              <textarea cols="2" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Neighborhood Description</label>
+              <textarea cols="2" class="form-control"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h6 class="present-land">Present Land Use %</h6>
+          <div class="container-fluid present-land">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label>Market Conditions</label>
+          <textarea cols="2" class="form-control"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="well well-sm subject-detail">
+      <span class="vert-label">
+        <span class="rotated-text">Site</span>
+      </span>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label>Dimensions</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <label>Area</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <label>Shape</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-2">
+          <label>View</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          <label>Specific Zoning Classification</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-7">
+          <label>Zoning Description</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <label>Property Rights Appraised</label>
+          <div class="row min-text-height">
+            <div class="col-md-7 no-right-padding">
+              <div class="radio">
+                <label class="no-left-padding">
+                  <input type="radio" name="ZoningCompliance" value="Legal" class="radio" />
+                  Legal
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="ZoningCompliance" value="legalnonconforming" class="radio" />
+                  Legal Nonconforming (Grandfathered Use)
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="ZoningCompliance" value="nozoning" class="radio" />
+                  No Zoning
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="ZoningCompliance" value="illegal" class="radio" />
+                  Illegal (describe)
+                </label>
+              </div>
+            </div>
+            <div class="col-md-5 no-right-padding">
+              <input type="text" class="form-control" placeholder="Describe illegal usage" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row row-inline-label">
+        <div class="col-md-12">
+          <label class="inline-label vert-spacing">
+            Is the highest and best use of subject property as improved (or as proposed per plans and specifications) the present use?
+          </label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="BestUse" value="yes" class="radio" />
+              Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="BestUse" value="no" class="radio" />
+              No
+            </label>
+          </div>
+          <label class="inline-label vert-spacing">If No, describe</label>
+          <input type="text" class="form-control" placeholder="" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 pivot-radio-grid">
+          <div class="row no-col-padding header-row">
+            <div class="col-md-3">
+              <label>Utilities</label>
+            </div>
+            <div class="col-md-2">
+              <label class="sub-header">Public</label>
+            </div>
+            <div class="col-md-7">
+              <label class="sub-header">Other (describe)</label>
+            </div>
+          </div>
+          <div class="row no-col-padding">
+          </div>
+          <div class="row no-col-padding">
+          </div>
+        </div>
+        <div class="col-md-4 pivot-radio-grid">
+          <div class="row no-col-padding header-row">
+            <div class="col-md-3"></div>
+            <div class="col-md-2">
+              <label class="sub-header">Public</label>
+            </div>
+            <div class="col-md-7">
+              <label class="sub-header">Other (describe)</label>
+            </div>
+          </div>
+          <div class="row no-col-padding">
+          </div>
+          <div class="row no-col-padding">
+          </div>
+        </div>
+        <div class="col-md-4 pivot-radio-grid">
+          <div class="row no-col-padding header-row">
+            <div class="col-md-8">
+              <label>Off-site Improvements - Type</label>
+            </div>
+            <div class="col-md-2">
+              <label class="sub-header align-center">Public</label>
+            </div>
+            <div class="col-md-2">
+              <label class="sub-header align-center">Private</label>
+            </div>
+          </div>
+          <div class="row no-col-padding">
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Street</label>
+                </div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="radio no-top-margin align-center">
+                <label class="no-left-padding">
+                  <!--@Html.RadioButton("OffsiteImprovementsStreet", "public", false, new { @class = "radio" })-->
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="radio no-top-margin align-center">
+                <label class="no-left-padding">
+                  <!--@Html.RadioButton("OffsiteImprovementsStreet", "private", false, new { @class = "radio" })-->
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row no-col-padding">
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Alley</label>
+                </div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="radio no-top-margin align-center">
+                <label class="no-left-padding">
+                  <!--@Html.RadioButton("OffsiteImprovementsAlley", "public", false, new { @class = "radio" })-->
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="radio no-top-margin align-center">
+                <label class="no-left-padding">
+                  <!--@Html.RadioButton("OffsiteImprovementsAlley", "private", false, new { @class = "radio" })-->
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label>FEMA Special Flood Hazard Area</label>
+          <div class="radio">
+            <label class="no-left-padding">
+              <input type="radio" name="FemaFloodHazard" value="yes" class="radio">
+              Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="FemaFloodHazard" value="no" class="radio">
+              No
+            </label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label>FEMA Flood Zone</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <label>FEMA Map #</label>
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <label>FEMA Map Date</label>
+          <div class="input-group">
+            <input id="FemaMapDate" type="text" placeholder="" class="date-picker form-control" />
+            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-inline-label no-bottom-margin">
+        <div class="col-md-12">
+          <div class="row">
+
+            <div class="col-md-7 no-right-padding">
+              <label class="inline-label vert-spacing">
+                Are the utilities and off-site improvements typical for the market area?
+              </label>
+              <div class="radio">
+                <label class="no-left-padding">
+                  <input type="radio" name="TypicalUtilities" value="yes" class="radio" />
+                  Yes
+                </label>
+              </div>
+              <div class="radio">
+                <label class="no-left-padding">
+                  <input type="radio" name="TypicalUtilities" value="no" class="radio" />
+                  No
+                </label>
+              </div>
+              <label class="inline-label vert-spacing">If No, describe</label>
+            </div>
+            <div class="col-md-5 no-right-padding">
+              <input type="text" class="form-control" placeholder="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-inline-label no-top-margin">
+        <div class="col-md-12">
+          <label class="inline-label vert-spacing">
+            Are there any adverse site conditions or external factors (easements, encroachments, environmental conditions, land uses, etc.)?
+          </label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="AdverseSiteConditions" value="yes" class="radio" />
+              Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="AdverseSiteConditions" value="no" class="radio" />
+              No
+            </label>
+          </div>
+          <label class="inline-label vert-spacing">If Yes, describe</label>
+          <textarea class="form-control" rows="2" placeholder="Describe adverse conditions"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="well well-sm subject-detail" >
+      <span class="vert-label">
+        <span class="rotated-text">Improvements</span>
+      </span>
+
+      <div class="row">
+        <div class="col-md-4">
+          <h6>General Description</h6>
+          <div class="container-fluid improvement-block">
+            <div class="row">
+              <div class="col-md-5">
+                <label># of Units</label>
+              </div>
+              <div class="col-md-7">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <label># of Stories</label>
+              </div>
+              <div class="col-md-7">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <label>Type</label>
+              </div>
+              <div class="col-md-7">
+                <div class="radio stacked-radio">
+                  <label class="no-left-padding">
+                    <!--@Html.RadioButton("ImprovementType", "detached", false, new { @class = "radio" })-->
+                    Detached
+                  </label>
+                </div>
+                <div class="radio stacked-radio">
+                  <label class="no-left-padding">
+                    <!--@Html.RadioButton("ImprovementType", "attached", false, new { @class = "radio" })-->
+                    Attached
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <label>Design (Style)</label>
+              </div>
+              <div class="col-md-7">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="radio stacked-radio">
+                  <label class="no-left-padding">
+                    <!--@Html.RadioButton("ImprovementExisting", "existing", false, new { @class = "radio" })-->
+                    Existing
+                  </label>
+                </div>
+                <div class="radio stacked-radio">
+                  <label class="no-left-padding">
+                    <!--@Html.RadioButton("ImprovementExisting", "proposed", false, new { @class = "radio" })-->
+                    Proposed
+                  </label>
+                </div>
+                <div class="radio stacked-radio">
+                  <label class="no-left-padding">
+                    <!--@Html.RadioButton("ImprovementExisting", "underconstruction", false, new { @class = "radio" })-->
+                    Under Construction
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <label>Year Built</label>
+              </div>
+              <div class="col-md-7">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <label>Effective Age (Yrs)</label>
+              </div>
+              <div class="col-md-7">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h6>Exterior Description</h6>
+          <div class="container-fluid improvement-block">
+            <!--@BuildInlineLabelInput(new int[] { 5, 7 }, "Foundation", Html.TextBox("ExteriorFoundation", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Exterior Walls", Html.TextBox("ExteriorWalls", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Roof Surface", Html.TextBox("ExteriorRoof", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Gutters & Dwnspts", Html.TextBox("ExteriorGutters", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Window Type", Html.TextBox("ExteriorWindowType", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Storm Sash/Insulated", Html.TextBox("ExteriorStormSash", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Screens", Html.TextBox("ExteriorScreens", "", new { @class = "form-control", @placeholder = "materials/condition" }))-->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h6>Foundation</h6>
+          <div class="container-fluid improvement-block no-right-border">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("FoundationConcreteSlab", false, new { @class = "checkbox" })-->
+                    Concrete Slab
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("FoundationCrawlSpace", false, new { @class = "checkbox" })-->
+                    Crawl Space
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("FoundationFullBasement", false, new { @class = "checkbox" })-->
+                    Full Basement
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("FoundationPartialBasement", false, new { @class = "checkbox" })-->
+                    Partial Basement
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <label>Basement Area</label>
+              </div>
+              <div class="col-md-7">
+                <div class="input-group">
+                  <!--@Html.TextBox("BasementAreaSf", null, new { @class = "form-control" })-->
+                  <span class="input-group-addon">sf</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <label>Basement Finish</label>
+              </div>
+              <div class="col-md-7">
+                <div class="input-group">
+                  <span class="input-group-addon">%</span>
+                  <!--@Html.TextBox("BasementFinish", null, new { @class = "form-control" })-->
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("FoundationOutsideEntry", false, new { @class = "checkbox" })-->
+                    Outside Entry/Exit
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("FoundationSumpPump", false, new { @class = "checkbox" })-->
+                    Sump Pump
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <label>Evidence of</label>
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("FoundationEvidenceOfInfestation", false, new { @class = "checkbox" })-->
+                    Infestation
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("FoundationEvidenceOfDampness", false, new { @class = "checkbox" })-->
+                    Dampness
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("FoundationEvidenceOfSettlement", false, new { @class = "checkbox" })-->
+                    Settlement
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <h6>Interior Description</h6>
+          <div class="container-fluid improvement-block">
+            <!--@BuildInlineLabelInput(new int[] { 5, 7 }, "Floors", Html.TextBox("InteriorFloors", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Walls", Html.TextBox("InteriorWalls", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Trim/Finish", Html.TextBox("InteriorTrim", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Bath Floor", Html.TextBox("InteriorBathFloor", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Bath Wainscot", Html.TextBox("InteriorBathWainscot", "", new { @class = "form-control", @placeholder = "materials/condition" }))
+            @BuildInlineLabelInput(new int[] { 5, 7 }, "Doors", Html.TextBox("InteriorDoors", "", new { @class = "form-control", @placeholder = "materials/condition" }))-->
+            <div class="row">
+              <label class="filler">&nbsp;</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h6>Heating/Cooling</h6>
+          <div class="container-fluid improvement-block">
+            <div class="row">
+              <div class="col-md-12">
+                <label class="sub-header">Heating</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("HeatingFwa", false, new { @class = "checkbox" })-->
+                    FWA
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("HeatingHwbb", false, new { @class = "checkbox" })-->
+                    HWBB
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("HeatingRadiant", false, new { @class = "checkbox" })-->
+                    Radiant
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("HeatingOther", false, new { @class = "checkbox", @ng_model = "models.HeatingOther", @icheck = string.Empty })-->
+                    Other
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <!--@Html.TextBox("HeatingOtherText", null, new { @class = "form-control", @ng_show = "models.HeatingOther", @placeholder = "Heating Type" })-->
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <label class="heating-fuel">Fuel</label>
+              </div>
+              <div class="col-md-10">
+                <!--@Html.TextBox("HeatingFuel", null, new { @class = "form-control heating-fuel" })-->
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <label class="sub-header">Cooling</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("CoolingCentralAir", false, new { @class = "checkbox" })-->
+                    Central Air Conditioning
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("CoolingIndividual", false, new { @class = "checkbox" })-->
+                    Individual
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("CoolingOther", false, new { @class = "checkbox", @ng_model = "models.CoolingOther", @icheck = string.Empty })-->
+                    Other
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <!--@Html.TextBox("CoolingOtherText", null, new { @class = "form-control", @ng_show = "models.CoolingOther", @placeholder = "Cooling Type" })-->
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <h6>Car Storage</h6>
+          <div class="container-fluid improvement-block no-right-border">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("ParkingNone", false, new { @class = "checkbox", @ng_model = "models.ParkingNone", @icheck = string.Empty })-->
+                    None
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row" >
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("ParkingDriveway", false, new { @class = "checkbox", @ng_model = "models.ParkingDriveway", @icheck = string.Empty })-->
+                    Driveway
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label class="car-count"># of cars</label>
+              </div>
+              <div class="col-md-5">
+                <!--@Html.TextBox("DrivewayCarCount", null, new { @class = "form-control" })-->
+              </div>
+            </div>
+            <div class="row" >
+              <div class="col-md-5">
+                <label>Driveway Surface</label>
+              </div>
+              <div class="col-md-7">
+                <!--@Html.TextBox("DrivewaySurface", null, new { @class = "form-control" })-->
+              </div>
+            </div>
+            <div class="row" >
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("ParkingGarage", false, new { @class = "checkbox", @ng_model = "models.ParkingGarage", @icheck = string.Empty })-->
+                    Garage
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label class="car-count"># of cars</label>
+              </div>
+              <div class="col-md-5">
+                <!--@Html.TextBox("GarageCarCount", null, new { @class = "form-control" })-->
+              </div>
+            </div>
+            <div class="row" >
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("ParkingCarport", false, new { @class = "checkbox", @ng_model = "models.ParkingCarport", @icheck = string.Empty })-->
+                    Carport
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label class="car-count"># of cars</label>
+              </div>
+              <div class="col-md-5">
+                <!--@Html.TextBox("CarportCarCount", null, new { @class = "form-control" })-->
+              </div>
+            </div>
+            <div class="row" >
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("ParkingAttached", false, new { @class = "checkbox" })-->
+                    Attached
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("ParkingDetached", false, new { @class = "checkbox" })-->
+                    Detached
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("ParkingBuiltIn", false, new { @class = "checkbox" })-->
+                    Built-In
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h6>Amenities</h6>
+          <div class="container-fluid improvement-block">
+            <div class="row">
+              <div class="col-md-6">
+                
+              </div>
+              <div class="col-md-6">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h6>Attic</h6>
+          <div class="container-fluid improvement-block">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("AtticNone", false, new { @class = "checkbox", @ng_model = "models.AtticNone", @icheck = string.Empty })-->
+                    None
+                  </label>
+                </div>
+                <div class="checkbox" >
+                  <label>
+                    <!--@Html.CheckBox("AtticStairs", false, new { @class = "checkbox" })-->
+                    Stairs
+                  </label>
+                </div>
+                <div class="checkbox" >
+                  <label>
+                    <!--@Html.CheckBox("AtticDropstair", false, new { @class = "checkbox" })-->
+                    Drop Stair
+                  </label>
+                </div>
+                <div class="checkbox" >
+                  <label>
+                    <!--@Html.CheckBox("AtticScuttle", false, new { @class = "checkbox" })-->
+                    Scuttle
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="checkbox" >
+                  <label>
+                    <!--@Html.CheckBox("AtticFloor", false, new { @class = "checkbox" })-->
+                    Floor
+                  </label>
+                </div>
+                <div class="checkbox" >
+                  <label>
+                    <!--@Html.CheckBox("AtticHeated", false, new { @class = "checkbox" })-->
+                    Heated
+                  </label>
+                </div>
+                <div class="checkbox" >
+                  <label>
+                    <!--@Html.CheckBox("AtticFinished", false, new { @class = "checkbox" })-->
+                    Finished
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h6>Appliances</h6>
+          <div class="container-fluid improvement-block no-right-border">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("AppliancesRefridgerator", false, new { @class = "checkbox" })-->
+                    Refridgerator
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("AppliancesRange", false, new { @class = "checkbox" })-->
+                    Range/Oven
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("AppliancesDisposal", false, new { @class = "checkbox" })-->
+                    Disposal
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("AppliancesDishwasher", false, new { @class = "checkbox" })-->
+                    Dishwasher
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("AppliancesFan", false, new { @class = "checkbox" })-->
+                    Fan/Hood
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("AppliancesMicrowave", false, new { @class = "checkbox" })-->
+                    Microwave
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7">
+                <div class="checkbox">
+                  <label>
+                    <!--@Html.CheckBox("AppliancesOther", false, new { @class = "checkbox", @ng_model = "models.AppliancesOther", @icheck = string.Empty })-->
+                    Other (describe)
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <!--@Html.TextBox("AppliancesOtherDescription", null, new { @class = "form-control", @ng_show = "models.AppliancesOther" })-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row above-grade-row">
+        <div class="col-md-3">
+          <label class="sub-header">Finished area <b>above</b> grade contains</label>
+        </div>
+        <div class="col-md-5">
+          <div class="input-group room-count">
+            <!--@Html.TextBox("AboveGradeRoomCount", null, new { @class = "form-control" })-->
+            <label>Rooms</label>
+          </div>
+          <div class="input-group room-count">
+            <!--@Html.TextBox("AboveGradeBedrooomCount", null, new { @class = "form-control" })-->
+            <span class="input-group-addon">Bedrooms</span>
+          </div>
+          <div class="input-group room-count">
+            <!--@Html.TextBox("AboveGradeBathCount", null, new { @class = "form-control" })-->
+            <span class="input-group-addon">Bath(s)</span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group">
+            <!--@Html.TextBox("AboveGradeGLA", null, new { @class = "form-control", @ng_model = "subject.AboveGradeGla" })-->
+            <span class="input-group-addon">
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label>Additional features (energy efficient items, etc.)</label>
+          <!--@Html.TextArea("AdditionalFeatures", null, new { @class = "form-control", @rows = "2" })-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label>Describe the condition of the property (needed repairs, deterioration, renovations, remodeling, etc.)</label>
+          <!--@Html.TextArea("PropertyCondition", null, new { @class = "form-control", @rows = "3" })-->
+        </div>
+      </div>
+
+      <div class="row row-inline-label no-top-margin">
+        <div class="col-md-12">
+          <label class="inline-label vert-spacing">
+            Are there any adverse conditions or physical deficiencies that affect the livability, soundness, or structural integrigy of the property?
+          </label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="AdversePropertyConditions" value="yes" class="radio" />
+              Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="AdversePropertyConditions" value="no" class="radio" />
+              No
+            </label>
+          </div>
+          <label class="inline-label vert-spacing">If Yes, describe</label>
+          <textarea class="form-control" rows="2" placeholder="Describe adverse conditions" ></textarea>
+        </div>
+      </div>
+
+      <div class="row row-inline-label no-top-margin">
+        <div class="col-md-12">
+          <label class="inline-label vert-spacing">
+            Does the property generally conform to the neighborhood (functional utility, style, condition, use, construction, etc.)?
+          </label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="PropertyFunctionalConform" value="yes" class="radio" />
+              Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="PropertyFunctionalConform" value="no" class="radio" />
+              No
+            </label>
+          </div>
+          <label class="inline-label vert-spacing">If No, describe</label>
+          <textarea class="form-control" rows="2" placeholder="Describe adverse conditions" ></textarea>
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+</div>

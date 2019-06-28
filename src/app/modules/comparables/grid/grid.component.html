@@ -1,3 +1,650 @@
-<p>
-  grid works!
-</p>
+
+<div class="comps-grid-container">
+
+  <div class="grid-item subject">
+    <h1>Subject</h1>
+
+    <div class="row">
+      <div class="col-md-12">
+        <!--@Helpers.ParcelHelpers.ParcelPhoto(selectedPhoto, "Subject")-->
+        <div class="item-photo">
+          <span class="fal fa-image fa-5x photo-icon"></span>
+          <span class="fal fa-plus-circle fa-2x add-photo-icon"></span>
+        </div>
+
+        <div class="parcel-detail-link-container">
+          <a href="#">Listing</a>
+          <a href="#">Deeds</a>
+        </div>
+
+      </div>
+    </div>
+    <div class="row grid-row address-row">
+      <div class="col-md-12">
+        <address>
+          <div class="address">{{addressLine1}}</div>
+          <div class="address-sub">{{city}}, {{state}} {{zip}}</div>
+        </address>
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "" }, GetSelectedDataSourceId(fieldDataSourcePairList, "AddressLine1"), null, "address")-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-12 grid-label">
+        Proximity to Subject
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Sale Price
+      </div>
+      <div class="col-md-6 grid-input">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input type="text" id="SalePriceSubject" value="" pattern="[0-9]*" class="form-control">
+        </div>
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "SalePrice" }, GetSelectedDataSourceId(fieldDataSourcePairList, "SalePrice"), item => String.Format("{0:0,0}", item))-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Sale Price/GLA
+      </div>
+      <div class="col-md-6 grid-input">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input type="number" id="GlaPriceSubject" value="" class="form-control">
+          <span class="input-group-addon trailing sm">sqft</span>
+        </div>
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "SalePricePerGrossLivingArea" }, GetSelectedDataSourceId(fieldDataSourcePairList, "SalePricePerGrossLivingArea"), item => String.Format("{0:0,0.00}", item))-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-12 grid-label">
+        Data Source(s)
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-12 grid-label">
+        Verification Source(s)
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label label-header">
+        ADJUSTMENTS
+      </div>
+      <div class="col-md-6 grid-label label-header">
+        DESCRIPTION
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-12 grid-label">
+        Sale or Financing
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-12 grid-label">
+        Concessions
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-12 grid-label">
+        Date of Sale
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Location
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="LocationSubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "Location" }, GetSelectedDataSourceId(fieldDataSourcePairList, "Location"), null)-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Leasehold/Fee Simple
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="FeeSimpleSubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "LeaseholdFeeSimple" }, GetSelectedDataSourceId(fieldDataSourcePairList, "LeaseholdFeeSimple"), null)-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Site
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="SiteSubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "SiteArea" }, GetSelectedDataSourceId(fieldDataSourcePairList, "SiteArea"), item => String.Format("{0:0,0.00}", item))-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        View
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="ViewSubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "View" }, GetSelectedDataSourceId(fieldDataSourcePairList, "View"), null)-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Design (Style)
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="DesignSubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "Style" }, GetSelectedDataSourceId(fieldDataSourcePairList, "Style"), null)-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Quality of Construction
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="QualitySubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "QualityOfConstruction" }, GetSelectedDataSourceId(fieldDataSourcePairList, "QualityOfConstruction"), null)-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Actual Age
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="AgeSubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "EffectiveAge" }, GetSelectedDataSourceId(fieldDataSourcePairList, "EffectiveAge"), item => String.Format("{0:0,0}", item))-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Condition
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="ConditionSubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "Condition" }, GetSelectedDataSourceId(fieldDataSourcePairList, "Condition"), null)-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label room-count">
+        Above Grade Room Count
+      </div>
+      <div class="col-md-6 room-count grid-input">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4 grid-label">total</div>
+            <div class="col-md-4 grid-label">bed</div>
+            <div class="col-md-4 grid-label">bath</div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 grid-input">
+              <input type="text" id="TotalRoomCountSubject" value="" class="form-control">
+            </div>
+            <div class="col-md-4 grid-input">
+              <input type="text" id="BedroomCountSubject" value="" class="form-control">
+            </div>
+            <div class="col-md-4 grid-input">
+              <input type="text" id="BathroomCountSubject" value="" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Gross Living Area
+      </div>
+      <div class="col-md-6 grid-input">
+        <div class="input-group">
+          <input type="text" id="GlaSubject" value="" class="form-control">
+          <span class="input-group-addon trailing sm">sqft</span>
+        </div>
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "AboveGradeGla" }, GetSelectedDataSourceId(fieldDataSourcePairList, "AboveGradeGla"), item => String.Format("{0:0,0}", item))-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Basement & Finished
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="BasementAndFinishedSubject" value="" class="form-control">
+      </div>
+
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Rooms Below Grade
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="RoomsBelowGradeSubject" value="" class="form-control">
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Functional Utility
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="FunctionalUtilitySubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "FunctionalUtility" }, GetSelectedDataSourceId(fieldDataSourcePairList, "FunctionalUtility"), null)-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Heating/Cooling
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="HeatingCoolingSubject" value="" class="form-control">
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Energy Efficient Items
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="EnergyEfficientSubject" value="" class="form-control">
+      </div>
+      <!--@Helpers.ParcelHelpers.BuildInputFlyout(prePrioritizedList, new List<string> { "EnergyEffecientItemsAdjustment" }, GetSelectedDataSourceId(fieldDataSourcePairList, "EnergyEffecientItemsAdjustment"), null)-->
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Garage/Carport
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="ParkingSubject" value="" class="form-control">
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Porch/Patio/Deck
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="PorchSubject" value="" class="form-control">
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Extra Item 1
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="ExtraItem1Subject" value="" class="form-control">
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Extra Item 2
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="ExtraItem2Subject" value="" class="form-control">
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-6 grid-label">
+        Extra Item 3
+      </div>
+      <div class="col-md-6 grid-input">
+        <input type="text" id="ExtraItem3Subject" value="" class="form-control">
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-12 grid-label">
+        Net Adjustment (Total)
+      </div>
+    </div>
+    <div class="row grid-row">
+      <div class="col-md-12 grid-label adjusted-sales-price">
+        Adjusted Sale Price of Comparables
+      </div>
+    </div>
+
+  </div>
+
+  <div class="comp-container">
+    <div class="comps" id="Comps">
+
+      <div class="grid-item" draggable="true" *ngFor="let comp of [1,2,3,4,5]">
+        <h1>
+          <span class="draggable-icon"></span>
+          Comp {{comp}}
+        </h1>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="item-photo">
+              <span class="fal fa-image fa-5x photo-icon"></span>
+              <span class="fal fa-plus-circle fa-2x add-photo-icon"></span>
+            </div>
+            <!--@Helpers.ParcelHelpers.ParcelPhoto(selectedPhoto, compNumber.ToString())-->
+
+            <div class="parcel-detail-link-container">
+              <a href="#">Listing</a>
+              <a href="#">Deeds</a>
+            </div>
+          </div>
+        </div>
+        <div class="row grid-row address-row">
+          <div class="col-md-12">
+            <address>
+              <div class="address">{{addressLine1}}</div>
+              <div class="address-sub">{{city}}, {{state}} {{zip}}</div>
+            </address>
+            <!--@Html.Hidden("FullAddressComp" + compNumber, AddressUtil.BuildAddressString(Model).ToLower(), new { @class = "full-comp-address" })-->
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "" }, GetSelectedDataSourceId(fieldDataSourcePairList, "AddressLine1"), null, "address")-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-12 grid-input">
+            <input type="text" value="" placeholder="proximity to subject" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-12 grid-input">
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="text" value="" placeholder="sale price" class="form-control" />
+            </div>
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "SalePrice" }, GetSelectedDataSourceId(fieldDataSourcePairList, "SalePrice"), item => String.Format("{0:0,0}", item))-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-12 grid-input">
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="text" value="" placeholder="sale price/GLA" class="form-control" />
+              <span class="input-group-addon trailing sm">sqft</span>
+            </div>
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "SalePricePerGrossLivingArea" }, GetSelectedDataSourceId(fieldDataSourcePairList, "SalePricePerGrossLivingArea"), item => String.Format("{0:0,0.00}", item))-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-12 grid-input">
+            <input type="text" value="" placeholder="data source(s)" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "ReportedDataSources" }, GetSelectedDataSourceId(fieldDataSourcePairList, "ReportedDataSources"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-12 grid-input">
+            <input type="text" value="" placeholder="verification source(s)" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "VerificationSource" }, GetSelectedDataSourceId(fieldDataSourcePairList, "VerificationSource"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-label label-header">
+            DESCRIPTION
+          </div>
+          <div class="col-md-6 grid-label label-header">
+            +(-) $ Adjustment
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="SaleFinance{{comp}}" value="" placeholder="sale or financing" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="SaleFinanceAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "" }, 0, null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="Concessions{{comp}}" value="" placeholder="concessions" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="ConcessionsAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "ConcessionAmount" }, GetSelectedDataSourceId(fieldDataSourcePairList, "ConcessionAmount"), item => String.Format("{0:0,0.00}", item))-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="DateOfSale{{comp}}" value="" placeholder="date of sale" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="DateOfSaleAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="Location{{comp}}" value="" placeholder="location" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="LocationAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "Location" }, GetSelectedDataSourceId(fieldDataSourcePairList, "Location"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="FeeSimple{{comp}}" value="" placeholder="leasehold/fee simple" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="FeeSimpleAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "LeaseholdFeeSimple" }, GetSelectedDataSourceId(fieldDataSourcePairList, "LeaseholdFeeSimple"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="number" id="Site{{comp}}" value="" placeholder="site" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="SiteAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "SiteArea" }, GetSelectedDataSourceId(fieldDataSourcePairList, "SiteArea"), item => String.Format("{0:0,0.00}", item))-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="View{{comp}}" value="" placeholder="view" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="ViewAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "View" }, GetSelectedDataSourceId(fieldDataSourcePairList, "View"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="Design{{comp}}" value="" placeholder="design (style)" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="DesignAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "Style" }, GetSelectedDataSourceId(fieldDataSourcePairList, "Style"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="Quality{{comp}}" value="" placeholder="quality of const" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="QualityAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "QualityOfConstruction" }, GetSelectedDataSourceId(fieldDataSourcePairList, "QualityOfConstruction"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="Age{{comp}}" value="" placeholder="actual age" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="AgeAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "EffectiveAge" }, GetSelectedDataSourceId(fieldDataSourcePairList, "EffectiveAge"), item => String.Format("{0:0,0}", item))-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="Condition{{comp}}" value="" placeholder="condition" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="ConditionAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "Condition" }, GetSelectedDataSourceId(fieldDataSourcePairList, "Condition"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input room-count">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4 grid-label">total</div>
+                <div class="col-md-4 grid-label">bed</div>
+                <div class="col-md-4 grid-label">bath</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 grid-input">
+                  <input type="text" id="TotalRoomCount{{comp}}" value="" class="form-control" />
+                </div>
+                <div class="col-md-4 grid-input">
+                  <input type="text" id="BedroomCount{{comp}}" value="" class="form-control" />
+                </div>
+                <div class="col-md-4 grid-input">
+                  <input type="text" id="BathroomCount{{comp}}" value="" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 grid-input room-count">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12 grid-label">&nbsp;</div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 grid-adjust grid-input">
+                  <input type="number" id="RoomCountAdjust{{comp}}" placeholder="" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <div class="input-group">
+              <input type="text" id="Gla{{comp}}" value="" placeholder="GLA" class="form-control" />
+              <span class="input-group-addon trailing sm">sqft</span>
+            </div>
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="GlaAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "AboveGradeGla" }, GetSelectedDataSourceId(fieldDataSourcePairList, "AboveGradeGla"), item => String.Format("{0:0,0}", item))-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="BasementAndFinished{{comp}}" value="" placeholder="basement/finished" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="BasementAndFinishedAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="RoomsBelowGrade{{comp}}" placeholder="rooms below grd" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="RoomsBelowGradeAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="FunctionalUtility{{comp}}" value="" placeholder="functional util" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="FunctionalUtilityAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "FunctionalUtility" }, GetSelectedDataSourceId(fieldDataSourcePairList, "FunctionalUtility"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="HeatingCooling{{comp}}" placeholder="heat/cool" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="HeatingCoolingAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="EnergyEfficient{{comp}}" value="" placeholder="energy effct items" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="EnergyEfficientAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+          <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "EnergyEffecientItemsAdjustment" }, GetSelectedDataSourceId(fieldDataSourcePairList, "EnergyEffecientItemsAdjustment"), null)-->
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="Parking{{comp}}" value="" placeholder="garage/carport" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="ParkingAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="Porch{{comp}}" value="" placeholder="porch/patio/deck" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="PorchAdjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="ExtraItem1{{comp}}" value="" placeholder="extra item 1" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="ExtraItem1Adjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="ExtraItem2{{comp}}" value="" placeholder="extra item 2" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="ExtraItem2Adjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input">
+            <input type="text" id="ExtraItem3{{comp}}" value="" placeholder="extra item 3" class="form-control" />
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <input type="number" id="ExtraItem3Adjust{{comp}}" placeholder="" class="form-control" />
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input adjust-plus-minus">
+            <a href="#" class="fa fa-plus fa-lg"></a>
+            <a href="#" class="fa fa-minus fa-lg selected"></a>
+          </div>
+          <div class="col-md-6 grid-input grid-adjust">
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="text" id="NetAdjustTotal{{comp}}" placeholder="" class="form-control" />
+            </div>
+          </div>
+        </div>
+        <div class="row grid-row">
+          <div class="col-md-6 grid-input adjusted-sales-price">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6 grid-label">net adj.</div>
+                <div class="col-md-6 grid-input">
+                  <div class="input-group">
+                    <input type="number" id="NetAdjust{{comp}}" placeholder="" class="form-control" />
+                    <span class="input-group-addon">%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 grid-label">gross adj.</div>
+                <div class="col-md-6 grid-input">
+                  <div class="input-group">
+                    <input type="number" id="GrossAdjust{{comp}}" placeholder="" class="form-control" />
+                    <span class="input-group-addon">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 grid-input grid-adjust adjusted-sales-price">
+            <div class="input-group vert-align">
+              <span class="input-group-addon">$</span>
+              <input type="text" id="AdjustedSalesPrice{{comp}}" placeholder="" class="form-control" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,130 @@
+.grid-header {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 5px 0;
+  overflow: auto;
+  padding: 0;
+
+  &.row {
+    margin: 0;
+  }
+
+  .form {
+    display: inline-block;
+
+    label {
+      color: #607eab;
+      display: inline-block;
+      font-weight: normal;
+      margin: 2px 5px 0 0;
+    }
+
+    .text {
+      font-weight: 600;
+    }
+  }
+
+  .comp-summary {
+    //clear: left;
+    .comp-count {
+      color: #607eab;
+      display: inline-block;
+      font-size: 13px;
+      font-weight: normal;
+      margin: 0;
+      position: relative;
+      //text-transform: lowercase;
+      .count {
+        color: #000;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0 0 0 5px;
+      }
+    }
+
+    .btn {
+      &.btn-add-comps {
+        font-size: 12px;
+        margin-bottom: 10px;
+        padding: 4px 10px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .data-source-list {
+    float: right;
+    display: table-cell;
+    vertical-align: top;
+    //margin-left: 18px;
+    margin-left: 0;
+    margin-right: 15px;
+
+    .background-fade-out {
+      //background-color: rgba(255,255,0,0.3);
+      //box-shadow: 0 0 10px 4px rgba(255,255,0,0.3);
+    }
+
+
+    h6 {
+      color: #607eab;
+      /*color: #46689c;*/
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      //margin: 16px 0 0;
+      //margin-top: 0;
+      margin: 0;
+      padding: 0 7px 0 0;
+      text-align: right;
+      text-decoration: none;
+      text-transform: capitalize;
+      white-space: nowrap;
+      transition: all .5s linear;
+    }
+
+    .source-list {
+      padding-left: 20px;
+      transition: all 3s linear;
+
+      .row {
+        display: table;
+        width: 100%;
+        line-height: 15px;
+        margin-left: 0;
+        margin-right: 0;
+
+        .table-layout {
+          padding: 0;
+          display: table-row;
+        }
+
+        &:hover {
+          background-color: #ebebeb;
+        }
+
+        label {
+          color: #707070;
+          display: table-cell;
+          float: right;
+          font-size: 10px;
+          margin: 2px 5px 0 8px;
+          text-transform: uppercase;
+          vertical-align: middle;
+          white-space: nowrap;
+        }
+
+        .source-name {
+          color: #008b8b;
+          display: table-cell;
+          font-size: 11px;
+          margin: 0 5px;
+          padding-left: 4px;
+          vertical-align: middle;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

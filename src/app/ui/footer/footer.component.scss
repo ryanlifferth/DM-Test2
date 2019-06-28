@@ -21,16 +21,33 @@ footer {
   }
 
   .bottom-nav {
+    display: inline-block;
+
     a {
-      color: rgba(0,0,0,0.6);
+      //color: rgba(0,0,0,0.6);
+      //color: #1187BB;
+      color: rgba(64, 152, 215, 0.8);
+      margin-left: 30px;
+      transition: all 0.5s ease;
+
+      &.social-media {
+        color: rgba(64, 152, 215, .35);
+        margin-left: 15px;
+
+        &.first {
+          margin-left: 25px;
+        }
+      }
 
       &:hover {
         text-decoration: none;
-        color: rgba(0,0,0,0.7);
+        //color: rgba(0,0,0,0.7);
+        color: #0A558C;
       }
     }
 
-    .spacer {
+
+    & .spacer {
       display: inline-flex;
       margin: 0 5px;
     }
