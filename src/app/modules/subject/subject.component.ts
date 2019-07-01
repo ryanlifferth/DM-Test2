@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./subject.component.scss', '../../ui/header/header.component.scss']
 })
 export class SubjectComponent implements OnInit {
-  defaultActive: string;
+  isActiveLink: string;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.isActiveLink = this.isActive();
   }
 
   private isActive(): string {

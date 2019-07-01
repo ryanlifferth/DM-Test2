@@ -18,10 +18,10 @@ export class NewsService {
   getNewsFeed(): Observable<NewsFeed[]> {
     return of(NEWSFEED);  // Mock
 
-    const url = environment.newsFeedUrl + '/all';
-    const requestOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Controll-Allow-Origin': '*' }) };
-    const results = this.http.get<NewsFeed[]>(url, requestOptions);  // I don't thing this will work - need to scrub the data
-    return results;  // TODO:  Need to normalize the results 
+    //const url = environment.newsFeedUrl + '/all';
+    //const requestOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Controll-Allow-Origin': '*' }) };
+    //const results = this.http.get<NewsFeed[]>(url, requestOptions);  // I don't think this will work - need to scrub the data
+    //return results;  // TODO:  Need to normalize the results 
   }
 
 }

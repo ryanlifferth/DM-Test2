@@ -7,10 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./market-conditions.component.scss', '../../ui/header/header.component.scss']
 })
 export class MarketConditionsComponent implements OnInit {
+  isActiveLink: string;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.isActiveLink = this.isActive();
   }
 
   private isActive(): string {

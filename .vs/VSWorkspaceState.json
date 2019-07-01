@@ -4,13 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\modules",
-    "\\src\\app\\modules\\home\\news",
-    "\\src\\app\\modules\\subject\\subject-detail",
-    "\\src\\app\\ui\\header",
     "\\src\\assets",
     "\\src\\assets\\style",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\styles.scss",
+  "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
 }
