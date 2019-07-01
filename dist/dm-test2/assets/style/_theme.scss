@@ -1,0 +1,84 @@
+$theme: light; // dark or light
+
+// Nav vars
+$header-bgcolor: #102a43;
+$nav-border-top: none;
+$nav-link-color: rgba(255,255,255,0.45);
+$nav-link-color-hover: rgba(255,255,255,0.5);
+$navbar-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+$nabvar-submenu-top-border: 1px solid rgba(255, 255, 255, 0.3);
+
+// nav-item vars
+$nav-item-font-weight: 500;
+$nav-item-border-bottom: 2px solid transparent;
+$nav-item-hover-border-bottom: 2px solid rgba(255, 255, 255, 0.4);  // old hover color hsla(21, 92%, 51%, 0.5) => #f15b28
+$nav-item-hover-font-color: rgba(255,255,255,0.7);
+$nav-item-active-border-bottom: 2px solid #fff; //#62B0E8; // Old color #f15b28 (red-ish); Not sure if I like this better or the white option (next line)
+$nav-item-active-font-color: rgba(255,255,255,0.9);
+$nav-item-active-font-weight: 600;
+$nav-submenu-item-hover-bg-color: rgba(255, 255, 255, 0.05);
+$nav-submenu-item-active-bg-color: rgba(255, 255, 255, 0.08);
+$nav-submenu-item-active-font-color: rgba(255,255,255,0.9);
+$nav-submenu-item-active-border-bottom: 2px solid #fff; //#62B0E8;
+  
+// nav user (right side) vars
+$nav-user-color: rgba(255, 255, 255, 0.8);
+$nav-user-icon-font-color: rgba(255,255,255,0.6);
+$nav-user-font-weight: 400;
+$nav-user-login-font-color: rgba(255,255,255,0.7);
+$nav-user-logout-font-color: rgba(255,255,255,0.7);
+
+// nav user (right side) gravatar vars
+$nav-user-gravatar-border: 1px solid rgba(255,255,255,0.6);
+$nav-user-gravatar-box-shadow: 0 0 3px rgba(255,255,255,0.8);
+
+// nav user (right side) alt-icon
+$nav-user-alt-icon-bg-color: rgba(165, 165, 165, 1);
+$nav-user-alt-icon-border: 2px solid #0c1d07;
+$nav-user-alt-icon-box-shadow: 0 0 4px 2px rgba(255, 255, 255, 1);
+$nav-user-alt-icon-font-color: #0c1d07;
+$nav-user-alt-icon-margin: 2px 0 0 0;
+
+
+@if $theme == light {
+  // Nav vars
+  $header-bgcolor: #fff;
+  $nav-border-top: 2px solid #077FAF;
+  //$nav-border-top: 3px solid #d64545;
+  $nav-link-color: hsla(210, 25%, 59%, 1); // old color #636f7b;
+  $nav-link-color-hover: #212529;
+  $navbar-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  $nabvar-submenu-top-border: 1px solid rgba(0, 0, 0, 0.1);
+
+  // nav-item vars
+  $nav-item-font-weight: 500;
+  $nav-item-border-bottom: 2px solid transparent;
+  $nav-item-hover-border-bottom: 2px solid rgba(78, 161, 198, 0.4);
+  $nav-item-hover-font-color: hsla(210, 19%, 53%, 1);  // old color #0c6b58;
+  $nav-item-active-border-bottom: 2px solid #e66a6a;
+  $nav-item-active-font-color: #0C6288;
+  $nav-item-active-font-weight: 600;
+  $nav-submenu-item-hover-bg-color: rgba(15, 96, 153, 0.05);
+  $nav-submenu-item-active-bg-color: rgba(15, 96, 153, 0.05);
+  $nav-submenu-item-active-font-color: #a61b1b;
+  $nav-submenu-item-active-border-bottom: 2px solid #077FAF;
+
+  // nav user (right side) vars
+  //$nav-user-color: #2680c2;
+  $nav-user-color: #0C6288;
+  $nav-user-icon-font-color: #2680c2;
+  $nav-user-font-weight: 500;
+  $nav-user-login-font-color: rgba(255,255,255,0.7);
+  $nav-user-logout-font-color: rgba(0,0,0,0.7);
+
+  // nav user (right side) gravatar vars
+  $nav-user-gravatar-border: 1px solid rgba(0,0,0,0.4);
+  $nav-user-gravatar-box-shadow: 0 0 3px rgba(0,0,0,0.7);
+
+  // nav user (right side) alt-icon
+  $nav-user-alt-icon-bg-color: rgba(0,0,0,0.2);
+  $nav-user-alt-icon-border: 2px solid #fff;
+  $nav-user-alt-icon-box-shadow: 0 0 3px rgba(0,0,0,0.9);
+  $nav-user-alt-icon-font-color: rgba(33, 37, 41,1);
+
+}

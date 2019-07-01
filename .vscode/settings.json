@@ -1,0 +1,7 @@
+{
+    "appService.zipIgnorePattern": [
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/582f2dee-d983-4e1d-baee-1b8b077bb7b5/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/datamaster-test",
+    "appService.deploySubpath": "dist\\dm-test2"
+}
