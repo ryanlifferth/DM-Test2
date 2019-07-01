@@ -20,7 +20,8 @@
 
         <div class="file-container">
 
-          <a *ngFor="let info of fileInfos" routerLink="/Subject/detail/{{info.id}}" class="file-item">
+          <!--<a *ngFor="let info of fileInfos" routerLink="/Subject/detail/{{info.id}}" class="file-item">-->
+          <a *ngFor="let info of fileInfos" routerLink="/Comparables/grid/{{info.id}}" class="file-item">
             <span class="file-info">
               <span class="file-type badge badge-secondary">{{info.fileType}}</span>
               <span class="file-name">{{info.fileName}}</span>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-subject',
@@ -13,6 +14,14 @@ export class SubjectComponent implements OnInit {
 
   ngOnInit() {
     this.isActiveLink = this.isActive();
+
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((value: NavigationEnd) => {
+        //this.isActiveLink = this.activatedRoute.firstChild.routeConfig.path === '' || this.activatedRoute.firstChild.routeConfig.path === 'grid' ? 'active' : '';
+        this.isActiveLink = value.url === '/Subject' || value.url === '/Subject/detail' ? 'active' : '';
+      });
+
   }
 
   private isActive(): string {

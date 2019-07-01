@@ -51,7 +51,14 @@ const routes: Routes = [
     component: ComparablesComponent,
     children: [
       { path: 'addenda', component: AddendaComponent },
-      { path: 'grid', component: GridComponent },
+      {
+        path: 'grid',
+        component: GridComponent,
+        children: [ // hack to allow a default id value
+          { path: ':id', component: GridComponent },
+          { path: '**', redirectTo: '/Comparables/grid/1'}
+        ]
+      },
       { path: 'deeds', component: CompDeedsComponent },
       { path: 'map', component: MapComponent },
       { path: 'upload', component: UploadComponent },
