@@ -8,5 +8,5 @@ export const USERINFO: UserInfo = {
   email: 'riclif@datamaster.io',
   title: 'Appraiser',
   //email: 'ryanlifferth@gmail.com',
-  //iconPath: '/assets/images/RickLifferth.png'
+  iconPath: '/assets/images/RickLifferth.png'
 }

@@ -1,6 +1,6 @@
-$grid-blue: #327fba;
-$grid-border: #abadb3;
-$grid-green: #00bb3f;
+$grid-blue: #4098D7;
+$grid-border: #BCCCDC;
+$grid-green: #27AB83;
 //$grid-label-bg: rgba(84, 84, 84, 0.3);
 $grid-label-bg: rgba(0,114,188,0.2);
 $grid-row-height: 30px;
@@ -182,7 +182,7 @@ $add-data-height: 1196px;
             height: $grid-row-height;
             padding: 0 4px;
 
-            $placeholder-color: rgba(0,114,188,0.3);
+            $placeholder-color: rgba(0,114,188,0.4);
             /*$placeholder-color: rgba(171, 173, 179,0.6);*/
             &::-webkit-input-placeholder {
               color: $placeholder-color;
@@ -455,7 +455,7 @@ $add-data-height: 1196px;
 
     &.subject {
       border-left: 1px solid $grid-border;
-      border-top-color: $grid-blue;
+      //border-top-color: $grid-blue;
       //margin-right: 5px;
       width: 240px;
 
