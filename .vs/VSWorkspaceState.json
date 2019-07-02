@@ -3,11 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\core",
+    "\\src\\app\\core\\models\\mocks",
     "\\src\\app\\modules",
-    "\\src\\assets",
-    "\\src\\assets\\style",
-    "\\src\\environments"
+    "\\src\\app\\modules\\comparables\\grid",
+    "\\src\\app\\modules\\home",
+    "\\src\\app\\modules\\home\\files",
+    "\\src\\app\\ui"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\src\\app\\app-routing.module.ts",
   "PreviewInSolutionExplorer": false
 }
