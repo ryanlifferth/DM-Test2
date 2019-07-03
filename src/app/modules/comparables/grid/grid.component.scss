@@ -26,6 +26,8 @@ $add-data-height: 1196px;
     transition: transform 0.2s ease;
     width: 230px;
 
+
+
     &.grid-item-focus {
       box-shadow: 0 0 2px 2px rgba(255,242,0,0.3);
     }
@@ -460,7 +462,7 @@ $add-data-height: 1196px;
       width: 240px;
 
       &.scrolling-top-margin {
-        margin-top: 22px;
+        margin-top: 17px;
       }
 
       h1 {
@@ -502,11 +504,14 @@ $add-data-height: 1196px;
   }
 
   .comp-container {
-    
-    &.horizontal-scroll {
+    /*&.horizontal-scroll {
       //box-shadow: inset -4px 0 8px -4px rgba(0,0,0,0.2), inset 4px 0 8px -4px rgba(0, 0, 0, 0.2);
       overflow-x: scroll;
-    }
+    }*/
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
 
     &.top-scrollbar, &.top-scrollbar .comps { // Hack to move scrollbar to top of div - http://stackoverflow.com/questions/18997724/how-to-change-scroll-bar-position-with-css
       transform: rotateX(180deg);
@@ -517,6 +522,7 @@ $add-data-height: 1196px;
       margin: 0;
       padding: 0;
       white-space: nowrap;
+      flex: 0 0 auto;
     }
 
     .modal {

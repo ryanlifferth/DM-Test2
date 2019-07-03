@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 //import { HeaderServiceService } from './core/services/header-service.service';
 //import { SidebarLogoService } from '../../../core/services/sidebar-logo.service';
 import { SidebarLogoService } from '../../core/services/sidebar-logo.service';
@@ -13,6 +13,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('logo') logo: ElementRef;
   //logoSrc = '/assets/images/dm-icon.svg';
   logoSrc = '/assets/images/web-logo-white.png';
   logoSrcExpanded = '/assets/images/web-logo-white.png';
@@ -32,20 +33,20 @@ export class HeaderComponent implements OnInit {
       this.logoSrc = '/assets/images/dm-icon-white.png';
     }
 
-    this.sidebarLogoService.isSbExpanded.subscribe(val => {
-      this.logoSrc = val == true ? this.logoSrcExpanded : this.logoSrcCollapsed;
-    });
-
     this.headerNavService.isNavVisible.subscribe(val => {
       this.navVisible = val;
     });
 
-    this.sidebarLogoService.sidebarWidth
-      .subscribe(val => {
-        //console.log(val);
-        (document.querySelector('.logo') as HTMLElement).style.width = val + 'px';
-        //(document.querySelector('.logo') as HTMLElement).style.minWidth = val + 'px';
-      });
+    this.sidebarLogoService.sidebarWidth.subscribe(val => {
+      //console.log(val);
+      //(document.querySelector('.logo') as HTMLElement).style.width = val + 'px';
+      //this.logo.nativeElement
+      this.logo.nativeElement.style.width = val + 'px';
+    });
+
+    this.sidebarLogoService.isSbExpanded.subscribe(val => {
+      this.logoSrc = val == true ? this.logoSrcExpanded : this.logoSrcCollapsed;
+    });
 
     // This is used to get the parent route to determine whether or not the top nav header menu should be shown
     this.router.events

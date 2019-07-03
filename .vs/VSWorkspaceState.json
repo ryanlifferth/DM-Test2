@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\core",
-    "\\src\\app\\core\\models\\mocks",
+    "\\src\\app\\core\\services",
     "\\src\\app\\modules",
-    "\\src\\app\\modules\\comparables\\grid",
-    "\\src\\app\\modules\\home",
-    "\\src\\app\\modules\\home\\files",
-    "\\src\\app\\ui"
+    "\\src\\app\\modules\\comparables",
+    "\\src\\app\\ui",
+    "\\src\\app\\ui\\header",
+    "\\src\\app\\ui\\sidebar"
   ],
-  "SelectedNode": "\\src\\app\\app-routing.module.ts",
+  "SelectedNode": "\\src\\app\\modules\\comparables\\comparables.component.ts",
   "PreviewInSolutionExplorer": false
 }

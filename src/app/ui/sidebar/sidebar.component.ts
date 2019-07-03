@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked, DoCheck } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, DoCheck, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { Md5 } from 'ts-md5/dist/md5';
 
 import { SidebarLogoService } from '../../core/services/sidebar-logo.service';
@@ -10,7 +10,7 @@ import { UserInfoService } from '../../core/services/user-info.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, AfterViewChecked, AfterViewInit {
   sidebarExpanded: boolean = true;
   @ViewChild('sideNavBar') sideNavbar: ElementRef;
   oldNavbarWidth: number = 0;
@@ -23,15 +23,24 @@ export class SidebarComponent implements OnInit {
     this.getUserInfo();
   }
 
-  ngAfterViewChecked() {
-    //this.sidebarLogoService.setSidebarWidth(this.sideNavbar);
+  ngAfterViewInit() {
+    this.oldNavbarWidth = this.sideNavbar.nativeElement.offsetWidth;
+    this.sidebarLogoService.setSidebarWidth(this.sideNavbar.nativeElement.offsetWidth);
   }
 
-  ngDoCheck() {
+  ngAfterViewChecked() {
+    //this.sidebarLogoService.setSidebarWidth(this.sideNavbar);
     if (this.oldNavbarWidth !== this.sideNavbar.nativeElement.offsetWidth) {
       this.sidebarLogoService.setSidebarWidth(this.sideNavbar.nativeElement.offsetWidth);
       this.oldNavbarWidth = this.sideNavbar.nativeElement.offsetWidth;
     }
+  }
+
+  ngDoCheck() {
+    //if (this.oldNavbarWidth !== this.sideNavbar.nativeElement.offsetWidth) {
+    //  this.sidebarLogoService.setSidebarWidth(this.sideNavbar.nativeElement.offsetWidth);
+    //  this.oldNavbarWidth = this.sideNavbar.nativeElement.offsetWidth;
+    //}
   }
 
   toggleMenu(): void {

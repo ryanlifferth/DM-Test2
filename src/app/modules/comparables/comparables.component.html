@@ -24,7 +24,7 @@
 </div>
 <div class="clear"></div>
 
-<div class="grid-header row">
+<div class="grid-header row" (window:resize)="onResize($event)" #compHeader>
   <div class="col">
 
     <div class="form">
