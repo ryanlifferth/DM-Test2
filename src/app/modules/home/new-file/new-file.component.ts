@@ -83,7 +83,7 @@ export class NewFileComponent implements OnInit {
     } else {
       // TODO: execute the appropriate search
 
-      alert('Running the search....');
+      alert('Running the search....\r\n(Not really, this is just a placeholder)');
     }
   }
 
