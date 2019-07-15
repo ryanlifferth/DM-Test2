@@ -1,88 +1,217 @@
 <div class="card">
   <div class="card-header">
     <h3>Create a new Work File</h3>
+
+    <div class="tab-slider-tabs">
+      <span class="tab" [class.active]="viewMode == 'newFileTab'" rel="newFileTab" (click)="viewMode ='newFileTab'">New file</span>
+      <span class="tab" [class.active]="viewMode == 'addressSearchTab'" rel="addressSearchTab" (click)="viewMode ='addressSearchTab'"><span class="far fa-search"></span> Address</span>
+      <span class="tab" [class.active]="viewMode == 'mlsSearchTab'" rel="mlsSearchTab" (click)="viewMode ='mlsSearchTab'"><span class="far fa-search"></span> MLS</span>
+      <span class="tab" [class.active]="viewMode == 'apnSearchTab'" rel="apnSearchTab" (click)="viewMode ='apnSearchTab'"><span class="far fa-search"></span> APN</span>
+    </div>
   </div>
-  <div class="card-body new-file {{readyToDrop == true ? 'drop' : ''}}" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="doneDropping($event)">
+  <div class="card-body">
 
-    <form id="newFileForm" [formGroup]="newFileForm">
-      <div class="form-group">
-        <label for="fileName">
-          Enter your file name/number
-          <span class="required" *ngIf="(newFileForm.controls['fileName'].invalid && newFileForm.controls['fileName'].touched)">required</span>
-        </label>
-        <input type="text" placeholder="file name/number" formControlName="fileName" />
-        <a href="#" onclick="return false;" class="create-file-name">[create one for me]</a>
-        <!--<small class="form-text text-muted">That's ok if you don't have one, we can create one for you.</small>-->
-      </div>
-      <div class="form-group">
+    <div class="tab-slider-container" [ngSwitch]="viewMode">
 
-        <div class="custom-input-group">
-          <label for="formType">
-            Select your appraisal type
-            <span class="required" *ngIf="(newFileForm.controls['formType'].invalid && newFileForm.controls['formType'].touched)">required</span>
-          </label>
-          <!--<select formControlName="formType" [value]="1004">
-            <option id="1004">1004 URAR - UAD</option>
-            <option id="1073">1073</option>
-          </select>-->
-          <select formControlName="formType">
-            <option *ngFor="let type of appraisalFormTypes" [ngValue]="type.value">{{type.text}}</option>
-          </select>
-        </div>
-        <div class="custom-input-group form-vendor">
-          <div class="dropdown show">
-            <div class="selected-item dropdown-toggle" data-toggle="dropdown">
-              <img src="{{selectedVendorImgSrc}}" alt="{{selectedVendorImgAlt}}" #selectedVendor height="{{selectedVendorImgHeight}}" />
-              <a href="#" onclick="return false;" class="change">[change]</a>
+      <div id="newFileTab" *ngSwitchCase="'newFileTab'" class="new-file {{readyToDrop == true ? 'drop' : ''}}" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="doneDropping($event)">
+
+        <form id="newFileForm" [formGroup]="newFileForm">
+          <div class="form-group">
+            <label for="fileName">
+              Enter your file name/number
+              <span class="required" *ngIf="(newFileForm.controls['fileName'].invalid && newFileForm.controls['fileName'].touched)">required</span>
+            </label>
+            <input type="text" placeholder="file name/number" formControlName="fileName" />
+            <a href="#" onclick="return false;" class="create-file-name">[create one for me]</a>
+            <!--<small class="form-text text-muted">That's ok if you don't have one, we can create one for you.</small>-->
+          </div>
+          <div class="form-group">
+
+            <div class="custom-input-group">
+              <label for="formType">
+                Select your appraisal type
+                <span class="required" *ngIf="(newFileForm.controls['formType'].invalid && newFileForm.controls['formType'].touched)">required</span>
+              </label>
+              <!--<select formControlName="formType" [value]="1004">
+                <option id="1004">1004 URAR - UAD</option>
+                <option id="1073">1073</option>
+              </select>-->
+              <select formControlName="formType">
+                <option *ngFor="let type of appraisalFormTypes" [ngValue]="type.value">{{type.text}}</option>
+              </select>
+            </div>
+            <div class="custom-input-group form-vendor">
+              <div class="dropdown show">
+                <div class="selected-item dropdown-toggle" data-toggle="dropdown">
+                  <img src="{{selectedVendorImgSrc}}" alt="{{selectedVendorImgAlt}}" #selectedVendor height="{{selectedVendorImgHeight}}" />
+                  <a href="#" onclick="return false;" class="change">[change]</a>
+                </div>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" (click)="updateVendor($event)">
+                    <img src="/assets/images/vendors/alamode.png" alt="a la mode" height="30" />
+                  </a>
+                  <a class="dropdown-item" (click)="updateVendor($event)">
+                    <img src="/assets/images/vendors/aci.png" alt="ACI" width="50" />
+                  </a>
+                  <a class="dropdown-item" (click)="updateVendor($event)">
+                    <img src="/assets/images/vendors/bradford.png" alt="Bradford" height="36" />
+                  </a>
+                  <a class="dropdown-item" (click)="updateVendor($event)">
+                    <img src="/assets/images/vendors/sfrep.png" alt="SFREP" height="22" />
+                  </a>
+                </div>
+              </div>
+
             </div>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" (click)="updateVendor($event)">
-                <img src="/assets/images/vendors/alamode.png" alt="a la mode" height="30" />
-              </a>
-              <a class="dropdown-item" (click)="updateVendor($event)">
-                <img src="/assets/images/vendors/aci.png" alt="ACI" width="50" />
-              </a>
-              <a class="dropdown-item" (click)="updateVendor($event)">
-                <img src="/assets/images/vendors/bradford.png" alt="Bradford" height="36" />
-              </a>
-              <a class="dropdown-item" (click)="updateVendor($event)">
-                <img src="/assets/images/vendors/sfrep.png" alt="SFREP" height="22" />
-              </a>
+          </div>
+          <div class="form-group">
+            <label>Open an MLS export file (<i>optional</i>)</label>
+            <input type="file" style="background-color: #f2f6fa;" class="file-upload" formControlName="mlsFileUpload" />
+          </div>
+
+          <!--<a routerLink="/Subject/" class="btn btn-success btn-go" (click)="validate()">
+            Create new file
+            <span class="fal fa-arrow-circle-right"></span>
+          </a>-->
+
+          <button type="submit" class="btn btn-success btn-go" (click)="validate()">
+            Create new file
+            <span class="fal fa-arrow-circle-right"></span>
+          </button>
+
+        </form>
+
+        <!--<div class="input-group">
+          <label>This will be a </label>
+          <select name="formType">
+            <option id="1004">1004 URAR - UAD</option>
+            <option id="1073">1073</option>
+          </select>
+          <label> appraisal.  I will be exporting to</label>
+          <div class="form-vendor"><i>a la mode</i> <span class="change">[change]</span></div>.
+          <label>The name/number of this file will be </label>
+          <input type="text" name="fileName" />
+        </div>-->
+
+      </div>
+
+      <div id="addressSearchTab" class="search-forms" *ngSwitchCase="'addressSearchTab'">
+
+        <form id="addressSearchForm" [formGroup]="addressSearchForm" #addressSearch="ngForm">
+          <div class="form-row">
+            <div class="form-group col-7">
+              <label for="address">
+                Address
+                <span class="required" *ngIf="(addressSearchForm.controls['address'].invalid && addressSearchForm.controls['address'].touched)">required</span>
+              </label>
+              <input type="text" placeholder="123 Somewhere Ave" formControlName="address" />
+            </div>
+            <div class="form-group col">
+              <label for="city">
+                City
+              </label>
+              <input type="text" placeholder="Springfield" formControlName="city" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-4">
+              <label for="county">
+                County
+                <span class="required" *ngIf="(addressSearchForm.controls['county'].invalid && addressSearchForm.controls['county'].touched)">required</span>
+              </label>
+              <select formControlName="county">
+                <option id="davis">Davis</option>
+                <option id="weber">Weber</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label for="state">
+                State
+                <span class="required" *ngIf="(addressSearchForm.controls['state'].invalid && addressSearchForm.controls['state'].touched)">required</span>
+              </label>
+              <select formControlName="state">
+                <option id="CA">California</option>
+                <option id="UT" selected>Utah</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label for="zip">
+                Zip
+              </label>
+              <input type="text" placeholder="12345" formControlName="zip" />
+            </div>
+          </div>
+          <div class="submit search">
+            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(addressSearchForm)">
+              <span class="fal fa-search"></span>
+              Search
+            </button>
+          </div>
+        </form>
+
+
+      </div>
+
+      <div id="mlsSearchTab" class="search-forms" *ngSwitchCase="'mlsSearchTab'">
+
+        <form id="mlsSearchForm" [formGroup]="mlsSearchForm">
+
+          <div class="form-group">
+            <label for="mlsNumber">
+              MLS Number
+              <span class="required" *ngIf="(mlsSearchForm.controls['mlsNumber'].invalid && mlsSearchForm.controls['mlsNumber'].touched)">required</span>
+            </label>
+            <input type="text" placeholder="MLS Number" formControlName="mlsNumber" />
+          </div>
+          <div class="submit search">
+            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(mlsSearchForm)">
+              <span class="fal fa-search"></span>
+              Search
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+
+      <div id="apnSearchTab" class="search-forms" *ngSwitchCase="'apnSearchTab'">
+
+        <form id="apnSearchForm" [formGroup]="apnSearchForm">
+
+          <div class="form-row">
+            <div class="form-group col-7">
+              <label for="apnNumber">
+                APN Number
+                <span class="required" *ngIf="(apnSearchForm.controls['apnNumber'].invalid && apnSearchForm.controls['apnNumber'].touched)">required</span>
+              </label>
+              <input type="text" placeholder="APN Number" formControlName="apnNumber" />
+            </div>
+            <div class="form-group col">
+              <label for="county">
+                County
+                <span class="required" *ngIf="(apnSearchForm.controls['county'].invalid && apnSearchForm.controls['county'].touched)">required</span>
+              </label>
+              <select formControlName="county">
+                <option id="davis">Davis</option>
+                <option id="weber">Weber</option>
+              </select>
             </div>
           </div>
 
-        </div>
+          <div class="submit search">
+            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(apnSearchForm)">
+              <span class="fal fa-search"></span>
+              Search
+            </button>
+          </div>
+
+        </form>
 
       </div>
-      <div class="form-group">
-        <label>Open an MLS export file (<i>optional</i>)</label>
-        <input type="file" style="background-color: #f2f6fa;" class="file-upload" formControlName="mlsFileUpload" />
-      </div>
 
-      <!--<a routerLink="/Subject/" class="btn btn-success btn-go" (click)="validate()">
-        Create new file
-        <span class="fal fa-arrow-circle-right"></span>
-      </a>-->
-
-      <button type="submit" class="btn btn-success btn-go" (click)="validate()">
-        Create new file
-        <span class="fal fa-arrow-circle-right"></span>
-      </button>
-
-    </form>
-
-    <!--<div class="input-group">
-      <label>This will be a </label>
-      <select name="formType">
-        <option id="1004">1004 URAR - UAD</option>
-        <option id="1073">1073</option>
-      </select>
-      <label> appraisal.  I will be exporting to</label>
-      <div class="form-vendor"><i>a la mode</i> <span class="change">[change]</span></div>.
-      <label>The name/number of this file will be </label>
-      <input type="text" name="fileName" />
-    </div>-->
+    </div>
 
   </div>
 </div>

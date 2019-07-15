@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validator, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validator, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-file.component.scss', '../home.component.scss']
 })
 export class NewFileComponent implements OnInit {
+  viewMode = 'newFileTab';  // default tab
   selectedVendorImgSrc: string;
   selectedVendorImgHeight: number;
   selectedVendorImgAlt: string;
@@ -18,6 +19,9 @@ export class NewFileComponent implements OnInit {
 
 
   @Input('newFileForm') newFileForm: FormGroup;
+  @Input('addressSearchForm') addressSearchForm: FormGroup;
+  @Input('mlsSearchForm') mlsSearchForm: FormGroup;
+  @Input('apnSearchForm') apnSearchForm: FormGroup;
 
   constructor(private router: Router) {
 
@@ -34,7 +38,23 @@ export class NewFileComponent implements OnInit {
       fileName: new FormControl('', Validators.required),
       formType: new FormControl('', Validators.required),
       mlsFileUpload: new FormControl('')
-       //family_name: new FormControl('')
+    });
+
+    this.addressSearchForm = new FormGroup({
+      address: new FormControl('', Validators.required),
+      city: new FormControl(''),
+      state: new FormControl('', Validators.required),
+      county: new FormControl('', Validators.required),
+      zip: new FormControl('')
+    });
+
+    this.mlsSearchForm = new FormGroup({
+      mlsNumber: new FormControl('', Validators.required)
+    });
+
+    this.apnSearchForm = new FormGroup({
+      apnNumber: new FormControl('', Validators.required),
+      county: new FormControl('', Validators.required)
     });
 
     this.newFileForm.controls['formType'].setValue('1004');
@@ -52,6 +72,23 @@ export class NewFileComponent implements OnInit {
 
       this.router.navigate(['/Comparables']);
     }
+  }
+
+  searchValidate(formGroup) {
+    if (formGroup.valid === false) {
+      for (let item in formGroup.controls) {
+        //console.log(this.newFileForm.controls[item]);
+        formGroup.controls[item].markAsTouched();
+      }
+    } else {
+      // TODO: execute the appropriate search
+
+      alert('Running the search....');
+    }
+  }
+
+  searchValidateAddress(formName) {
+    alert(formName);
   }
 
   updateVendor(e) {

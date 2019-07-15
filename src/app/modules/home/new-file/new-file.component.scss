@@ -1,16 +1,21 @@
 @import 'variables';
 
 .card-header {
-  border-bottom: none;
+  //border-bottom: none;
+  .tab-slider-tabs {
+    text-align: right;
+  }
 }
 
-.new-file {
-  border: 2px dashed transparent;
+.card-body {
+  margin: 5px;
+}
 
-  &.card-body {
-    margin: 5px;
-    padding: 5px 15px !important;
-  }
+.new-file,
+.search-forms {
+  border: 2px dashed transparent;
+  padding: 5px 15px !important;
+
 
   &.drop {
     border: 2px dashed rgba(0,0,0,0.6);
@@ -21,12 +26,12 @@
 
     label {
       display: block;
-      font-size: 12px;
+      font-size: 13px;
       margin: 0 0 0 2px;
       position: relative;
 
       .required {
-        color:rgba(255,0,0,0.6);
+        color: rgba(255,0,0,0.6);
         font-style: italic;
         position: absolute;
         right: 0;
@@ -60,17 +65,15 @@
     }
 
     input[type=text] {
-      width: 310px;
       padding: 3px 6px;
     }
 
     input[type=file] {
-      width: 310px;
+      //width: 310px;
     }
 
     select {
       padding: 3px 6px;
-      width: 225px;
     }
 
     .create-file-name,
@@ -124,11 +127,45 @@
       }
     }
   }
+}
+
+.new-file {
+
+  input[type=text] {
+    width: 310px;
+  }
+
+  input[type=file] {
+    width: 310px;
+  }
+
+  select {
+    width: 225px;
+  }
 
   .btn-go {
     color: #fff;
     position: absolute;
     bottom: 15px;
     right: 15px;
+  }
+}
+
+.search-forms {
+
+  input[type=text], select {
+    width: 100%;
+  }
+
+  .submit {
+    text-align: right;
+
+    .btn-search {
+      padding: 6px 24px 6px 20px;
+
+      .fal {
+        margin-right: 5px;
+      }
+    }
   }
 }
