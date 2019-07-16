@@ -3,14 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\core",
-    "\\src\\app\\core\\services",
     "\\src\\app\\modules",
-    "\\src\\app\\modules\\comparables",
-    "\\src\\app\\ui",
-    "\\src\\app\\ui\\header",
-    "\\src\\app\\ui\\sidebar"
+    "\\src\\app\\modules\\home",
+    "\\src\\app\\modules\\home\\new-file"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\src\\app\\modules\\home\\new-file\\new-file.component.ts",
   "PreviewInSolutionExplorer": false
 }

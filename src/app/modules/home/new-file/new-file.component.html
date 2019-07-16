@@ -123,8 +123,8 @@
                 <span class="required" *ngIf="(addressSearchForm.controls['county'].invalid && addressSearchForm.controls['county'].touched)">required</span>
               </label>
               <select formControlName="county">
-                <option id="davis">Davis</option>
-                <option id="weber">Weber</option>
+                <!--<option *ngFor="let county of countiesJson" [ngValue]="county.CountyName">{{county.CountyName}}</option>-->
+                <option *ngFor="let county of countiesJsonAddressSearch" [ngValue]="county.CountyName">{{county.CountyName}}</option>
               </select>
             </div>
             <div class="form-group col">
@@ -133,8 +133,7 @@
                 <span class="required" *ngIf="(addressSearchForm.controls['state'].invalid && addressSearchForm.controls['state'].touched)">required</span>
               </label>
               <select formControlName="state">
-                <option id="CA">California</option>
-                <option id="UT" selected>Utah</option>
+                <option *ngFor="let state of stateJson " [ngValue]="state.Abbreviation">{{state.State}}</option>                
               </select>
             </div>
             <div class="form-group col">
@@ -183,13 +182,22 @@
 
         <form id="apnSearchForm" [formGroup]="apnSearchForm">
 
+          <div class="form-group">
+            <label for="apnNumber">
+              APN Number
+              <span class="required" *ngIf="(apnSearchForm.controls['apnNumber'].invalid && apnSearchForm.controls['apnNumber'].touched)">required</span>
+            </label>
+            <input type="text" placeholder="APN Number" formControlName="apnNumber" />
+          </div>
           <div class="form-row">
-            <div class="form-group col-7">
-              <label for="apnNumber">
-                APN Number
-                <span class="required" *ngIf="(apnSearchForm.controls['apnNumber'].invalid && apnSearchForm.controls['apnNumber'].touched)">required</span>
+            <div class="form-group col-5">
+              <label for="state">
+                State
+                <span class="required" *ngIf="(apnSearchForm.controls['state'].invalid && apnSearchForm.controls['state'].touched)">required</span>
               </label>
-              <input type="text" placeholder="APN Number" formControlName="apnNumber" />
+              <select formControlName="state">
+                <option *ngFor="let state of stateJson" [ngValue]="state.Abbreviation">{{state.State}}</option>
+              </select>
             </div>
             <div class="form-group col">
               <label for="county">
@@ -197,8 +205,8 @@
                 <span class="required" *ngIf="(apnSearchForm.controls['county'].invalid && apnSearchForm.controls['county'].touched)">required</span>
               </label>
               <select formControlName="county">
-                <option id="davis">Davis</option>
-                <option id="weber">Weber</option>
+                <!--<option *ngFor="let county of countiesJson" [ngValue]="county.CountyName">{{county.CountyName}}</option>-->
+                <option *ngFor="let county of countiesJsonApnSearch" [ngValue]="county.CountyName">{{county.CountyName}}</option>
               </select>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validator, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import usaCounties from '../../../../assets/data/UsaCounties.json';
 
 @Component({
   selector: 'app-new-file',
@@ -16,7 +17,9 @@ export class NewFileComponent implements OnInit {
 
   appraisalFormTypes = [{ text: '1004 URAR - UAD', value: '1004' }, { text: '1073', value: '1073' }];
 
-
+  stateJson: any = usaCounties;
+  countiesJsonAddressSearch: any;
+  countiesJsonApnSearch: any;
 
   @Input('newFileForm') newFileForm: FormGroup;
   @Input('addressSearchForm') addressSearchForm: FormGroup;
@@ -24,8 +27,13 @@ export class NewFileComponent implements OnInit {
   @Input('apnSearchForm') apnSearchForm: FormGroup;
 
   constructor(private router: Router) {
-
-    //this.form = this.formBuilder.group({ mlsExportFileUpload: '' });
+    //console.log(usaCounties);
+    //for (let state of usaCounties) {
+    //  console.log(state.State + " (" + state.Abbreviation + ")");
+    //}
+    //for (let county of this.countiesJson) {
+    //  console.log(county.CountyName);
+    //}
   }
 
 
@@ -54,11 +62,32 @@ export class NewFileComponent implements OnInit {
 
     this.apnSearchForm = new FormGroup({
       apnNumber: new FormControl('', Validators.required),
+      state: new FormControl('', Validators.required),
       county: new FormControl('', Validators.required)
     });
 
     this.newFileForm.controls['formType'].setValue('1004');
+
+    this.stateJson = this.stateJson.filter(state => state.UsaTerritory === undefined);
+
+    this.addressSearchForm.controls['state'].setValue('UT');
+    this.countiesJsonAddressSearch = this.stateJson.filter(state => state.Abbreviation === 'UT')[0].Counties;
+    
+    this.addressSearchForm.controls['state'].valueChanges.subscribe(selectedState => {
+      this.countiesJsonAddressSearch = this.stateJson.filter(state => state.Abbreviation === selectedState)[0].Counties;
+    });
+
+    this.apnSearchForm.controls['state'].setValue('UT');
+    this.countiesJsonApnSearch = this.stateJson.filter(state => state.Abbreviation === 'UT')[0].Counties;
+
+    this.apnSearchForm.controls['state'].valueChanges.subscribe(selectedState => {
+      this.countiesJsonApnSearch = this.stateJson.filter(state => state.Abbreviation === selectedState)[0].Counties;
+    });
+
+
   }
+
+
 
   validate() {
     if (this.newFileForm.valid === false) {
@@ -85,10 +114,6 @@ export class NewFileComponent implements OnInit {
 
       alert('Running the search....\r\n(Not really, this is just a placeholder)');
     }
-  }
-
-  searchValidateAddress(formName) {
-    alert(formName);
   }
 
   updateVendor(e) {
@@ -126,8 +151,9 @@ export class NewFileComponent implements OnInit {
     //this.newFileForm.controls['mlsFileUpload'].setValue(e.dataTransfer.files[0].name);
     //this.newFileForm.controls['mlsFileUpload'].files = e.dataTransfer.files;
 
-
+    //this.handleFiles(e.dataTransfer.files[0]);
     //document.querySelector('.file-upload').files = e.dataTransfer.files;  // this is a hack and it throws a TS error - but it works
-
+    
   }
+
 }
