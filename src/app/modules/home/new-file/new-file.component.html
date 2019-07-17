@@ -144,9 +144,11 @@
             </div>
           </div>
           <div class="submit search">
-            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(addressSearchForm)">
-              <span class="fal fa-search"></span>
-              Search
+            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(addressSearchForm)" [disabled]="isFormSearching(addressSearchForm)">
+              <span class="fal fa-search" *ngIf="!isFormSearching(addressSearchForm)"></span>
+              <span *ngIf="!isFormSearching(addressSearchForm)">Search</span>
+              <span class="far fa-spinner fa-pulse spinner" *ngIf="isFormSearching(addressSearchForm)"></span>
+              <span *ngIf="isFormSearching(addressSearchForm)">Searching...</span>
             </button>
           </div>
         </form>
@@ -167,9 +169,11 @@
             <input type="text" placeholder="MLS Number" formControlName="mlsNumber" />
           </div>
           <div class="submit search">
-            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(mlsSearchForm)">
-              <span class="fal fa-search"></span>
-              Search
+            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(mlsSearchForm)" [disabled]="isFormSearching(mlsSearchForm)">
+              <span class="fal fa-search" *ngIf="!isFormSearching(mlsSearchForm)"></span>
+              <span *ngIf="!isFormSearching(mlsSearchForm)">Search</span>
+              <span class="far fa-spinner fa-pulse spinner" *ngIf="isFormSearching(mlsSearchForm)"></span>
+              <span *ngIf="isFormSearching(mlsSearchForm)">Searching...</span>
             </button>
           </div>
 
@@ -212,9 +216,11 @@
           </div>
 
           <div class="submit search">
-            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(apnSearchForm)">
-              <span class="fal fa-search"></span>
-              Search
+            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(apnSearchForm)" [disabled]="isFormSearching(apnSearchForm)">
+              <span class="fal fa-search" *ngIf="!isFormSearching(apnSearchForm)"></span>
+              <span *ngIf="!isFormSearching(apnSearchForm)">Search</span>
+              <span class="far fa-spinner fa-pulse spinner" *ngIf="isFormSearching(apnSearchForm)"></span>
+              <span *ngIf="isFormSearching(apnSearchForm)">Searching...</span>
             </button>
           </div>
 

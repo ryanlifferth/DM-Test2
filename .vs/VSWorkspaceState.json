@@ -5,8 +5,10 @@
     "\\src\\app",
     "\\src\\app\\modules",
     "\\src\\app\\modules\\home",
-    "\\src\\app\\modules\\home\\new-file"
+    "\\src\\app\\modules\\home\\new-file",
+    "\\src\\assets",
+    "\\src\\assets\\data"
   ],
-  "SelectedNode": "\\src\\app\\modules\\home\\new-file\\new-file.component.ts",
+  "SelectedNode": "\\src\\assets\\data\\UsaCounties.json",
   "PreviewInSolutionExplorer": false
 }
