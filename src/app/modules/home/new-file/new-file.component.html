@@ -33,9 +33,9 @@
                 <span class="required" *ngIf="(newFileForm.controls['formType'].invalid && newFileForm.controls['formType'].touched)">required</span>
               </label>
               <!--<select formControlName="formType" [value]="1004">
-                <option id="1004">1004 URAR - UAD</option>
-                <option id="1073">1073</option>
-              </select>-->
+              <option id="1004">1004 URAR - UAD</option>
+              <option id="1073">1073</option>
+            </select>-->
               <select formControlName="formType">
                 <option *ngFor="let type of appraisalFormTypes" [ngValue]="type.value">{{type.text}}</option>
               </select>
@@ -72,9 +72,9 @@
           </div>
 
           <!--<a routerLink="/Subject/" class="btn btn-success btn-go" (click)="validate()">
-            Create new file
-            <span class="fal fa-arrow-circle-right"></span>
-          </a>-->
+          Create new file
+          <span class="fal fa-arrow-circle-right"></span>
+        </a>-->
 
           <button type="submit" class="btn btn-success btn-go" (click)="validate()">
             Create new file
@@ -84,16 +84,16 @@
         </form>
 
         <!--<div class="input-group">
-          <label>This will be a </label>
-          <select name="formType">
-            <option id="1004">1004 URAR - UAD</option>
-            <option id="1073">1073</option>
-          </select>
-          <label> appraisal.  I will be exporting to</label>
-          <div class="form-vendor"><i>a la mode</i> <span class="change">[change]</span></div>.
-          <label>The name/number of this file will be </label>
-          <input type="text" name="fileName" />
-        </div>-->
+        <label>This will be a </label>
+        <select name="formType">
+          <option id="1004">1004 URAR - UAD</option>
+          <option id="1073">1073</option>
+        </select>
+        <label> appraisal.  I will be exporting to</label>
+        <div class="form-vendor"><i>a la mode</i> <span class="change">[change]</span></div>.
+        <label>The name/number of this file will be </label>
+        <input type="text" name="fileName" />
+      </div>-->
 
       </div>
 
@@ -133,7 +133,7 @@
                 <span class="required" *ngIf="(addressSearchForm.controls['state'].invalid && addressSearchForm.controls['state'].touched)">required</span>
               </label>
               <select formControlName="state">
-                <option *ngFor="let state of stateJson " [ngValue]="state.Abbreviation">{{state.State}}</option>                
+                <option *ngFor="let state of stateJson " [ngValue]="state.Abbreviation">{{state.State}}</option>
               </select>
             </div>
             <div class="form-group col">
@@ -144,6 +144,10 @@
             </div>
           </div>
           <div class="submit search">
+            <button type="button" class="btn btn-link btn-sm show-results" (click)="showResults()" *ngIf="hasSearchResultsAddress">
+              show search results
+            </button>
+
             <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(addressSearchForm)" [disabled]="isFormSearching(addressSearchForm)">
               <span class="fal fa-search" *ngIf="!isFormSearching(addressSearchForm)"></span>
               <span *ngIf="!isFormSearching(addressSearchForm)">Search</span>
@@ -169,6 +173,10 @@
             <input type="text" placeholder="MLS Number" formControlName="mlsNumber" />
           </div>
           <div class="submit search">
+            <button type="button" class="btn btn-link btn-sm show-results" (click)="showResults()" *ngIf="hasSearchResultsMls">
+              show search results
+            </button>
+
             <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(mlsSearchForm)" [disabled]="isFormSearching(mlsSearchForm)">
               <span class="fal fa-search" *ngIf="!isFormSearching(mlsSearchForm)"></span>
               <span *ngIf="!isFormSearching(mlsSearchForm)">Search</span>
@@ -216,6 +224,10 @@
           </div>
 
           <div class="submit search">
+            <button type="button" class="btn btn-link btn-sm show-results" (click)="showResults()" *ngIf="hasSearchResultsApn">
+              show search results
+            </button>
+
             <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(apnSearchForm)" [disabled]="isFormSearching(apnSearchForm)">
               <span class="fal fa-search" *ngIf="!isFormSearching(apnSearchForm)"></span>
               <span *ngIf="!isFormSearching(apnSearchForm)">Search</span>
@@ -229,6 +241,30 @@
       </div>
 
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="searchResultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Property Search Results</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="results" *ngFor="let result of searchResults">
+              {{result.apn}}
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </div>

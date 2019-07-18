@@ -15,7 +15,7 @@ export class ApnSearchService {
 
   search(apn: string, state: string, county: string): Observable<PropertySearchResult[]> {
     return of(PROPERTYSEARCHRESULTS)    // Mock
-      .pipe(delay(2000));               // Pipe delay makes it mimic search/connection time
+      .pipe(delay(1000));               // Pipe delay makes it mimic search/connection time
   }
 
 }

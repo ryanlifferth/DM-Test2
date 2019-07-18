@@ -8,7 +8,7 @@ import { AddressSearchService } from '../../../core/services/address-search.serv
 import { MlsSearchService } from '../../../core/services/mls-search.service.js';
 import { ApnSearchService } from '../../../core/services/apn-search.service.js';
 import { Address } from '../../../core/models/address';
-//import { PropertySearch } from '../../../core/models/property-search';
+import { PropertySearchResult } from '../../../core/models/property-search-result';
 
 //
 //  This component should be broken into (probably) four or more different components, one for each
@@ -28,7 +28,11 @@ export class NewFileComponent implements OnInit {
   selectedVendorImgAlt: string;
   readyToDrop: boolean = false;
   searching: boolean = false;
-
+  hasSearchResultsAddress: boolean = false;  // flag used to show search results if the modal gets closed
+  hasSearchResultsMls: boolean = false;
+  hasSearchResultsApn: boolean = false;
+  searchResults: PropertySearchResult[];
+  
   // TODO:  Pull these from a source
   appraisalFormTypes = [{ text: '1004 URAR - UAD', value: '1004' }, { text: '1073', value: '1073' }];
 
@@ -60,6 +64,8 @@ export class NewFileComponent implements OnInit {
     this.selectedVendorImgHeight = 30;
     this.selectedVendorImgAlt = 'a la mode';
     this.searching = false;
+
+    //$("#exampleModal").modal("show");
 
     this.newFileForm = new FormGroup({
       fileName: new FormControl('', Validators.required),
@@ -106,7 +112,6 @@ export class NewFileComponent implements OnInit {
       this.countiesJsonApnSearch = this.stateJson.filter(state => state.Abbreviation === selectedState)[0].Counties;
     });
 
-
   }
 
   validate() {
@@ -125,7 +130,8 @@ export class NewFileComponent implements OnInit {
   }
 
   searchValidate(formGroup) {
-    this.searching = false;
+    this.clearSearchResults();  // clear the results
+
     if (formGroup.valid === false) {
       for (let item in formGroup.controls) {
         //console.log(this.newFileForm.controls[item]);
@@ -179,7 +185,12 @@ export class NewFileComponent implements OnInit {
       .subscribe(
         (searchResults) => {
           // TODO:  Open the search results modal
-          alert('Property found: ' + searchResults[0].apn);
+          //alert('Property found: ' + searchResults[0].apn);
+          this.searchResults = searchResults;
+          this.searchResults[0].address = address;
+
+          $("#searchResultsModal").modal("show");  // show the modal with the results
+          this.hasSearchResultsAddress = true;
         },
         (err) => {
           alert('error: ' + err);
@@ -200,7 +211,12 @@ export class NewFileComponent implements OnInit {
       .subscribe(
         (searchResults) => {
           // TODO:  Open the search results modal
-          alert('Property found: ' + searchResults[0].apn);
+          //alert('Property found: ' + searchResults[0].apn);
+          this.searchResults = searchResults;
+          this.searchResults[0].mlsNumber = mlsNumber;
+
+          $("#searchResultsModal").modal("show");  // show the modal with the results
+          this.hasSearchResultsMls = true;
         },
         (err) => {
           // Do something with the error
@@ -223,13 +239,32 @@ export class NewFileComponent implements OnInit {
       .subscribe(
         (searchResults) => {
           // TODO:  Open the search results modal
-          alert('Property found: ' + searchResults[0].apn);
+          //alert('Property found: ' + searchResults[0].apn);
+          this.searchResults = searchResults;
+          this.searchResults[0].apn = apnNumber;
+          this.searchResults[0].address.county = county;
+          this.searchResults[0].address.state = state;
+
+          $("#searchResultsModal").modal("show");  // show the modal with the results
+          this.hasSearchResultsApn = true;
         },
         (err) => {
           alert('error: ' + err);
           //TODO:  Add error handling
         }
       );
+  }
+
+  clearSearchResults(): void {
+    this.searchResults = [];
+    this.searching = false;
+    this.hasSearchResultsAddress = false;
+    this.hasSearchResultsMls = false;
+    this.hasSearchResultsApn = false;
+  }
+
+  showResults() {
+    $("#searchResultsModal").modal("show");
   }
 
   updateVendor(e) {

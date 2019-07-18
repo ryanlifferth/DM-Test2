@@ -169,6 +169,20 @@
   .submit {
     text-align: right;
 
+    .show-results {
+      color: #2680c2;
+      cursor: pointer;
+      font-family: 'Merriweather Sans', Lato;
+      font-size: 13px;
+      font-weight: 300;
+      margin-right: 15px;
+
+      &:hover {
+        color: #4098D7;
+        text-decoration: none;
+      }
+    }
+
     .btn-search {
       padding: 6px 24px 6px 20px;
 

@@ -1,26 +1,38 @@
-# DmTest2
+# DataMaster Web NG application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
 
-## Development server
+## Packages
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Packages for Bootstrap
+The application uses Bootstrap for UI display.  For the most part we try to do all
+element and DOM manipulation through the Angular (NG) framework.  However, there are a few 
+instances where we needed to use Bootstrap JS functionality (e.g., modals), which
+is dependent on jQuery.  So for those we used the following to NPM packages
+```bash
+npm i @types/jquery 
+```
+*https://www.npmjs.com/package/@types/jquery*
 
-## Code scaffolding
+and
+```bash
+npm i @types/bootstrap 
+```
+*https://www.npmjs.com/package/@types/bootstrap*
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Then to get the types available throughout the app open the **src/app/tsconfig.spec.json** file and add the following entry:
+```javascript
+"types": ["jquery", "bootstrap"]
+```
+in the compiler options section.
 
-## Build
+```typescript
+$("#exampleModal").modal("show");
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
