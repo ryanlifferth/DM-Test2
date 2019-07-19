@@ -8,6 +8,6 @@
     "\\src\\app\\core\\models\\mocks",
     "\\src\\app\\core\\services"
   ],
-  "SelectedNode": "\\src\\app\\core\\services\\mls-search.service.ts",
+  "SelectedNode": "\\src\\app\\core\\models\\mocks\\mock-property-search-result.ts",
   "PreviewInSolutionExplorer": false
 }
