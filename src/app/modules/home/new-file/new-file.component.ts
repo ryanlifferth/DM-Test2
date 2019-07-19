@@ -281,6 +281,14 @@ export class NewFileComponent implements OnInit {
     }
   }
 
+  convertToAcres(sizeInSqFt: number): number {
+    if (sizeInSqFt !== undefined) {
+      return Math.round((sizeInSqFt * 0.0000229568) * 100) / 100;
+    } else {
+      return 
+    }
+  }
+
   allowDrop(e) {
     //console.log('get to droppin');
     this.readyToDrop = true;

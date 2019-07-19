@@ -244,7 +244,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="searchResultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Property Search Results</h5>
@@ -252,15 +252,62 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body search-results-modal">
             <div class="results" *ngFor="let result of searchResults">
-              {{result.apn}}
+
+              <div class="sub-row first">
+                <div class="address">
+                  <span class="address-line1">
+                    {{result.address.addressLine1}}
+                    <span *ngIf="result.address.addressLine2">, {{result.address.addressLine2}}</span>
+                  </span>
+                  <span class="address-line2">
+                    {{result.address.city}}, {{result.address.state}}  {{result.address.zip}}
+                  </span>
+                </div>
+                <div class="ids" *ngIf="result.apn">{{result.apn}} <span class="label">apn</span></div>
+                <div class="ids" *ngIf="result.mlsNumber">{{result.mlsNumber}} <span class="label">mls num.</span></div>
+              </div>
+
+              <div class="sub-row second">
+
+                <div class="info">
+                  <span class="item">
+                    <span class="label">built in</span>
+                    {{result.yearBuilt}}
+                  </span>
+                  <span class="item" *ngIf="result.lotSize">
+                    {{convertToAcres(result.lotSize)}}
+                    <span class="label">acres</span>
+                  </span>
+                  <span class="item">
+                    {{result.squareFeet}}
+                    <span class="label">sq. ft.</span>
+                  </span>
+                </div>
+
+                <div class="info">
+                  <span class="item">
+                    <span class="fal fa-bed fa-lg icon"></span>
+                    {{result.bedroomCount}}
+                    <span class="label">bedrooms</span>
+                  </span>
+                  <span class="item">
+                    <span class="fal fa-bath fa-lg icon"></span>
+                    {{result.bathroomCount}}
+                    <span class="label">bathrooms</span>
+                  </span>
+                </div>
+
+              </div>
+
+
             </div>
           </div>
-          <div class="modal-footer">
+          <!--<div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

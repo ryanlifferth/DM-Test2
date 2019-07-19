@@ -14,8 +14,8 @@ export class MlsSearchService {
   constructor() { }
 
   search(mlsNumber: string): Observable<PropertySearchResult[]> {
-    return of(PROPERTYSEARCHRESULTS)    // Mock
-      .pipe(delay(1000));               // Pipe delay makes it mimic search/connection time
+    return of(PROPERTYSEARCHRESULTS);    // Mock
+      //.pipe(delay(1000));               // Pipe delay makes it mimic search/connection time
   }
 
 }

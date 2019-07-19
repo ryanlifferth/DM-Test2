@@ -4,8 +4,9 @@ export class PropertySearchResult {
   address: Address;
   apn?: string;
   mlsNumber?: string;
-  lotSize: string;
+  lotSize?: number;
   squareFeet: string;
   yearBuilt: number;
   bedroomCount: number;
+  bathroomCount: number;
 }

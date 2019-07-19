@@ -3,12 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\modules",
-    "\\src\\app\\modules\\home",
-    "\\src\\app\\modules\\home\\new-file",
-    "\\src\\assets",
-    "\\src\\assets\\data"
+    "\\src\\app\\core",
+    "\\src\\app\\core\\models",
+    "\\src\\app\\core\\models\\mocks",
+    "\\src\\app\\core\\services"
   ],
-  "SelectedNode": "\\src\\assets\\data\\UsaCounties.json",
+  "SelectedNode": "\\src\\app\\core\\services\\mls-search.service.ts",
   "PreviewInSolutionExplorer": false
 }

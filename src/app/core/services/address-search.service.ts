@@ -15,7 +15,7 @@ export class AddressSearchService {
 
   search(address: Address): Observable<PropertySearchResult[]> {
     return of(PROPERTYSEARCHRESULTS)    // Mock
-      .pipe(delay(1000));               // Pipe delay makes it mimic search/connection time
+      .pipe(delay(500));               // Pipe delay makes it mimic search/connection time
   }
 
 }
