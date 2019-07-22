@@ -49,16 +49,16 @@
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item" (click)="updateVendor($event)">
-                    <img src="/assets/images/vendors/alamode.png" alt="a la mode" height="30" />
+                    <img src="/assets/images/vendors/alamode.png" alt="a la mode" height="25" />
                   </a>
                   <a class="dropdown-item" (click)="updateVendor($event)">
-                    <img src="/assets/images/vendors/aci.png" alt="ACI" width="50" />
+                    <img src="/assets/images/vendors/aci.png" alt="ACI" width="40" />
                   </a>
                   <a class="dropdown-item" (click)="updateVendor($event)">
-                    <img src="/assets/images/vendors/bradford.png" alt="Bradford" height="36" />
+                    <img src="/assets/images/vendors/bradford.png" alt="Bradford" height="30" />
                   </a>
                   <a class="dropdown-item" (click)="updateVendor($event)">
-                    <img src="/assets/images/vendors/sfrep.png" alt="SFREP" height="22" />
+                    <img src="/assets/images/vendors/sfrep.png" alt="SFREP" height="18" />
                   </a>
                 </div>
               </div>
@@ -253,7 +253,7 @@
             </button>
           </div>
           <div class="modal-body search-results-modal">
-            <div class="results" *ngFor="let result of searchResults">
+            <div class="results {{showNewFile[i] ? 'active' : ''}}" *ngFor="let result of searchResults; let i = index;">
 
               <div class="sub-row first">
                 <div class="address">
@@ -301,12 +301,70 @@
 
               </div>
 
-              <div class="select-this  d-flex h-100">
+              <div class="select-this d-flex h-100 {{showNewFile[i] ? 'active' : ''}}" (click)="useAsSubject($event, i, selectThis)" #selectThis>
                 <span class="fal fa-arrow-circle-right fa-2x icon justify-content-center align-self-center"></span>
                 <div class="use">
                   <span class="as">use as</span>
                   <span class="subject">subject</span>
                 </div>
+              </div>
+
+              <div class="new-file-subject" *ngIf="showNewFile[i]">
+
+                <form id="newFileForm" [formGroup]="newFileForm">
+                  <div class="form-row">
+                    <div class="form-group col-4">
+                      <label for="fileName">
+                        file name/number
+                      </label>
+                      <input type="text" placeholder="file name/number" formControlName="fileName" id="fileName" />
+                      <a href="#" onclick="return false;" class="create-file-name">[create one for me]</a>
+                      <!--<small class="form-text text-muted">That's ok if you don't have one, we can create one for you.</small>-->
+                    </div>
+                    <div class="form-group">
+                      <label for="formType">
+                        appraisal type
+                      </label>
+
+                      <select formControlName="formType">
+                        <option *ngFor="let type of appraisalFormTypes" [ngValue]="type.value">{{type.text}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="formType" class="vendor-label">
+                        form vendor
+                      </label>
+
+                      <div class="dropdown show">
+                        <div class="selected-item dropdown-toggle" data-toggle="dropdown">
+                          <img src="{{selectedVendorImgSrc}}" alt="{{selectedVendorImgAlt}}" #selectedVendor height="{{selectedVendorImgHeightResults}}" />
+                          <a href="#" onclick="return false;" class="change">[change]</a>
+                        </div>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <a class="dropdown-item" (click)="updateVendor($event)">
+                            <img src="/assets/images/vendors/alamode.png" alt="a la mode" height="25" />
+                          </a>
+                          <a class="dropdown-item" (click)="updateVendor($event)">
+                            <img src="/assets/images/vendors/aci.png" alt="ACI" width="40" />
+                          </a>
+                          <a class="dropdown-item" (click)="updateVendor($event)">
+                            <img src="/assets/images/vendors/bradford.png" alt="Bradford" height="30" />
+                          </a>
+                          <a class="dropdown-item" (click)="updateVendor($event)">
+                            <img src="/assets/images/vendors/sfrep.png" alt="SFREP" height="18" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="button" class="close" aria-label="Close" (click)="showNewFile[i] = false">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </form>
+
+
               </div>
 
             </div>

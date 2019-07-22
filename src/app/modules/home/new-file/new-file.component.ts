@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validator, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, finalize } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import { MlsSearchService } from '../../../core/services/mls-search.service.js';
 import { ApnSearchService } from '../../../core/services/apn-search.service.js';
 import { Address } from '../../../core/models/address';
 import { PropertySearchResult } from '../../../core/models/property-search-result';
+import { Element } from '@angular/compiler';
 
 //
 //  This component should be broken into (probably) four or more different components, one for each
@@ -25,6 +26,7 @@ export class NewFileComponent implements OnInit {
   viewMode = 'newFileTab';  // default tab
   selectedVendorImgSrc: string;
   selectedVendorImgHeight: number;
+  selectedVendorImgHeightResults: number;
   selectedVendorImgAlt: string;
   readyToDrop: boolean = false;
   searching: boolean = false;
@@ -32,7 +34,8 @@ export class NewFileComponent implements OnInit {
   hasSearchResultsMls: boolean = false;
   hasSearchResultsApn: boolean = false;
   searchResults: PropertySearchResult[];
-  
+  showNewFile: boolean[] = [];
+
   // TODO:  Pull these from a source
   appraisalFormTypes = [{ text: '1004 URAR - UAD', value: '1004' }, { text: '1073', value: '1073' }];
 
@@ -45,7 +48,7 @@ export class NewFileComponent implements OnInit {
   @Input('mlsSearchForm') mlsSearchForm: FormGroup;
   @Input('apnSearchForm') apnSearchForm: FormGroup;
 
-  constructor(private router: Router,
+  constructor(private router: Router, private elementRef: ElementRef,
     private addressSearchService: AddressSearchService,
     private mlsSearchService: MlsSearchService,
     private apnSearchService: ApnSearchService) {
@@ -61,8 +64,9 @@ export class NewFileComponent implements OnInit {
 
   ngOnInit() {
     this.selectedVendorImgSrc = '/assets/images/vendors/alamode.png';
-    this.selectedVendorImgHeight = 30;
+    this.selectedVendorImgHeight = 25;
     this.selectedVendorImgAlt = 'a la mode';
+    this.selectedVendorImgHeightResults = 24;
     this.searching = false;
 
     //$("#exampleModal").modal("show");
@@ -267,6 +271,36 @@ export class NewFileComponent implements OnInit {
     $("#searchResultsModal").modal("show");
   }
 
+  useAsSubject(e, i, element): void {
+    //var s = e.srcElement;
+    //var t = element;
+    e.preventDefault();
+    e.stopPropagation();
+
+
+    // first hide all the new file items, then show the selected new file item
+    this.showNewFile[i] = !this.showNewFile[i];
+    
+    for (let index in this.showNewFile) {
+      if (index != i) {
+        this.showNewFile[index] = false;
+      }
+    }
+
+    // Hack until we actually wire this up
+    if (element.parentElement.querySelector('#fileName') !== null) {
+      //var value = element.parentElement.querySelector('.new-file-subject');
+      $("#searchResultsModal").modal("hide");
+      this.router.navigate(['/Subject/detail/' + element.parentElement.querySelector('#fileName').value]);
+
+      //this.router.navigate(['/Subject/detail/1']);
+    };
+    //const item = parent.nativeElement.querySelector("new-file-subject");
+
+
+
+  }
+
   updateVendor(e) {
     if (e.srcElement.localName === 'img') {
       //console.log(e.srcElement.src);
@@ -285,7 +319,7 @@ export class NewFileComponent implements OnInit {
     if (sizeInSqFt !== undefined) {
       return Math.round((sizeInSqFt * 0.0000229568) * 100) / 100;
     } else {
-      return 
+      return
     }
   }
 

@@ -4,10 +4,11 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\core",
-    "\\src\\app\\core\\models",
     "\\src\\app\\core\\models\\mocks",
-    "\\src\\app\\core\\services"
+    "\\src\\app\\modules",
+    "\\src\\app\\modules\\home",
+    "\\src\\app\\modules\\home\\files"
   ],
-  "SelectedNode": "\\src\\app\\core\\models\\mocks\\mock-property-search-result.ts",
+  "SelectedNode": "\\src\\app\\modules\\home\\files\\files.component.html",
   "PreviewInSolutionExplorer": false
 }
