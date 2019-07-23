@@ -448,7 +448,7 @@
             position: relative;
             vertical-align: middle;
             width: 177px;
-            
+
             .dropdown-toggle {
               &:after {
                 position: absolute;
@@ -483,10 +483,18 @@
                 }
               }
             }
-
           }
         }
       }
+
+      button {
+        &.close {
+          position: absolute;
+          right: 9px;
+          bottom: 3px;
+        }
+      }
+
     }
   }
 }

@@ -265,6 +265,9 @@ export class NewFileComponent implements OnInit {
     this.hasSearchResultsAddress = false;
     this.hasSearchResultsMls = false;
     this.hasSearchResultsApn = false;
+    for (let index in this.showNewFile) {
+      this.showNewFile[index] = false;
+    }
   }
 
   showResults() {
@@ -280,7 +283,7 @@ export class NewFileComponent implements OnInit {
 
     // first hide all the new file items, then show the selected new file item
     this.showNewFile[i] = !this.showNewFile[i];
-    
+
     for (let index in this.showNewFile) {
       if (index != i) {
         this.showNewFile[index] = false;
