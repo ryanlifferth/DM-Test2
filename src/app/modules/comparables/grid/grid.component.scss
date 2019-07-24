@@ -39,11 +39,13 @@ $add-data-height: 1196px;
       font-size: 14px;
       font-weight: normal;
       margin: 0;
-      padding: 6px 0 5px 30px;
+      padding: 6px 0 5px 26px; // wide left-padding to allow for icon
       position: relative;
       text-transform: uppercase;
-      /*.draggable-icon {
-        background: transparent url(../images/draggable-icon.png) no-repeat 0 0;
+
+      .draggable-icon {
+        background: transparent url(/assets/images/draggable-icon.png) no-repeat 0 0;
+        background-size: contain;
         cursor: move;
         display: inline-block;
         height: 15px;
@@ -51,8 +53,32 @@ $add-data-height: 1196px;
         opacity: 0.3;
         position: absolute;
         top: 5px;
-        width: 15px;
-      }*/
+        width: 25px;
+      }
+
+      .header-link {
+        float: right;
+        display: inline-block;
+        text-decoration: none;
+        color: rgba(255,255,255,0.8);
+        display: inline-block;
+
+        &.delete-comp {
+          font-size: 25px;
+          line-height: 14px;
+          margin: 0px 5px 0 15px;
+        }
+
+        &.map {
+          font-size: 18px;
+          margin-top: -2px;
+        }
+
+        &:hover {
+          color: rgba(255,255,255,0.65);
+          text-decoration: none;
+        }
+      }
     }
 
     .row {
@@ -61,6 +87,113 @@ $add-data-height: 1196px;
 
       .col-md-12 {
         padding: 0;
+      }
+
+      .comp-summary {
+        height: 158px;
+        position: relative;
+
+        .comp-photo {
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          display: block;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+        }
+
+        .image-link {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 140px;
+          height: 110px;
+          cursor: pointer;
+        }
+
+        .detail-links {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 2px 1px 0 0;
+          padding: 0;
+          vertical-align: middle;
+          width: 89px;
+
+          a {
+            //background-color: rgba(50, 127, 186, 0.85);
+            //color: #fff;
+            background-color: rgba(255,255,255,0.65);
+            color: #077FAF;
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 1px;
+            padding: 4px 0;
+            text-align: center;
+            text-shadow: 0 0 1px rgba(0,0,0,0.4);
+
+            &:hover {
+              background-color: rgba(255,255,255,0.75);
+              text-decoration: none;
+            }
+          }
+        }
+
+        address {
+          bottom: 0;
+          position: absolute;
+          left: 0;
+          font-family: 'Open Sans';
+          font-weight: 400;
+          text-shadow: 0 0 2px rgba(0,0,0,0.9);
+          white-space: nowrap;
+          width: 100%;
+
+          .address {
+            color: #fff;
+            font-size: 18px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .address-sub {
+            font-size: 13px;
+            color: #f1f0f0;
+            margin-left: 4px;
+          }
+        }
+
+        &.no-pic {
+          .detail-links {
+            a {
+              background-color: rgba(50, 127, 186, 0.85);
+              color: #fff;
+              font-weight: 400;
+              text-shadow: none;
+
+              &:hover {
+                background-color: rgba(50, 127, 186, 0.95);
+                text-decoration: none;
+              }
+            }
+          }
+
+          address {
+            text-shadow: none;
+
+            .address {
+              color: #212529;
+            }
+
+            .address-sub {
+              color: #212529;
+            }
+          }
+        }
       }
 
       .item-photo {
@@ -511,6 +644,7 @@ $add-data-height: 1196px;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
 
 
     &.top-scrollbar, &.top-scrollbar .comps { // Hack to move scrollbar to top of div - http://stackoverflow.com/questions/18997724/how-to-change-scroll-bar-position-with-css

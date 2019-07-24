@@ -299,18 +299,27 @@
   <div class="comp-container top-scrollbar" #compsContainer>
     <div class="comps" id="Comps" #comps>
 
-      <div class="grid-item" draggable="true" *ngFor="let comp of [1,2,3,4,5,6]">
+      <!--<div class="grid-item" draggable="true" *ngFor="let comp of [1,2,3,4,5,6]">-->
+      <div class="grid-item" draggable="true" *ngFor="let comp of comparables; index as compCount">
         <h1>
           <span class="draggable-icon"></span>
-          Comp {{comp}}
+          Comp {{compCount + 1}}
+
+          <a href="#" onclick="return false;" class="header-link delete-comp" title="Delete this comparable">
+            <span aria-hidden="true">×</span>
+          </a>
+          <a href="#" onclick="return false;" class="header-link map" title="Property map">
+            <span class="fal fa-map header-icon"></span>
+          </a>
         </h1>
-        <div class="row">
+
+
+        <!--<div class="row">
           <div class="col-md-12">
             <div class="item-photo">
               <span class="fal fa-image fa-5x photo-icon"></span>
               <span class="fal fa-plus-circle fa-2x add-photo-icon"></span>
             </div>
-            <!--@Helpers.ParcelHelpers.ParcelPhoto(selectedPhoto, compNumber.ToString())-->
 
             <div class="parcel-detail-link-container">
               <a href="#">Listing</a>
@@ -321,13 +330,39 @@
         <div class="row grid-row address-row">
           <div class="col-md-12">
             <address>
-              <div class="address">{{addressLine1}}</div>
-              <div class="address-sub">{{city}}, {{state}} {{zip}}</div>
+              <div class="address">{{comp.address.addressLine1}}</div>
+              <div class="address-sub">{{comp.address.city}}, {{comp.address.state}} {{comp.address.zip}}</div>
+            </address>
+          </div>
+        </div>-->
+
+        <div class="row">
+          <div class="col-md-12 comp-summary {{comp.photoLocation ? '' : 'no-pic'}}">
+            <span class="comp-photo" *ngIf="comp.photoLocation" [ngStyle]="{'background-image': 'url(' + comp.photoLocation + ')'}"></span>
+
+            <div class="item-photo" *ngIf="!comp.photoLocation">
+              <span class="fal fa-image fa-5x photo-icon"></span>
+              <span class="fal fa-plus-circle fa-2x add-photo-icon"></span>
+            </div>
+
+            <div class="image-link" *ngIf="comp.photoLocation"></div>
+            <!--@Helpers.ParcelHelpers.ParcelPhoto(selectedPhoto, compNumber.ToString())-->
+
+            <div class="detail-links">
+              <a href="#">Listing</a>
+              <a href="#">Deeds</a>
+              <!--<a href="#">Map</a>-->
+            </div>
+
+            <address>
+              <div class="address">{{comp.address.addressLine1}}</div>
+              <div class="address-sub">{{comp.address.city}}, {{comp.address.state}} {{comp.address.zip}}</div>
             </address>
             <!--@Html.Hidden("FullAddressComp" + compNumber, AddressUtil.BuildAddressString(Model).ToLower(), new { @class = "full-comp-address" })-->
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "" }, GetSelectedDataSourceId(fieldDataSourcePairList, "AddressLine1"), null, "address")-->
         </div>
+
         <div class="row grid-row">
           <div class="col-md-12 grid-input">
             <input type="text" value="" placeholder="proximity to subject" class="form-control" />

@@ -2,7 +2,7 @@ import { Comparable } from '../comparable';
 
 export const COMPARABLES: Comparable[] = [
   {
-    address: { addressLine1: '1938 N. 2050 E.', city: 'Layton', county: '84040', state: 'UT', zip: 'Davis' },
+    address: { addressLine1: '1938 N. 2050 E.', city: 'Layton', county: 'Davis', state: 'UT', zip: '84040' },
     mlsNumber: '1615490',
     lotSize: 10018.8,
     yearBuilt: 1994,
@@ -16,7 +16,7 @@ export const COMPARABLES: Comparable[] = [
     photoLocation: '/assets/mock/1938.jpg'
   },
   {
-    address: { addressLine1: '1073 E. 2525 N.', city: 'Layton', county: '84040', state: 'UT', zip: 'Davis' },
+    address: { addressLine1: '1073 E. 2525 N.', city: 'Layton', county: 'Davis', state: 'UT', zip: '84040' },
     mlsNumber: '1618639',
     lotSize: 12632.4,
     yearBuilt: 1998,
@@ -30,7 +30,7 @@ export const COMPARABLES: Comparable[] = [
     photoLocation: '/assets/mock/1073.jpg'
   },
   {
-    address: { addressLine1: '1347 N. 2050 E.', city: 'Layton', county: '84040', state: 'UT', zip: 'Davis' },
+    address: { addressLine1: '1347 N. 2050 E.', city: 'Layton', county: 'Davis', state: 'UT', zip: '84040' },
     mlsNumber: '1597935',
     lotSize: 10890,
     yearBuilt: 2012,
@@ -44,7 +44,7 @@ export const COMPARABLES: Comparable[] = [
     photoLocation: '/assets/mock/1347.jpg'
   },
   {
-    address: { addressLine1: '2160 Country Oaks Dr', city: 'Layton', county: '84040', state: 'UT', zip: 'Davis' },
+    address: { addressLine1: '2160 Country Oaks Drive', city: 'Layton', county: 'Davis', state: 'UT', zip: '84040' },
     mlsNumber: '1606462',
     lotSize: 16988.4,
     yearBuilt: 1994,
@@ -55,10 +55,11 @@ export const COMPARABLES: Comparable[] = [
     bathroomCount: 6,
     type: 'single family',
     style: '2-story',
-    photoLocation: '/assets/mock/2160.jpg'
+    photoLocation: ''
+    //photoLocation: '/assets/mock/2160.jpg'
   },
   {
-    address: { addressLine1: '1848 E. 2050 N.', city: 'Layton', county: '84040', state: 'UT', zip: 'Davis' },
+    address: { addressLine1: '1848 E. 2050 N.', city: 'Layton', county: 'Davis', state: 'UT', zip: '84040' },
     mlsNumber: '1612758',
     lotSize: 15681.6,
     yearBuilt: 1985,
@@ -72,7 +73,7 @@ export const COMPARABLES: Comparable[] = [
     photoLocation: '/assets/mock/1848.jpg'
   },
   {
-    address: { addressLine1: '2398 N. Church St', city: 'Layton', county: '84040', state: 'UT', zip: 'Davis' },
+    address: { addressLine1: '2398 N. Church St', city: 'Layton', county: 'Davis', state: 'UT', zip: '84040' },
     mlsNumber: '1618242',
     lotSize: 12632.4,
     yearBuilt: 2019,

@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CompHeaderService } from '../../../core/services/comp-header.service';
+import { ComparablesService } from '../../../core/services/comparables.service';
+import { Comparable } from '../../../core/models/comparable';
+
 
 @Component({
   selector: 'app-grid',
@@ -12,6 +15,7 @@ export class GridComponent implements OnInit {
   @ViewChild('comps') comps: ElementRef;
 
   compViewableAreaWidth: number = 0;
+  comparables: Comparable[];
   compCount: number;
   addSubjectScrollMargin: boolean = false;
   addressLine1: string;
@@ -19,14 +23,20 @@ export class GridComponent implements OnInit {
   state: string;
   zip: string;
 
-  constructor(private compHeaderService: CompHeaderService) { }
+  constructor(private compHeaderService: CompHeaderService, private compService: ComparablesService) { }
 
   ngOnInit() {
-    this.compCount = 5;
+    this.compCount = 0;
     this.addressLine1 = "123 Somewhere Ave.";
     this.city = "Layton";
     this.state = "UT";
     this.zip = "84041";
+
+    // TODO:  Prob need to load this from the comparables module and then pass the comps object to this module
+    this.compService.getComparables().subscribe(comparables => {
+      this.comparables = comparables;
+      this.compCount = comparables.length + 1; // to account for 0-based length
+    });
 
     this.compHeaderService.compHeaderWidth.subscribe(headerWidth => {
       //console.log('Comp body width: ' + headerWidth);

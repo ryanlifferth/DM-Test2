@@ -29,7 +29,7 @@ export class ComparablesComponent implements OnInit, AfterViewInit, AfterViewChe
     this.isActiveLink = this.isActive();
     this.getDataSources();
     this.formType = "1004 URAR - UAD";
-    this.compCount = 5;
+    this.compCount = 6;
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
