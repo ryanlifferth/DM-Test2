@@ -4,11 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\core",
-    "\\src\\app\\core\\models\\mocks",
     "\\src\\app\\modules",
     "\\src\\app\\modules\\home",
     "\\src\\app\\modules\\home\\files"
   ],
-  "SelectedNode": "\\src\\app\\modules\\home\\files\\files.component.html",
+  "SelectedNode": "\\package-lock.json",
   "PreviewInSolutionExplorer": false
 }

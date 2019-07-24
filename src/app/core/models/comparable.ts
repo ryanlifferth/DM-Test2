@@ -1,14 +1,17 @@
 import { Address } from './address';
 
-export class PropertySearchResult {
+export class Comparable {
   address: Address;
   apn?: string;
   mlsNumber?: string;
   lotSize?: number;
-  squareFeet: string;
   yearBuilt: number;
+  squareFeet: number;
+  salesPrice?: number;
+  salesPriceGla?: number;
   bedroomCount: number;
   bathroomCount: number;
-  style: string;
-  type: string;
+  photoLocation?: string;
+  type?: string;
+  style?: string;
 }

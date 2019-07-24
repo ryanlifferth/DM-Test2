@@ -8,7 +8,9 @@ export const PROPERTYSEARCHRESULTS: PropertySearchResult[] = [
     squareFeet: '3,300',
     yearBuilt: 2002,
     bedroomCount: 6,
-    bathroomCount: 3.5
+    bathroomCount: 3.5,
+    type: 'single family',
+    style: '2-story'
   }
   ,{
     address: { addressLine1: '456 Another St', city: 'Layton', county: 'Davis', state: 'UT', zip: '84041' },
@@ -17,6 +19,8 @@ export const PROPERTYSEARCHRESULTS: PropertySearchResult[] = [
     squareFeet: '3,100',
     yearBuilt: 2004,
     bedroomCount: 5,
-    bathroomCount: 3
+    bathroomCount: 3,
+    type: 'single family',
+    style: '2-story'
   }
 ];

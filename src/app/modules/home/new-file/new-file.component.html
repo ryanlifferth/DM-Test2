@@ -299,6 +299,17 @@
                   </span>
                 </div>
 
+                <div class="info">
+                  <span class="item ">
+                    <span class="fal fa-building fa-lg icon"></span>
+                    {{result.type}}
+                  </span>
+                  <span class="item">
+                    <span class="fal fa-home fa-lg icon"></span>
+                    {{result.style}}
+                  </span>
+                </div>
+
               </div>
 
               <div class="select-this d-flex h-100 {{showNewFile[i] ? 'active' : ''}}" (click)="useAsSubject($event, i, selectThis)" #selectThis>
