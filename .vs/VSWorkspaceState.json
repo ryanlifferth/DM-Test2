@@ -3,10 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\core\\models\\mocks",
+    "\\src\\app\\modules",
     "\\src\\app\\modules\\comparables",
-    "\\src\\app\\modules\\home\\new-file"
+    "\\src\\app\\modules\\comparables\\grid"
   ],
-  "SelectedNode": "\\src\\app\\app-routing.module.ts",
+  "SelectedNode": "\\src\\app\\modules\\comparables\\grid\\grid.component.html",
   "PreviewInSolutionExplorer": false
 }
