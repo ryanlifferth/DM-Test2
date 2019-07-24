@@ -3,11 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\core",
-    "\\src\\app\\modules",
-    "\\src\\app\\modules\\home",
-    "\\src\\app\\modules\\home\\files"
+    "\\src\\app\\core\\models\\mocks",
+    "\\src\\app\\modules\\comparables",
+    "\\src\\app\\modules\\home\\new-file"
   ],
-  "SelectedNode": "\\package-lock.json",
+  "SelectedNode": "\\src\\app\\app-routing.module.ts",
   "PreviewInSolutionExplorer": false
 }

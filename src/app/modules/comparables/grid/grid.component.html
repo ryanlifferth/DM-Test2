@@ -69,11 +69,8 @@
       </div>
     </div>
     <div class="row grid-row">
-      <div class="col-md-6 grid-label label-header">
-        ADJUSTMENTS
-      </div>
-      <div class="col-md-6 grid-label label-header">
-        DESCRIPTION
+      <div class="col-md-12 grid-label ">
+        <i>Value Adjustments</i>
       </div>
     </div>
     <div class="row grid-row">
@@ -401,107 +398,106 @@
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-label label-header">
-            DESCRIPTION
           </div>
           <div class="col-md-6 grid-label label-header">
-            +(-) $ Adjustment
+            Adjustment
           </div>
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="SaleFinance{{comp}}" value="" placeholder="sale or financing" class="form-control" />
+            <input type="text" id="SaleFinance{{compCount + 1}}" value="" placeholder="sale or financing" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="SaleFinanceAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="SaleFinanceAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "" }, 0, null)-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="Concessions{{comp}}" value="" placeholder="concessions" class="form-control" />
+            <input type="text" id="Concessions{{compCount + 1}}" value="" placeholder="concessions" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="ConcessionsAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="ConcessionsAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "ConcessionAmount" }, GetSelectedDataSourceId(fieldDataSourcePairList, "ConcessionAmount"), item => String.Format("{0:0,0.00}", item))-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="DateOfSale{{comp}}" value="" placeholder="date of sale" class="form-control" />
+            <input type="text" id="DateOfSale{{compCount + 1}}" value="" placeholder="date of sale" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="DateOfSaleAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="DateOfSaleAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="Location{{comp}}" value="" placeholder="location" class="form-control" />
+            <input type="text" id="Location{{compCount + 1}}" value="" placeholder="location" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="LocationAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="LocationAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "Location" }, GetSelectedDataSourceId(fieldDataSourcePairList, "Location"), null)-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="FeeSimple{{comp}}" value="" placeholder="leasehold/fee simple" class="form-control" />
+            <input type="text" id="FeeSimple{{compCount + 1}}" value="" placeholder="leasehold/fee simple" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="FeeSimpleAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="FeeSimpleAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "LeaseholdFeeSimple" }, GetSelectedDataSourceId(fieldDataSourcePairList, "LeaseholdFeeSimple"), null)-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="number" id="Site{{comp}}" value="" placeholder="site" class="form-control" />
+            <input type="number" id="Site{{compCount + 1}}" value="" placeholder="site" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="SiteAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="SiteAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "SiteArea" }, GetSelectedDataSourceId(fieldDataSourcePairList, "SiteArea"), item => String.Format("{0:0,0.00}", item))-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="View{{comp}}" value="" placeholder="view" class="form-control" />
+            <input type="text" id="View{{compCount + 1}}" value="" placeholder="view" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="ViewAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="ViewAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "View" }, GetSelectedDataSourceId(fieldDataSourcePairList, "View"), null)-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="Design{{comp}}" value="" placeholder="design (style)" class="form-control" />
+            <input type="text" id="Design{{compCount + 1}}" value="" placeholder="design (style)" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="DesignAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="DesignAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "Style" }, GetSelectedDataSourceId(fieldDataSourcePairList, "Style"), null)-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="Quality{{comp}}" value="" placeholder="quality of const" class="form-control" />
+            <input type="text" id="Quality{{compCount + 1}}" value="" placeholder="quality of const" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="QualityAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="QualityAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "QualityOfConstruction" }, GetSelectedDataSourceId(fieldDataSourcePairList, "QualityOfConstruction"), null)-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="Age{{comp}}" value="" placeholder="actual age" class="form-control" />
+            <input type="text" id="Age{{compCount + 1}}" value="" placeholder="actual age" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="AgeAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="AgeAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "EffectiveAge" }, GetSelectedDataSourceId(fieldDataSourcePairList, "EffectiveAge"), item => String.Format("{0:0,0}", item))-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="Condition{{comp}}" value="" placeholder="condition" class="form-control" />
+            <input type="text" id="Condition{{compCount + 1}}" value="" placeholder="condition" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="ConditionAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="ConditionAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "Condition" }, GetSelectedDataSourceId(fieldDataSourcePairList, "Condition"), null)-->
         </div>
@@ -515,13 +511,13 @@
               </div>
               <div class="row">
                 <div class="col-md-4 grid-input">
-                  <input type="text" id="TotalRoomCount{{comp}}" value="" class="form-control" />
+                  <input type="text" id="TotalRoomCount{{compCount + 1}}" value="" class="form-control" />
                 </div>
                 <div class="col-md-4 grid-input">
-                  <input type="text" id="BedroomCount{{comp}}" value="" class="form-control" />
+                  <input type="text" id="BedroomCount{{compCount + 1}}" value="" class="form-control" />
                 </div>
                 <div class="col-md-4 grid-input">
-                  <input type="text" id="BathroomCount{{comp}}" value="" class="form-control" />
+                  <input type="text" id="BathroomCount{{compCount + 1}}" value="" class="form-control" />
                 </div>
               </div>
             </div>
@@ -533,7 +529,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12 grid-adjust grid-input">
-                  <input type="number" id="RoomCountAdjust{{comp}}" placeholder="" class="form-control" />
+                  <input type="number" id="RoomCountAdjust{{compCount + 1}}" placeholder="" class="form-control" />
                 </div>
               </div>
             </div>
@@ -542,95 +538,95 @@
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
             <div class="input-group">
-              <input type="text" id="Gla{{comp}}" value="" placeholder="GLA" class="form-control" />
+              <input type="text" id="Gla{{compCount + 1}}" value="" placeholder="GLA" class="form-control" />
               <span class="input-group-addon trailing sm">sqft</span>
             </div>
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="GlaAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="GlaAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "AboveGradeGla" }, GetSelectedDataSourceId(fieldDataSourcePairList, "AboveGradeGla"), item => String.Format("{0:0,0}", item))-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="BasementAndFinished{{comp}}" value="" placeholder="basement/finished" class="form-control" />
+            <input type="text" id="BasementAndFinished{{compCount + 1}}" value="" placeholder="basement/finished" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="BasementAndFinishedAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="BasementAndFinishedAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="RoomsBelowGrade{{comp}}" placeholder="rooms below grd" class="form-control" />
+            <input type="text" id="RoomsBelowGrade{{compCount + 1}}" placeholder="rooms below grd" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="RoomsBelowGradeAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="RoomsBelowGradeAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="FunctionalUtility{{comp}}" value="" placeholder="functional util" class="form-control" />
+            <input type="text" id="FunctionalUtility{{compCount + 1}}" value="" placeholder="functional util" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="FunctionalUtilityAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="FunctionalUtilityAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "FunctionalUtility" }, GetSelectedDataSourceId(fieldDataSourcePairList, "FunctionalUtility"), null)-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="HeatingCooling{{comp}}" placeholder="heat/cool" class="form-control" />
+            <input type="text" id="HeatingCooling{{compCount + 1}}" placeholder="heat/cool" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="HeatingCoolingAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="HeatingCoolingAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="EnergyEfficient{{comp}}" value="" placeholder="energy effct items" class="form-control" />
+            <input type="text" id="EnergyEfficient{{compCount + 1}}" value="" placeholder="energy effct items" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="EnergyEfficientAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="EnergyEfficientAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
           <!--@Helpers.ParcelHelpers.BuildInputFlyout(compPrePrioritizedList, new List<string> { "EnergyEffecientItemsAdjustment" }, GetSelectedDataSourceId(fieldDataSourcePairList, "EnergyEffecientItemsAdjustment"), null)-->
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="Parking{{comp}}" value="" placeholder="garage/carport" class="form-control" />
+            <input type="text" id="Parking{{compCount + 1}}" value="" placeholder="garage/carport" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="ParkingAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="ParkingAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="Porch{{comp}}" value="" placeholder="porch/patio/deck" class="form-control" />
+            <input type="text" id="Porch{{compCount + 1}}" value="" placeholder="porch/patio/deck" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="PorchAdjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="PorchAdjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="ExtraItem1{{comp}}" value="" placeholder="extra item 1" class="form-control" />
+            <input type="text" id="ExtraItem1{{compCount + 1}}" value="" placeholder="extra item 1" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="ExtraItem1Adjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="ExtraItem1Adjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="ExtraItem2{{comp}}" value="" placeholder="extra item 2" class="form-control" />
+            <input type="text" id="ExtraItem2{{compCount + 1}}" value="" placeholder="extra item 2" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="ExtraItem2Adjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="ExtraItem2Adjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
         </div>
         <div class="row grid-row">
           <div class="col-md-6 grid-input">
-            <input type="text" id="ExtraItem3{{comp}}" value="" placeholder="extra item 3" class="form-control" />
+            <input type="text" id="ExtraItem3{{compCount + 1}}" value="" placeholder="extra item 3" class="form-control" />
           </div>
           <div class="col-md-6 grid-input grid-adjust">
-            <input type="number" id="ExtraItem3Adjust{{comp}}" placeholder="" class="form-control" />
+            <input type="number" id="ExtraItem3Adjust{{compCount + 1}}" placeholder="" class="form-control" />
           </div>
         </div>
         <div class="row grid-row">
@@ -641,7 +637,7 @@
           <div class="col-md-6 grid-input grid-adjust">
             <div class="input-group">
               <span class="input-group-addon">$</span>
-              <input type="text" id="NetAdjustTotal{{comp}}" placeholder="" class="form-control" />
+              <input type="text" id="NetAdjustTotal{{compCount + 1}}" placeholder="" class="form-control" />
             </div>
           </div>
         </div>
@@ -652,7 +648,7 @@
                 <div class="col-md-6 grid-label">net adj.</div>
                 <div class="col-md-6 grid-input">
                   <div class="input-group">
-                    <input type="number" id="NetAdjust{{comp}}" placeholder="" class="form-control" />
+                    <input type="number" id="NetAdjust{{compCount + 1}}" placeholder="" class="form-control" />
                     <span class="input-group-addon">%</span>
                   </div>
                 </div>
@@ -661,7 +657,7 @@
                 <div class="col-md-6 grid-label">gross adj.</div>
                 <div class="col-md-6 grid-input">
                   <div class="input-group">
-                    <input type="number" id="GrossAdjust{{comp}}" placeholder="" class="form-control" />
+                    <input type="number" id="GrossAdjust{{compCount + 1}}" placeholder="" class="form-control" />
                     <span class="input-group-addon">%</span>
                   </div>
                 </div>
@@ -671,7 +667,7 @@
           <div class="col-md-6 grid-input grid-adjust adjusted-sales-price">
             <div class="input-group vert-align">
               <span class="input-group-addon">$</span>
-              <input type="text" id="AdjustedSalesPrice{{comp}}" placeholder="" class="form-control" />
+              <input type="text" id="AdjustedSalesPrice{{compCount + 1}}" placeholder="" class="form-control" />
             </div>
           </div>
         </div>
