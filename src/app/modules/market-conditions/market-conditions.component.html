@@ -1,5 +1,5 @@
 <div class="sub-menu">
-  <div class="navbar-nav container">
+  <div class="navbar-nav container" [ngStyle]="{'left': sidebarWidth}">
     <a class="nav-item navbar-link " routerLink="./import" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <span class="far fa-file-import"></span>
       Import
@@ -15,6 +15,10 @@
     <a class="nav-item navbar-link " routerLink="./graphs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <span class="far fa-chart-line"></span>
       Graphs
+    </a>
+    <a class="nav-item navbar-link " routerLink="./summary" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <span class="far fa-clipboard-list-check"></span>
+      Summary
     </a>
   </div>
 </div>

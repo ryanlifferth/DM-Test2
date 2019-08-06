@@ -7,6 +7,7 @@ import { filter } from 'rxjs/operators';
 import { CompHeaderService } from '../../core/services/comp-header.service';
 import { SidebarLogoService } from '../../core/services/sidebar-logo.service';
 
+
 @Component({
   selector: 'app-comparables',
   templateUrl: './comparables.component.html',
@@ -19,6 +20,7 @@ export class ComparablesComponent implements OnInit, AfterViewInit, AfterViewChe
   dataSources: DataSource[];
   formType: string;
   compCount: number;
+  sidebarWidth: string;  // default width of the sidebar (1/2 of the width)
 
   constructor(private router: Router,
     private dataSourceService: DataSourceService,
@@ -38,20 +40,17 @@ export class ComparablesComponent implements OnInit, AfterViewInit, AfterViewChe
         this.isActiveLink = value.url === '/Comparables' || value.url === '/Comparables/grid' ? 'active' : '';
       });
 
-    this.sidebarLogoService.isSbExpanded.subscribe(val => {
-      // Kind of a hack - and I'm not sure why it does this but when the sidebar contracts
-      // the value of compHeader is still the width *before* the sidebar contracts.  It doesn't
-      // happen when the sidebar expands, so this is just a hack for that situation.  I set a
-      // quick wait (setTimeout) and then get the width.
-      // Just need this to trigger the compHeaderWidth calculation when the SB contracts
-      let globalThis = this;
+    this.sidebarLogoService.getSidebarExpanded().subscribe(val => {
       if (val === false) {
-        setTimeout(function () { globalThis.updateCompHeaderWidth(); }, 100);
-        //this.updateCompHeaderWidth();
+        this.updateCompHeaderWidth();
       }
     });
 
 
+    this.sidebarWidth = '-' + (this.sidebarLogoService.currentSidebarWidth.getValue() / 2) + 'px';  // Get the initial value (BehaviorSubject)
+    this.sidebarLogoService.getSidebarWidth().subscribe(width => {
+      this.sidebarWidth = '-' + (width / 2) + 'px';
+    });
 
   }
 

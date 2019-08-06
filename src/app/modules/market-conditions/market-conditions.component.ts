@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
+import { SidebarLogoService } from '../../core/services/sidebar-logo.service';
+
 @Component({
   selector: 'app-market-conditions',
   templateUrl: './market-conditions.component.html',
@@ -9,8 +11,9 @@ import { filter } from 'rxjs/operators';
 })
 export class MarketConditionsComponent implements OnInit {
   isActiveLink: string;
+  sidebarWidth: string = '-92px';  // default width of the sidebar (1/2 of the width)
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sidebarLogoService: SidebarLogoService) { }
 
   ngOnInit() {
     this.isActiveLink = this.isActive();
@@ -21,6 +24,11 @@ export class MarketConditionsComponent implements OnInit {
         //this.isActiveLink = this.activatedRoute.firstChild.routeConfig.path === '' || this.activatedRoute.firstChild.routeConfig.path === 'grid' ? 'active' : '';
         this.isActiveLink = value.url === '/market-conditions' || value.url === '/market-conditions/report' ? 'active' : '';
       });
+
+    this.sidebarWidth = '-' + (this.sidebarLogoService.currentSidebarWidth.getValue() / 2) + 'px';  // Get the initial value (BehaviorSubject)
+    this.sidebarLogoService.getSidebarWidth().subscribe(width => {
+      this.sidebarWidth = '-' + (width/2) + 'px';
+    });
   }
 
   private isActive(): string {

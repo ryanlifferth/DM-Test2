@@ -1,6 +1,6 @@
 <div class="sub-menu">
   
-  <div class="navbar-nav container">
+  <div class="navbar-nav container" [ngStyle]="{'left': sidebarWidth}">
     <a class="nav-item navbar-link " routerLink="./search" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <span class="fas fa-search"></span>
       Property Search

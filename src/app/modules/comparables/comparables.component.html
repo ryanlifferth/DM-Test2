@@ -1,5 +1,5 @@
 <div class="sub-menu">
-  <div class="navbar-nav container">
+  <div class="navbar-nav container" [ngStyle]="{'left': sidebarWidth}">
     <a class="nav-item navbar-link " routerLink="./upload" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <span class="far fa-file-upload"></span>
       Load Comps

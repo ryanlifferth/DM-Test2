@@ -1,3 +1,88 @@
 <p>
   report works!
 </p>
+
+<div class="container">
+
+  <div class="row effective-date form-inline">
+    <label>Effective Date</label>
+    <div class="input-group">
+      <input id="effectiveDate" type="text" class="date-picker form-control" datepicker />
+      <div class="input-group-addon">
+        <span class="fa fa-calendar"></span>
+      </div>
+      <div id="EffectiveDateReloading" class="d-none">
+        <div class="fa fa-spinner fa-2x fa-pulse"></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngTemplateOutlet="reportRow; context:{label:'Total Sales', reportItemName: 'totalSales', radioOrder: 'increasing'}"></div>
+  <div *ngTemplateOutlet="reportRow; context:{label:'Absorption Rate', reportItemName: 'absorptionRate', radioOrder: 'increasing'}"></div>
+  <div *ngTemplateOutlet="reportRow; context:{label:'Active Listings', reportItemName: 'totalListings', radioOrder: 'decreasing'}"></div>
+  <div *ngTemplateOutlet="reportRow; context:{label:'Housing Supply', reportItemName: 'housingSupply', radioOrder: 'decreasing'}"></div>
+
+  <div *ngTemplateOutlet="reportRow; context:{label:'Median Sale Price', reportItemName: 'medianSalesPrice', radioOrder: 'increasing'}"></div>
+  <div *ngTemplateOutlet="reportRow; context:{label:'Median Sale DOM', reportItemName: 'medianSalesDOM', radioOrder: 'decreasing'}"></div>
+  <div *ngTemplateOutlet="reportRow; context:{label:'Median List Price', reportItemName: 'medianListPrice', radioOrder: 'increasing'}"></div>
+  <div *ngTemplateOutlet="reportRow; context:{label:'Median Listing DOM', reportItemName: 'medianListingDOM', radioOrder: 'decreasing'}"></div>
+  <div *ngTemplateOutlet="reportRow; context:{label:'Med. Sale-to-List Ratio', reportItemName: 'medianSaleToListRatio', radioOrder: 'increasing'}"></div>
+
+</div>
+
+
+<ng-template #reportRow let-rowLabel="label" let-reportItemName="reportItemName" let-radioOrder="radioOrder">
+
+  <div class="row row-hover">
+    <div class="col-md-3 labels">
+      <label>{{rowLabel}}</label>
+    </div>
+    <div class="col-md-4 calculation-values">
+      <span class="calc-value">{{getPropertyValueByName(reportData?.sevenToTwelveMonth, reportItemName)}}</span>
+      <span class="calc-value">{{getPropertyValueByName(reportData?.fourToSixMonth, reportItemName)}}</span>
+      <span class="calc-value">{{getPropertyValueByName(reportData?.currentToThreeMonth, reportItemName)}}</span>
+    </div>
+
+    <div class="col-md-3 d-none">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="radioOrder === 'increasing'">
+        <label class="btn btn-light active">
+          <input type="radio" name="options" id="option1" autocomplete="off" checked> Increasing
+        </label>
+        <label class="btn btn-light">
+          <input type="radio" name="options" id="option2" autocomplete="off"> Stable
+        </label>
+        <label class="btn btn-light">
+          <input type="radio" name="options" id="option3" autocomplete="off"> Declining
+        </label>
+      </div>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="radioOrder === 'decreasing'">
+        <label class="btn btn-info">
+          <input type="radio" name="options" id="option3" autocomplete="off"> Declining
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" name="options" id="option2" autocomplete="off"> Stable
+        </label>
+        <label class="btn btn-info active">
+          <input type="radio" name="options" id="option1" autocomplete="off" checked> Increasing
+        </label>
+      </div>
+    </div>
+
+    <div class="col-md">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline1{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline1{{reportItemName}}">Increasing</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline2{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline2{{reportItemName}}">Stable</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline3{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline3{{reportItemName}}">Decreasing</label>
+      </div>
+    </div>
+
+  </div>
+
+</ng-template>

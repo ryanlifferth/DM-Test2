@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
+import { SidebarLogoService } from '../../core/services/sidebar-logo.service';
+
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
@@ -9,8 +11,13 @@ import { filter } from 'rxjs/operators';
 })
 export class SubjectComponent implements OnInit {
   isActiveLink: string;
+  sidebarWidth: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sidebarLogoService: SidebarLogoService) {
+    this.sidebarLogoService.sidebarWidth.subscribe(width => {
+      this.sidebarWidth = '-' + (width / 2) + 'px';
+    });
+  }
 
   ngOnInit() {
     this.isActiveLink = this.isActive();
@@ -21,6 +28,13 @@ export class SubjectComponent implements OnInit {
         //this.isActiveLink = this.activatedRoute.firstChild.routeConfig.path === '' || this.activatedRoute.firstChild.routeConfig.path === 'grid' ? 'active' : '';
         this.isActiveLink = value.url === '/Subject' || value.url === '/Subject/detail' ? 'active' : '';
       });
+
+    // This is a display hack to make the submenu align left with main menu items, which is offset exactly by the width of the sidebar
+    // since the main menu is 100% width of the visible area and the submenu is only the width of the component
+    this.sidebarWidth = '-' + (this.sidebarLogoService.currentSidebarWidth.getValue() / 2) + 'px';  // Get the initial value (BehaviorSubject)
+    this.sidebarLogoService.sidebarWidth.subscribe(width => {
+      this.sidebarWidth = '-' + (width / 2) + 'px';  
+    });
 
   }
 

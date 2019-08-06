@@ -4,9 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\modules",
-    "\\src\\app\\modules\\comparables",
-    "\\src\\app\\modules\\comparables\\grid"
+    "\\src\\app\\modules\\comparables\\grid",
+    "\\src\\app\\modules\\market-conditions",
+    "\\src\\app\\ui\\header"
   ],
-  "SelectedNode": "\\src\\app\\modules\\comparables\\grid\\grid.component.scss",
+  "SelectedNode": "\\src\\app\\modules\\market-conditions\\market-conditions.component.html",
   "PreviewInSolutionExplorer": false
 }
