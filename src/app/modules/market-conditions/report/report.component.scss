@@ -1,0 +1,31 @@
+.report {
+
+
+  .calendar-button {
+    cursor: pointer;
+
+    .icon {
+      color: #0C6288;
+    }
+  }
+
+
+  .form-group {
+    label {
+      color: #707070;
+      font-size: 14px;
+    }
+
+    &.effective-date {
+      label {
+        display: block;
+        margin: 0 0 0 4px;
+        width: 100%;  // kind of a hack to get the control group to clear to the next line
+      }
+
+      .input-group {
+        width: 250px;
+      }
+    }
+  }
+}

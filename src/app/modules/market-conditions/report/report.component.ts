@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+
 import { MarketAnalysisReportService } from '../../../core/services/market-analysis-report.service';
 import { MarketAnalysisReport } from '../../../core/models/market-analysis-report';
 
@@ -11,8 +13,9 @@ import { MarketAnalysisReport } from '../../../core/models/market-analysis-repor
 })
 export class ReportComponent implements OnInit {
   reportData: MarketAnalysisReport;
+  model: NgbDateStruct;
 
-  constructor(private maReportService: MarketAnalysisReportService) { }
+  constructor(private maReportService: MarketAnalysisReportService, private calendar: NgbCalendar) { }
 
   ngOnInit() {
 
@@ -20,7 +23,7 @@ export class ReportComponent implements OnInit {
     // TODO:  Prob need to load this from the Market-Conditions module and then pass the comps object to this module
     this.maReportService.getReportData().subscribe(reportData => {
       this.reportData = reportData;
-    })
+    });
 
   }
 

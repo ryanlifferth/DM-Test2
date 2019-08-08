@@ -1,15 +1,14 @@
-<p>
-  report works!
-</p>
 
-<div class="container">
+<div class="container report">
 
-  <div class="row effective-date form-inline">
+  <div class="row effective-date form-group">
     <label>Effective Date</label>
     <div class="input-group">
-      <input id="effectiveDate" type="text" class="date-picker form-control" datepicker />
-      <div class="input-group-addon">
-        <span class="fa fa-calendar"></span>
+      <input type="text" class="date-picker form-control" placeholder="yyyy-mm-dd" dateFormat="dd-MMM-yyyy" name="effectiveDate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" />
+      <div class="input-group-append">
+        <span class="input-group-text calendar-button" (click)="d.toggle()">
+          <span class="fad fa-calendar-alt fa-lg icon"></span>
+        </span>
       </div>
       <div id="EffectiveDateReloading" class="d-none">
         <div class="fa fa-spinner fa-2x fa-pulse"></div>

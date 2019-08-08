@@ -29,11 +29,17 @@ in the compiler options section.
 $("#exampleModal").modal("show");
 ```
 
-
-
+#### Additional Bootrap Information
+TBH - when this project actually goes into production we should do one of the following, instead of using the jquery and bootstrap types (although the types option might just be the easiest):
+* Use ng-bootstrap (https://ng-bootstrap.github.io) _recommended_
+  * This is already done - I need to go back and rip out the types.....or I might just leave them since this is a test project
+  * This was done with the following command:
+    ```bash
+     npm install --save @ng-bootstrap/ng-bootstrap
+    ```
+* Use Bootstrap Material (https://material.angular.io/)
 
 
 
 ## Further help
-
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
