@@ -4,28 +4,34 @@
   <div class="row effective-date form-group">
     <label>Effective Date</label>
     <div class="input-group">
-      <input type="text" class="date-picker form-control" placeholder="yyyy-mm-dd" dateFormat="dd-MMM-yyyy" name="effectiveDate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" />
+      <input type="text" class="date-picker form-control" placeholder="yyyy-mm-dd" name="effectiveDate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" />
       <div class="input-group-append">
         <span class="input-group-text calendar-button" (click)="d.toggle()">
           <span class="fad fa-calendar-alt fa-lg icon"></span>
         </span>
       </div>
-      <div id="EffectiveDateReloading" class="d-none">
-        <div class="fa fa-spinner fa-2x fa-pulse"></div>
+      <div class="input-group-append">
+        <span id="EffectiveDateReloading" class="d-none">
+          <span class="fa fa-spinner fa-2x fa-pulse"></span>
+        </span>
       </div>
     </div>
+
+    <span class="today" (click)="selectToday()">today</span>
+
   </div>
 
-  <div *ngTemplateOutlet="reportRow; context:{label:'Total Sales', reportItemName: 'totalSales', radioOrder: 'increasing'}"></div>
-  <div *ngTemplateOutlet="reportRow; context:{label:'Absorption Rate', reportItemName: 'absorptionRate', radioOrder: 'increasing'}"></div>
-  <div *ngTemplateOutlet="reportRow; context:{label:'Active Listings', reportItemName: 'totalListings', radioOrder: 'decreasing'}"></div>
-  <div *ngTemplateOutlet="reportRow; context:{label:'Housing Supply', reportItemName: 'housingSupply', radioOrder: 'decreasing'}"></div>
 
-  <div *ngTemplateOutlet="reportRow; context:{label:'Median Sale Price', reportItemName: 'medianSalesPrice', radioOrder: 'increasing'}"></div>
-  <div *ngTemplateOutlet="reportRow; context:{label:'Median Sale DOM', reportItemName: 'medianSalesDOM', radioOrder: 'decreasing'}"></div>
-  <div *ngTemplateOutlet="reportRow; context:{label:'Median List Price', reportItemName: 'medianListPrice', radioOrder: 'increasing'}"></div>
-  <div *ngTemplateOutlet="reportRow; context:{label:'Median Listing DOM', reportItemName: 'medianListingDOM', radioOrder: 'decreasing'}"></div>
-  <div *ngTemplateOutlet="reportRow; context:{label:'Med. Sale-to-List Ratio', reportItemName: 'medianSaleToListRatio', radioOrder: 'increasing'}"></div>
+<div *ngTemplateOutlet="reportRow; context:{label:'Total Sales', reportItemName: 'totalSales', radioOrder: 'increasing'}"></div>
+<div *ngTemplateOutlet="reportRow; context:{label:'Absorption Rate', reportItemName: 'absorptionRate', radioOrder: 'increasing'}"></div>
+<div *ngTemplateOutlet="reportRow; context:{label:'Active Listings', reportItemName: 'totalListings', radioOrder: 'decreasing'}"></div>
+<div *ngTemplateOutlet="reportRow; context:{label:'Housing Supply', reportItemName: 'housingSupply', radioOrder: 'decreasing'}"></div>
+
+<div *ngTemplateOutlet="reportRow; context:{label:'Median Sale Price', reportItemName: 'medianSalesPrice', radioOrder: 'increasing'}"></div>
+<div *ngTemplateOutlet="reportRow; context:{label:'Median Sale DOM', reportItemName: 'medianSalesDOM', radioOrder: 'decreasing'}"></div>
+<div *ngTemplateOutlet="reportRow; context:{label:'Median List Price', reportItemName: 'medianListPrice', radioOrder: 'increasing'}"></div>
+<div *ngTemplateOutlet="reportRow; context:{label:'Median Listing DOM', reportItemName: 'medianListingDOM', radioOrder: 'decreasing'}"></div>
+<div *ngTemplateOutlet="reportRow; context:{label:'Med. Sale-to-List Ratio', reportItemName: 'medianSaleToListRatio', radioOrder: 'increasing'}"></div>
 
 </div>
 

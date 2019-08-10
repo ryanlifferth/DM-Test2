@@ -38,6 +38,10 @@ export class ReportComponent implements OnInit {
     return false;
   }
 
+  selectToday() {
+    this.model = this.calendar.getToday();
+  }
+
   //function propName(prop, value) {
   //  for (var i in prop) {
   //    if (prop[i] == value) {

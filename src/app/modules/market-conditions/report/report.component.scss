@@ -20,11 +20,33 @@
       label {
         display: block;
         margin: 0 0 0 4px;
-        width: 100%;  // kind of a hack to get the control group to clear to the next line
+        width: 100%; // kind of a hack to get the control group to clear to the next line
       }
 
       .input-group {
         width: 250px;
+      }
+
+      .today {
+        color: #0A558C;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Merriweather Sans';
+        font-size: 14px;
+        //font-weight: 600;
+        font-weight: 400;
+        letter-spacing: 0.6px;
+        margin: 10px 0 0 14px;
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: #14919b; //#4098D7;
+          //text-decoration: underline;
+
+          &:active {
+            color: hsla(184, 63%, 31%, 1);
+          }
+        }
       }
     }
   }
