@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +32,8 @@ import { ImportComponent } from './modules/market-conditions/import/import.compo
 import { UploadComponent } from './modules/comparables/upload/upload.component';
 import { SubjectSearchComponent } from './modules/subject/subject-search/subject-search.component';
 import { SummaryComponent } from './modules/summary/summary.component';
+
+import { NgbDateCustomParserFormatter } from './core/formatter/ngb-date-parser-formatter';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { SummaryComponent } from './modules/summary/summary.component';
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyAs_Y6kGdxcrtXwIaNvaexYCMsiw4o22i0' }),
     NgbModule
   ],
-  providers: [],
+  providers: [
+    { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

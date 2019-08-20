@@ -1,90 +1,89 @@
 
-<div class="container report">
+  <div class="container report">
 
-  <div class="row effective-date form-group">
-    <label>Effective Date</label>
-    <div class="input-group">
-      <input type="text" class="date-picker form-control" placeholder="yyyy-mm-dd" name="effectiveDate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" />
-      <div class="input-group-append">
-        <span class="input-group-text calendar-button" (click)="d.toggle()">
-          <span class="fad fa-calendar-alt fa-lg icon"></span>
-        </span>
+    <ng-template #t let-date>
+      {{ date.day }}
+    </ng-template>
+
+    <div class="effective-date form-group">
+      <label>Effective Date</label>
+      <div class="input-group">
+        <input type="text" class="date-picker form-control" placeholder="mm-dd-yyyy" name="effectiveDate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" />
+        <div class="input-group-append">
+          <span class="input-group-text calendar-button" (click)="d.toggle()">
+            <span class="fad fa-calendar-alt fa-lg icon"></span>
+          </span>
+        </div>
+        <div class="input-group-append">
+          <span id="EffectiveDateReloading" class="d-none">
+            <span class="fa fa-spinner fa-2x fa-pulse"></span>
+          </span>
+        </div>
+        <span class="today" (click)="selectToday()">today</span>
       </div>
-      <div class="input-group-append">
-        <span id="EffectiveDateReloading" class="d-none">
-          <span class="fa fa-spinner fa-2x fa-pulse"></span>
-        </span>
-      </div>
+
+
     </div>
 
-    <span class="today" (click)="selectToday()">today</span>
+    <div class="header-row">
+      <div class="label-header">Inventory Analysis</div>
+      <div class="input-header">Prior 7-12</div>
+      <div class="input-header">Prior 4-6</div>
+      <div class="input-header">Current - 3</div>
+      <div class="input-header trend">Overall trend</div>
+    </div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Total Sales', reportItemName: 'totalSales', radioOrder: 'increasing', currency: false }"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Absorption Rate', reportItemName: 'absorptionRate', radioOrder: 'increasing', currency: false}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Active Listings', reportItemName: 'totalListings', radioOrder: 'decreasing', currency: false}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Housing Supply', reportItemName: 'housingSupply', radioOrder: 'decreasing', currency: false}"></div>
+
+    <div class="header-row mt-4">
+      <div class="label-header">Median Values</div>
+      <div class="input-header">Prior 7-12</div>
+      <div class="input-header">Prior 4-6</div>
+      <div class="input-header">Current - 3</div>
+      <div class="input-header trend">Overall trend</div>
+    </div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Median Sale Price', reportItemName: 'medianSalesPrice', radioOrder: 'increasing', currency: true}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Median Sale DOM', reportItemName: 'medianSalesDOM', radioOrder: 'decreasing', currency: false}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Median List Price', reportItemName: 'medianListPrice', radioOrder: 'increasing', currency: true}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Median Listing DOM', reportItemName: 'medianListingDOM', radioOrder: 'decreasing', currency: false}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Median. Sale-to-List Ratio', reportItemName: 'medianSaleToListRatio', radioOrder: 'increasing', currency: false}"></div>
 
   </div>
 
 
-<div *ngTemplateOutlet="reportRow; context:{label:'Total Sales', reportItemName: 'totalSales', radioOrder: 'increasing'}"></div>
-<div *ngTemplateOutlet="reportRow; context:{label:'Absorption Rate', reportItemName: 'absorptionRate', radioOrder: 'increasing'}"></div>
-<div *ngTemplateOutlet="reportRow; context:{label:'Active Listings', reportItemName: 'totalListings', radioOrder: 'decreasing'}"></div>
-<div *ngTemplateOutlet="reportRow; context:{label:'Housing Supply', reportItemName: 'housingSupply', radioOrder: 'decreasing'}"></div>
+<ng-template #reportRow let-rowLabel="label" let-reportItemName="reportItemName" let-radioOrder="radioOrder" let-currency="currency">
 
-<div *ngTemplateOutlet="reportRow; context:{label:'Median Sale Price', reportItemName: 'medianSalesPrice', radioOrder: 'increasing'}"></div>
-<div *ngTemplateOutlet="reportRow; context:{label:'Median Sale DOM', reportItemName: 'medianSalesDOM', radioOrder: 'decreasing'}"></div>
-<div *ngTemplateOutlet="reportRow; context:{label:'Median List Price', reportItemName: 'medianListPrice', radioOrder: 'increasing'}"></div>
-<div *ngTemplateOutlet="reportRow; context:{label:'Median Listing DOM', reportItemName: 'medianListingDOM', radioOrder: 'decreasing'}"></div>
-<div *ngTemplateOutlet="reportRow; context:{label:'Med. Sale-to-List Ratio', reportItemName: 'medianSaleToListRatio', radioOrder: 'increasing'}"></div>
-
-</div>
-
-
-<ng-template #reportRow let-rowLabel="label" let-reportItemName="reportItemName" let-radioOrder="radioOrder">
-
-  <div class="row row-hover">
-    <div class="col-md-3 labels">
-      <label>{{rowLabel}}</label>
+  <div class="row mc-row row-hover">
+    <label class="row-label">{{rowLabel}}</label>
+    <div class="calculation-values">
+      <input type="text" name="{{reportItemName}}SevenToTwelve" class="form-control" value="{{currency !== true ? getPropertyValueByName(reportData?.sevenToTwelveMonth, reportItemName) : getPropertyValueByName(reportData?.sevenToTwelveMonth, reportItemName) | currency:'USD':symbol:'4.0'}}" />
+      <!--<span class="calc-value">{{getPropertyValueByName(reportData?.sevenToTwelveMonth, reportItemName)}}</span>-->
     </div>
-    <div class="col-md-4 calculation-values">
-      <span class="calc-value">{{getPropertyValueByName(reportData?.sevenToTwelveMonth, reportItemName)}}</span>
-      <span class="calc-value">{{getPropertyValueByName(reportData?.fourToSixMonth, reportItemName)}}</span>
-      <span class="calc-value">{{getPropertyValueByName(reportData?.currentToThreeMonth, reportItemName)}}</span>
+    <div class="calculation-values">
+      <input type="text" name="{{reportItemName}}FourToSix" class="form-control" value="{{currency !== true ? getPropertyValueByName(reportData?.fourToSixMonth, reportItemName) : getPropertyValueByName(reportData?.fourToSixMonth, reportItemName) | currency:'USD':symbol:'4.0'}}" />
+      <!--<span class="calc-value">{{getPropertyValueByName(reportData?.fourToSixMonth, reportItemName)}}</span>-->
     </div>
-
-    <div class="col-md-3 d-none">
-      <div class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="radioOrder === 'increasing'">
-        <label class="btn btn-light active">
-          <input type="radio" name="options" id="option1" autocomplete="off" checked> Increasing
-        </label>
-        <label class="btn btn-light">
-          <input type="radio" name="options" id="option2" autocomplete="off"> Stable
-        </label>
-        <label class="btn btn-light">
-          <input type="radio" name="options" id="option3" autocomplete="off"> Declining
-        </label>
-      </div>
-      <div class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="radioOrder === 'decreasing'">
-        <label class="btn btn-info">
-          <input type="radio" name="options" id="option3" autocomplete="off"> Declining
-        </label>
-        <label class="btn btn-info">
-          <input type="radio" name="options" id="option2" autocomplete="off"> Stable
-        </label>
-        <label class="btn btn-info active">
-          <input type="radio" name="options" id="option1" autocomplete="off" checked> Increasing
-        </label>
-      </div>
+    <div class="calculation-values">
+      <input type="text" name="{{reportItemName}}CurrentToThree" class="form-control" value="{{currency !== true ? getPropertyValueByName(reportData?.currentToThreeMonth, reportItemName) : getPropertyValueByName(reportData?.currentToThreeMonth, reportItemName) | currency:'USD':symbol:'4.0'}}" />
+      <!--<span class="calc-value">{{getPropertyValueByName(reportData?.currentToThreeMonth, reportItemName)}}</span>-->
     </div>
 
     <div class="col-md">
-      <div class="custom-control custom-radio custom-control-inline">
+      <div class="custom-control custom-radio custom-control-inline increasing-decreasing">
         <input type="radio" id="customRadioInline1{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline1{{reportItemName}}">Increasing</label>
+        <label class="custom-control-label" for="customRadioInline1{{reportItemName}}">{{radioOrder === 'increasing' ? 'Increasing' : 'Decreasing'}}</label>
       </div>
+
       <div class="custom-control custom-radio custom-control-inline">
         <input type="radio" id="customRadioInline2{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
         <label class="custom-control-label" for="customRadioInline2{{reportItemName}}">Stable</label>
       </div>
-      <div class="custom-control custom-radio custom-control-inline">
+
+      <div class="custom-control custom-radio custom-control-inline increasing-decreasing">
         <input type="radio" id="customRadioInline3{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline3{{reportItemName}}">Decreasing</label>
+        <label class="custom-control-label" for="customRadioInline3{{reportItemName}}">{{radioOrder === 'increasing' ? 'Decreasing' : 'Increasing'}}</label>
       </div>
     </div>
 

@@ -40,6 +40,7 @@ export class ReportComponent implements OnInit {
 
   selectToday() {
     this.model = this.calendar.getToday();
+    
   }
 
   //function propName(prop, value) {

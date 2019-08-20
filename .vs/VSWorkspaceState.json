@@ -4,11 +4,8 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\core",
-    "\\src\\app\\core\\services",
-    "\\src\\app\\modules",
-    "\\src\\app\\modules\\market-conditions",
-    "\\src\\app\\modules\\market-conditions\\report"
+    "\\src\\app\\core\\formatter"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }

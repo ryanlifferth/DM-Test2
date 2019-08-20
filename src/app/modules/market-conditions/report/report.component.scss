@@ -1,6 +1,5 @@
 .report {
 
-
   .calendar-button {
     cursor: pointer;
 
@@ -10,7 +9,7 @@
   }
 
 
-  .form-group {
+  .form-group.effective-date {
     label {
       color: #707070;
       font-size: 14px;
@@ -42,11 +41,87 @@
         &:hover {
           color: #14919b; //#4098D7;
           //text-decoration: underline;
-
           &:active {
             color: hsla(184, 63%, 31%, 1);
           }
         }
+      }
+    }
+  }
+
+  $label-width: 185px;
+  $input-width: 115px;
+
+  .header-row {
+    color: #707070;
+    font-size: 14px;
+
+    .label-header {
+      color: #495057;
+      display: inline-block;
+    font-weight: 600;
+      text-transform: uppercase;
+      width: $label-width;
+    }
+
+    .input-header {
+      display: inline-block;
+      margin: 0 2px 0 0;
+      text-align: center;
+      //width: calc(#{$input-width} + 2px);
+      width: $input-width;
+    }
+
+    .trend {
+      margin-left: 3px;
+    }
+  }
+
+  .mc-row {
+    margin: 0;
+
+    &:hover {
+      //background-color: rgba(15, 96, 153, 0.03);
+    }
+
+    .row-label {
+      color: #707070;
+      display: inline-block;
+      font-size: 14px;
+      margin: 6px 0 0;
+      width: $label-width;
+    }
+
+    .calculation-values {
+
+      input[type=text] {
+        &.form-control {
+          border-radius: 0;
+          font-size: 15px;
+          height: auto;
+          margin: 1px 2px 1px 0;
+          padding: 3px 8px;
+          text-align: center;
+          width: $input-width;
+        }
+      }
+    }
+
+    .custom-radio {
+      padding-top: 4px;
+
+      &.increasing-decreasing {
+        width: 92px;
+      }
+
+      &:hover {
+        //background-color: rgba(15, 96, 153, 0.03);
+      }
+
+      label {
+        color: #0C6288;
+        font-size: 13px;
+        padding-top: 3px;
       }
     }
   }
