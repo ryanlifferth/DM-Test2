@@ -34,8 +34,8 @@
     </div>
     <div *ngTemplateOutlet="reportRow; context:{label:'Total Sales', reportItemName: 'totalSales', radioOrder: 'increasing', currency: false }"></div>
     <div *ngTemplateOutlet="reportRow; context:{label:'Absorption Rate', reportItemName: 'absorptionRate', radioOrder: 'increasing', currency: false}"></div>
-    <div *ngTemplateOutlet="reportRow; context:{label:'Active Listings', reportItemName: 'totalListings', radioOrder: 'decreasing', currency: false}"></div>
-    <div *ngTemplateOutlet="reportRow; context:{label:'Housing Supply', reportItemName: 'housingSupply', radioOrder: 'decreasing', currency: false}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Active Listings', reportItemName: 'totalListings', radioOrder: 'declining', currency: false}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Housing Supply', reportItemName: 'housingSupply', radioOrder: 'declining', currency: false}"></div>
 
     <div class="header-row mt-4">
       <div class="label-header">Median Values</div>
@@ -45,10 +45,61 @@
       <div class="input-header trend">Overall trend</div>
     </div>
     <div *ngTemplateOutlet="reportRow; context:{label:'Median Sale Price', reportItemName: 'medianSalesPrice', radioOrder: 'increasing', currency: true}"></div>
-    <div *ngTemplateOutlet="reportRow; context:{label:'Median Sale DOM', reportItemName: 'medianSalesDOM', radioOrder: 'decreasing', currency: false}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Median Sale DOM', reportItemName: 'medianSalesDOM', radioOrder: 'declining', currency: false}"></div>
     <div *ngTemplateOutlet="reportRow; context:{label:'Median List Price', reportItemName: 'medianListPrice', radioOrder: 'increasing', currency: true}"></div>
-    <div *ngTemplateOutlet="reportRow; context:{label:'Median Listing DOM', reportItemName: 'medianListingDOM', radioOrder: 'decreasing', currency: false}"></div>
+    <div *ngTemplateOutlet="reportRow; context:{label:'Median Listing DOM', reportItemName: 'medianListingDOM', radioOrder: 'declining', currency: false}"></div>
     <div *ngTemplateOutlet="reportRow; context:{label:'Median. Sale-to-List Ratio', reportItemName: 'medianSaleToListRatio', radioOrder: 'increasing', currency: false}"></div>
+
+    <div class="row mc-row yes-no">
+      <div class="question-container">
+        <label class="row-label no-width">
+          Seller paid financial assistance prevelant?
+        </label>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="sellerPaidYes" name="sellerPaid" class="custom-control-input">
+          <label class="custom-control-label" for="sellerPaidYes">Yes</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="sellerPaidNo" name="sellerPaid" class="custom-control-input">
+          <label class="custom-control-label" for="sellerPaidNo">No</label>
+        </div>
+      </div>
+
+      <div *ngTemplateOutlet="trendRadio; context: {reportItemName: 'sellerPaidAssistance', radioOrder: 'declining'}"></div>
+
+    </div>
+
+    <div class="row mc-row textarea-row">
+      <label class="row-label no-width">Explain in detail the seller concessions trends for the past 12 months</label>
+      <textarea class="form-control" rows="5"></textarea>
+    </div>
+
+    <div class="row mc-row textarea-row yes-no">
+      <label class="row-label no-width">Are foreclosure sales (REO Sales) a factor in the market?</label>
+      <div class="custom-control custom-radio custom-control-inline" (click)="foreclosureFactor='show'">
+        <input type="radio" id="foreclosureSalesFactorYes" name="foreclosureSalesFactor" class="custom-control-input">
+        <label class="custom-control-label" for="foreclosureSalesFactorYes">Yes</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline" (click)="foreclosureFactor='hide'">
+        <input type="radio" id="foreclosureSalesFactorNo" name="foreclosureSalesFactor" class="custom-control-input">
+        <label class="custom-control-label" for="foreclosureSalesFactorNo">No</label>
+      </div>
+
+      <label class="row-label no-width explain">if yes, explain</label>
+
+      <textarea class="form-control" rows="5" *ngIf="foreclosureFactor=='show'"></textarea>
+    </div>
+
+    <div class="row mc-row textarea-row flex-col">
+      <label class="row-label no-width">Cite data sources for above information</label>
+      <textarea class="form-control" rows="2"></textarea>
+    </div>
+
+    <div class="row mc-row textarea-row flex-col">
+      <label class="row-label no-width">Summary of the above information</label>
+      <textarea class="form-control" rows="5"></textarea>
+    </div>
+
 
   </div>
 
@@ -70,23 +121,28 @@
       <!--<span class="calc-value">{{getPropertyValueByName(reportData?.currentToThreeMonth, reportItemName)}}</span>-->
     </div>
 
-    <div class="col-md">
-      <div class="custom-control custom-radio custom-control-inline increasing-decreasing">
-        <input type="radio" id="customRadioInline1{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline1{{reportItemName}}">{{radioOrder === 'increasing' ? 'Increasing' : 'Decreasing'}}</label>
-      </div>
-
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline2{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline2{{reportItemName}}">Stable</label>
-      </div>
-
-      <div class="custom-control custom-radio custom-control-inline increasing-decreasing">
-        <input type="radio" id="customRadioInline3{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline3{{reportItemName}}">{{radioOrder === 'increasing' ? 'Decreasing' : 'Increasing'}}</label>
-      </div>
-    </div>
+    <div *ngTemplateOutlet="trendRadio; context: {reportItemName: reportItemName, radioOrder: radioOrder}"></div>
 
   </div>
 
+</ng-template>
+
+
+<ng-template #trendRadio let-reportItemName="reportItemName" let-radioOrder="radioOrder">
+  <div class="col-md">
+    <div class="custom-control custom-radio custom-control-inline increasing-decreasing">
+      <input type="radio" id="customRadioInline1{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
+      <label class="custom-control-label" for="customRadioInline1{{reportItemName}}">{{radioOrder === 'increasing' ? 'Increasing' : 'Declining'}}</label>
+    </div>
+
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" id="customRadioInline2{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
+      <label class="custom-control-label" for="customRadioInline2{{reportItemName}}">Stable</label>
+    </div>
+
+    <div class="custom-control custom-radio custom-control-inline increasing-decreasing">
+      <input type="radio" id="customRadioInline3{{reportItemName}}" name="customRadioInline1{{reportItemName}}" class="custom-control-input">
+      <label class="custom-control-label" for="customRadioInline3{{reportItemName}}">{{radioOrder === 'increasing' ? 'Declining' : 'Increasing'}}</label>
+    </div>
+  </div>
 </ng-template>

@@ -54,12 +54,13 @@
 
   .header-row {
     color: #707070;
-    font-size: 14px;
+    font-size: 13px;
 
     .label-header {
       color: #495057;
       display: inline-block;
-    font-weight: 600;
+      font-size: 14px;
+      font-weight: 600;
       text-transform: uppercase;
       width: $label-width;
     }
@@ -90,6 +91,10 @@
       font-size: 14px;
       margin: 6px 0 0;
       width: $label-width;
+
+      &.no-width {
+        width: auto;
+      }
     }
 
     .calculation-values {
@@ -108,6 +113,9 @@
     }
 
     .custom-radio {
+      //padding: 4px 4px 5px 1.5rem; // gives it some padding for hover effect to look better
+      padding-bottom: 4px;
+      padding-right: 4px;
       padding-top: 4px;
 
       &.increasing-decreasing {
@@ -115,13 +123,50 @@
       }
 
       &:hover {
-        //background-color: rgba(15, 96, 153, 0.03);
+        background-color: rgba(15, 96, 153, 0.02);
+
+        label {
+          color: #4098D7;
+        }
       }
 
       label {
         color: #0C6288;
         font-size: 13px;
-        padding-top: 3px;
+        padding-top: 2px;
+      }
+    }
+
+    &.yes-no {
+
+      .row-label {
+        margin-right: 20px;
+      }
+
+      .custom-radio {
+      }
+
+      .question-container {
+        width: 536px;
+      }
+    }
+
+
+    &.textarea-row {
+      margin-top: 18px;
+
+      &.flex-col {
+        flex-direction: column;
+      }
+
+      textarea {
+        max-width: 835px;
+      }
+
+      label {
+        &.explain {
+          font-style: italic;
+        }
       }
     }
   }

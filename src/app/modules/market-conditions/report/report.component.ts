@@ -14,6 +14,7 @@ import { MarketAnalysisReport } from '../../../core/models/market-analysis-repor
 export class ReportComponent implements OnInit {
   reportData: MarketAnalysisReport;
   model: NgbDateStruct;
+  foreclosureFactor: string;
 
   constructor(private maReportService: MarketAnalysisReportService, private calendar: NgbCalendar) { }
 
@@ -42,6 +43,8 @@ export class ReportComponent implements OnInit {
     this.model = this.calendar.getToday();
     
   }
+
+
 
   //function propName(prop, value) {
   //  for (var i in prop) {

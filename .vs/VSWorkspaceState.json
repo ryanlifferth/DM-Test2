@@ -4,8 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\core",
-    "\\src\\app\\core\\formatter"
+    "\\src\\app\\core\\formatter",
+    "\\src\\app\\modules",
+    "\\src\\app\\modules\\market-conditions"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\app\\modules\\market-conditions\\market-conditions.component.html",
   "PreviewInSolutionExplorer": false
 }
