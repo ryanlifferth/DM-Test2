@@ -3,11 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\core",
-    "\\src\\app\\core\\formatter",
     "\\src\\app\\modules",
-    "\\src\\app\\modules\\market-conditions"
+    "\\src\\app\\modules\\home",
+    "\\src\\app\\modules\\home\\new-file",
+    "\\src\\app\\modules\\home\\new-file\\address-search",
+    "\\src\\app\\modules\\home\\new-file\\apn-search",
+    "\\src\\app\\modules\\home\\new-file\\mls-search"
   ],
-  "SelectedNode": "\\src\\app\\modules\\market-conditions\\market-conditions.component.html",
+  "SelectedNode": "\\src\\app\\modules\\home\\new-file\\address-search\\address-search.component.html",
   "PreviewInSolutionExplorer": false
 }

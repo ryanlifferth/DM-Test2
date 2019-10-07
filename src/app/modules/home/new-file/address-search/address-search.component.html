@@ -1,0 +1,58 @@
+<h4>Start a new file by retrieving subject property info</h4>
+
+<form id="addressSearchForm" [formGroup]="addressSearchForm" #addressSearch="ngForm">
+  <div class="form-row">
+    <div class="form-group col-7">
+      <label for="address">
+        Address
+        <span class="required" *ngIf="(addressSearchForm.controls['address'].invalid && addressSearchForm.controls['address'].touched)">required</span>
+      </label>
+      <input type="text" placeholder="123 Somewhere Ave" formControlName="address" />
+    </div>
+    <div class="form-group col">
+      <label for="city">
+        City
+      </label>
+      <input type="text" placeholder="Springfield" formControlName="city" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-4">
+      <label for="county">
+        County
+        <span class="required" *ngIf="(addressSearchForm.controls['county'].invalid && addressSearchForm.controls['county'].touched)">required</span>
+      </label>
+      <select formControlName="county">
+        <!--<option *ngFor="let county of countiesJson" [ngValue]="county.CountyName">{{county.CountyName}}</option>-->
+        <option *ngFor="let county of countiesJsonAddressSearch" [ngValue]="county.CountyName">{{county.CountyName}}</option>
+      </select>
+    </div>
+    <div class="form-group col">
+      <label for="state">
+        State
+        <span class="required" *ngIf="(addressSearchForm.controls['state'].invalid && addressSearchForm.controls['state'].touched)">required</span>
+      </label>
+      <select formControlName="state">
+        <option *ngFor="let state of stateJson " [ngValue]="state.Abbreviation">{{state.State}}</option>
+      </select>
+    </div>
+    <div class="form-group col">
+      <label for="zip">
+        Zip
+      </label>
+      <input type="text" placeholder="12345" formControlName="zip" />
+    </div>
+  </div>
+  <div class="submit search">
+    <button type="button" class="btn btn-link btn-sm show-results" (click)="showResults()" *ngIf="hasSearchResultsAddress">
+      show search results
+    </button>
+
+    <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(addressSearchForm)" [disabled]="isFormSearching(addressSearchForm)">
+      <span class="fal fa-search" *ngIf="!isFormSearching(addressSearchForm)"></span>
+      <span *ngIf="!isFormSearching(addressSearchForm)">Search</span>
+      <span class="far fa-spinner fa-pulse spinner" *ngIf="isFormSearching(addressSearchForm)"></span>
+      <span *ngIf="isFormSearching(addressSearchForm)">Searching...</span>
+    </button>
+  </div>
+</form>

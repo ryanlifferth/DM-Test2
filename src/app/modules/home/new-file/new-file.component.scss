@@ -11,6 +11,49 @@
   margin: 5px;
 }
 
+.nav {
+  display: block;
+  list-style: none;
+  text-align: right;
+
+  &.nav-tabs {
+    border-bottom: none;
+    margin: 0;
+
+    li {
+      &.tab {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+
+        a {
+          border-bottom: 3px solid transparent;
+          color: #3c4c5d;
+          cursor: pointer;
+          display: inline-block;
+          font-family: Lato;
+          font-size: 14px;
+          font-weight: 500;
+          text-transform: uppercase;
+          padding: 9px 20px 5px;
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          &.active {
+            border-bottom: 3px solid #4098d7;
+            font-weight: 600;
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
 .new-file,
 .search-forms {
   border: 2px dashed transparent;
@@ -154,7 +197,7 @@
         left: -5px !important;
         min-width: 200px;
         padding: 0;
-        top: -1px!important;
+        top: -1px !important;
 
         .dropdown-item {
           //border-bottom: 1px solid rgba(170,170,170,0.5);
@@ -498,7 +541,6 @@
           bottom: 3px;
         }
       }
-
     }
   }
 }

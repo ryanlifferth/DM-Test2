@@ -1,0 +1,49 @@
+
+<h4>Start a new file by retrieving subject property info</h4>
+
+<form id="apnSearchForm" [formGroup]="apnSearchForm">
+
+  <div class="form-group">
+    <label for="apnNumber">
+      APN Number
+      <span class="required" *ngIf="(apnSearchForm.controls['apnNumber'].invalid && apnSearchForm.controls['apnNumber'].touched)">required</span>
+    </label>
+    <input type="text" placeholder="APN Number" formControlName="apnNumber" />
+  </div>
+  <div class="form-row">
+    <div class="form-group col-5">
+      <label for="state">
+        State
+        <span class="required" *ngIf="(apnSearchForm.controls['state'].invalid && apnSearchForm.controls['state'].touched)">required</span>
+      </label>
+      <select formControlName="state">
+        <option *ngFor="let state of stateJson" [ngValue]="state.Abbreviation">{{state.State}}</option>
+      </select>
+    </div>
+    <div class="form-group col">
+      <label for="county">
+        County
+        <span class="required" *ngIf="(apnSearchForm.controls['county'].invalid && apnSearchForm.controls['county'].touched)">required</span>
+      </label>
+      <select formControlName="county">
+        <!--<option *ngFor="let county of countiesJson" [ngValue]="county.CountyName">{{county.CountyName}}</option>-->
+        <option *ngFor="let county of countiesJsonApnSearch" [ngValue]="county.CountyName">{{county.CountyName}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="submit search">
+    <button type="button" class="btn btn-link btn-sm show-results" (click)="showResults()" *ngIf="hasSearchResultsApn">
+      show search results
+    </button>
+
+    <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(apnSearchForm)" [disabled]="isFormSearching(apnSearchForm)">
+      <span class="fal fa-search" *ngIf="!isFormSearching(apnSearchForm)"></span>
+      <span *ngIf="!isFormSearching(apnSearchForm)">Search</span>
+      <span class="far fa-spinner fa-pulse spinner" *ngIf="isFormSearching(apnSearchForm)"></span>
+      <span *ngIf="isFormSearching(apnSearchForm)">Searching...</span>
+    </button>
+  </div>
+
+</form>
+

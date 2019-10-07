@@ -1,15 +1,15 @@
-import { Component, OnInit, Input, ElementRef, HostListener } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validator, Validators, NgForm } from '@angular/forms';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, finalize } from 'rxjs/operators';
 
 import usaCounties from '../../../../assets/data/UsaCounties.json';
-import { AddressSearchService } from '../../../core/services/address-search.service.js';
 import { MlsSearchService } from '../../../core/services/mls-search.service.js';
 import { ApnSearchService } from '../../../core/services/apn-search.service.js';
-import { Address } from '../../../core/models/address';
 import { PropertySearchResult } from '../../../core/models/property-search-result';
-import { Element } from '@angular/compiler';
+import { AddressSearchComponent } from './address-search/address-search.component.js';
+import { ApnSearchComponent } from './apn-search/apn-search.component.js';
+import { MlsSearchComponent } from './mls-search/mls-search.component.js';
 
 //
 //  This component should be broken into (probably) four or more different components, one for each
@@ -30,35 +30,25 @@ export class NewFileComponent implements OnInit {
   selectedVendorImgAlt: string;
   readyToDrop: boolean = false;
   searching: boolean = false;
-  hasSearchResultsAddress: boolean = false;  // flag used to show search results if the modal gets closed
-  hasSearchResultsMls: boolean = false;
-  hasSearchResultsApn: boolean = false;
+
   searchResults: PropertySearchResult[];
   showNewFile: boolean[] = [];
 
   // TODO:  Pull these from a source
   appraisalFormTypes = [{ text: '1004 URAR - UAD', value: '1004' }, { text: '1073', value: '1073' }];
 
-  stateJson: any = usaCounties;
-  countiesJsonAddressSearch: any;
-  countiesJsonApnSearch: any;
+  //stateJson: any = usaCounties;
+  //countiesJsonAddressSearch: any;
+  //countiesJsonApnSearch: any;
+
+  //@ViewChild(AddressSearchComponent) addressSearchChild: AddressSearchComponent;  // This should work, but doesn't
+  @ViewChild('addressSearch') addressSearchChild: AddressSearchComponent;       // It works when defined like this, where 'addressSearch' is a var on the html element
+  @ViewChild('apnSearch') apnSearchChild;
+  @ViewChild('mlsSearch') mlsSearchChild;
 
   @Input('newFileForm') newFileForm: FormGroup;
-  @Input('addressSearchForm') addressSearchForm: FormGroup;
-  @Input('mlsSearchForm') mlsSearchForm: FormGroup;
-  @Input('apnSearchForm') apnSearchForm: FormGroup;
 
-  constructor(private router: Router, private elementRef: ElementRef,
-    private addressSearchService: AddressSearchService,
-    private mlsSearchService: MlsSearchService,
-    private apnSearchService: ApnSearchService) {
-    //console.log(usaCounties);
-    //for (let state of usaCounties) {
-    //  console.log(state.State + " (" + state.Abbreviation + ")");
-    //}
-    //for (let county of this.countiesJson) {
-    //  console.log(county.CountyName);
-    //}
+  constructor(private router: Router, private elementRef: ElementRef) {
   }
 
 
@@ -77,47 +67,11 @@ export class NewFileComponent implements OnInit {
       mlsFileUpload: new FormControl('')
     });
 
-    this.addressSearchForm = new FormGroup({
-      address: new FormControl('', Validators.required),
-      city: new FormControl(''),
-      state: new FormControl('', Validators.required),
-      county: new FormControl('', Validators.required),
-      zip: new FormControl('')
-    });
-
-    this.mlsSearchForm = new FormGroup({
-      mlsNumber: new FormControl('', Validators.required)
-    });
-
-    this.apnSearchForm = new FormGroup({
-      apnNumber: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
-      county: new FormControl('', Validators.required)
-    });
-
     this.newFileForm.controls['formType'].setValue('1004');
-
-    // Not sure if this is the right way to do this.  The json file is used to build the dropdowns
-    this.stateJson = this.stateJson.filter(state => state.UsaTerritory === undefined);
-
-    // Set the default state of the AddressSearchForm
-    this.addressSearchForm.controls['state'].setValue('UT');
-    this.countiesJsonAddressSearch = this.stateJson.filter(state => state.Abbreviation === 'UT')[0].Counties;
-
-    this.addressSearchForm.controls['state'].valueChanges.subscribe(selectedState => {
-      this.countiesJsonAddressSearch = this.stateJson.filter(state => state.Abbreviation === selectedState)[0].Counties;
-    });
-
-    // Set the default state of the APNSearchForm
-    this.apnSearchForm.controls['state'].setValue('UT');
-    this.countiesJsonApnSearch = this.stateJson.filter(state => state.Abbreviation === 'UT')[0].Counties;
-
-    this.apnSearchForm.controls['state'].valueChanges.subscribe(selectedState => {
-      this.countiesJsonApnSearch = this.stateJson.filter(state => state.Abbreviation === selectedState)[0].Counties;
-    });
 
   }
 
+  // Validates the "New File" form
   validate() {
     this.searching = false;
     if (this.newFileForm.valid === false) {
@@ -133,36 +87,6 @@ export class NewFileComponent implements OnInit {
     }
   }
 
-  searchValidate(formGroup) {
-    this.clearSearchResults();  // clear the results
-
-    if (formGroup.valid === false) {
-      for (let item in formGroup.controls) {
-        //console.log(this.newFileForm.controls[item]);
-        formGroup.controls[item].markAsTouched();
-      }
-    } else {
-      this.searching = true;
-
-      // TODO: execute the appropriate search
-      //alert('Running the search....\r\n(Not really, this is just a placeholder)');
-      switch (formGroup) {
-        case this.addressSearchForm: {
-          this.addressSearch();
-          break;
-        }
-        case this.mlsSearchForm: {
-          this.mlsSearch();
-          break;
-        }
-        case this.apnSearchForm: {
-          this.apnSearch();
-          break;
-        }
-      }
-    }
-  }
-
   // This is a bit of a hack, prob need a more robust solution
   isFormSearching(formGroup): boolean {
     if (formGroup.valid && this.searching == true) {
@@ -172,102 +96,38 @@ export class NewFileComponent implements OnInit {
     }
   }
 
-  addressSearch(): void {
-    const address: Address = {
-      addressLine1: this.addressSearchForm.controls['address'].value,
-      city: this.addressSearchForm.controls['city'].value,
-      state: this.addressSearchForm.controls['state'].value,
-      county: this.addressSearchForm.controls['county'].value,
-      zip: this.addressSearchForm.controls['zip'].value
-    };
-    this.addressSearchService.search(address)
-      .pipe(
-        finalize(() => {
-          this.searching = false;
-        })
-      )
-      .subscribe(
-        (searchResults) => {
-          // TODO:  Open the search results modal
-          //alert('Property found: ' + searchResults[0].apn);
-          this.searchResults = searchResults;
-          this.searchResults[0].address = address;
+  onAddressResults(event: PropertySearchResult[]) {
+    //this.clearSearchResults();
 
-          $("#searchResultsModal").modal("show");  // show the modal with the results
-          this.hasSearchResultsAddress = true;
-        },
-        (err) => {
-          alert('error: ' + err);
-          //TODO:  Add error handling
-        }
-      );
+    this.searchResults = event;
+    this.showResults()  // show the modal with the results
   }
 
-  mlsSearch(): void {
-    const mlsNumber: string = this.mlsSearchForm.controls['mlsNumber'].value;
+  onApnResults(event: PropertySearchResult[]) {
+    //this.clearSearchResults();
 
-    this.mlsSearchService.search(mlsNumber)
-      .pipe(
-        finalize(() => {
-          this.searching = false;
-        })
-      )
-      .subscribe(
-        (searchResults) => {
-          // TODO:  Open the search results modal
-          //alert('Property found: ' + searchResults[0].apn);
-          this.searchResults = searchResults;
-          this.searchResults[0].mlsNumber = mlsNumber;
-
-          $("#searchResultsModal").modal("show");  // show the modal with the results
-          this.hasSearchResultsMls = true;
-        },
-        (err) => {
-          // Do something with the error
-          console.log('error: ' + err);
-        }
-      );
+    this.searchResults = event;
+    this.showResults()  // show the modal with the results
   }
 
-  apnSearch(): void {
-    const apnNumber: string = this.apnSearchForm.controls['apnNumber'].value;
-    const state: string = this.apnSearchForm.controls['state'].value;
-    const county: string = this.apnSearchForm.controls['county'].value;
+  onMlsResults(event: PropertySearchResult[]) {
+    //this.clearSearchResults();
 
-    this.apnSearchService.search(apnNumber, state, county)
-      .pipe(
-        finalize(() => {
-          this.searching = false;
-        })
-      )
-      .subscribe(
-        (searchResults) => {
-          // TODO:  Open the search results modal
-          //alert('Property found: ' + searchResults[0].apn);
-          this.searchResults = searchResults;
-          this.searchResults[0].apn = apnNumber;
-          this.searchResults[0].address.county = county;
-          this.searchResults[0].address.state = state;
-
-          $("#searchResultsModal").modal("show");  // show the modal with the results
-          this.hasSearchResultsApn = true;
-        },
-        (err) => {
-          alert('error: ' + err);
-          //TODO:  Add error handling
-        }
-      );
+    this.searchResults = event;
+    this.showResults()  // show the modal with the results
   }
 
   clearSearchResults(): void {
     this.searchResults = [];
     this.searching = false;
-    this.hasSearchResultsAddress = false;
-    this.hasSearchResultsMls = false;
-    this.hasSearchResultsApn = false;
     for (let index in this.showNewFile) {
       this.showNewFile[index] = false;
     }
+
+    //Call each child "clearSearchResults"
+    this.apnSearchChild.clearSearchResults();
+    this.addressSearchChild.clearSearchResults();
+    this.mlsSearchChild.clearSearchResults();
   }
 
   showResults() {

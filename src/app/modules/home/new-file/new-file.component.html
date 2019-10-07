@@ -2,18 +2,27 @@
   <div class="card-header">
     <h3>Create a new Work File</h3>
 
-    <div class="tab-slider-tabs">
-      <span class="tab" [class.active]="viewMode == 'newFileTab'" rel="newFileTab" (click)="viewMode ='newFileTab'">New file</span>
-      <span class="tab" [class.active]="viewMode == 'addressSearchTab'" rel="addressSearchTab" (click)="viewMode ='addressSearchTab'"><span class="far fa-search"></span> Address</span>
-      <span class="tab" [class.active]="viewMode == 'mlsSearchTab'" rel="mlsSearchTab" (click)="viewMode ='mlsSearchTab'"><span class="far fa-search"></span> MLS</span>
-      <span class="tab" [class.active]="viewMode == 'apnSearchTab'" rel="apnSearchTab" (click)="viewMode ='apnSearchTab'"><span class="far fa-search"></span> APN</span>
-    </div>
+    <ul class="nav nav-tabs">
+      <li class="tab">
+        <a href="#newFileTab" class="active" data-toggle="tab">New file</a>
+      </li>
+      <li class="tab">
+        <a href="#addressSearchTab" data-toggle="tab"><span class="far fa-search"></span> Address</a>
+      </li>
+      <li class="tab">
+        <a href="#mlsSearchTab" data-toggle="tab"><span class="far fa-search"></span> MLS</a>
+      </li>
+      <li class="tab">
+        <a href="#apnSearchTab" data-toggle="tab"><span class="far fa-search"></span> APN</a>
+      </li>
+    </ul>
+
   </div>
   <div class="card-body">
 
-    <div class="tab-slider-container" [ngSwitch]="viewMode">
+    <div class="tab-content tab-slider-container">
 
-      <div id="newFileTab" *ngSwitchCase="'newFileTab'" class="new-file {{readyToDrop == true ? 'drop' : ''}}" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="doneDropping($event)">
+      <div id="newFileTab" class="tab-pane active new-file {{readyToDrop == true ? 'drop' : ''}}" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="doneDropping($event)">
 
         <form id="newFileForm" [formGroup]="newFileForm">
           <div class="form-group">
@@ -32,10 +41,6 @@
                 Select your appraisal type
                 <span class="required" *ngIf="(newFileForm.controls['formType'].invalid && newFileForm.controls['formType'].touched)">required</span>
               </label>
-              <!--<select formControlName="formType" [value]="1004">
-                <option id="1004">1004 URAR - UAD</option>
-                <option id="1073">1073</option>
-              </select>-->
               <select formControlName="formType">
                 <option *ngFor="let type of appraisalFormTypes" [ngValue]="type.value">{{type.text}}</option>
               </select>
@@ -83,160 +88,23 @@
 
         </form>
 
-        <!--<div class="input-group">
-          <label>This will be a </label>
-          <select name="formType">
-            <option id="1004">1004 URAR - UAD</option>
-            <option id="1073">1073</option>
-          </select>
-          <label> appraisal.  I will be exporting to</label>
-          <div class="form-vendor"><i>a la mode</i> <span class="change">[change]</span></div>.
-          <label>The name/number of this file will be </label>
-          <input type="text" name="fileName" />
-        </div>-->
+      </div>
+
+      <div id="addressSearchTab" class="tab-pane search-forms">
+
+        <app-address-search #addressSearch (resultsEvent)="onAddressResults($event)" (showResultsEvent)="showResults($event)" (clearAllSearchesEvent)="clearSearchResults($event)"></app-address-search>
 
       </div>
 
-      <div id="addressSearchTab" class="search-forms" *ngSwitchCase="'addressSearchTab'">
-        <h4>Start a new file by retrieving subject property info</h4>
+      <div id="mlsSearchTab" class="tab-pane search-forms">
 
-        <form id="addressSearchForm" [formGroup]="addressSearchForm" #addressSearch="ngForm">
-          <div class="form-row">
-            <div class="form-group col-7">
-              <label for="address">
-                Address
-                <span class="required" *ngIf="(addressSearchForm.controls['address'].invalid && addressSearchForm.controls['address'].touched)">required</span>
-              </label>
-              <input type="text" placeholder="123 Somewhere Ave" formControlName="address" />
-            </div>
-            <div class="form-group col">
-              <label for="city">
-                City
-              </label>
-              <input type="text" placeholder="Springfield" formControlName="city" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-4">
-              <label for="county">
-                County
-                <span class="required" *ngIf="(addressSearchForm.controls['county'].invalid && addressSearchForm.controls['county'].touched)">required</span>
-              </label>
-              <select formControlName="county">
-                <!--<option *ngFor="let county of countiesJson" [ngValue]="county.CountyName">{{county.CountyName}}</option>-->
-                <option *ngFor="let county of countiesJsonAddressSearch" [ngValue]="county.CountyName">{{county.CountyName}}</option>
-              </select>
-            </div>
-            <div class="form-group col">
-              <label for="state">
-                State
-                <span class="required" *ngIf="(addressSearchForm.controls['state'].invalid && addressSearchForm.controls['state'].touched)">required</span>
-              </label>
-              <select formControlName="state">
-                <option *ngFor="let state of stateJson " [ngValue]="state.Abbreviation">{{state.State}}</option>
-              </select>
-            </div>
-            <div class="form-group col">
-              <label for="zip">
-                Zip
-              </label>
-              <input type="text" placeholder="12345" formControlName="zip" />
-            </div>
-          </div>
-          <div class="submit search">
-            <button type="button" class="btn btn-link btn-sm show-results" (click)="showResults()" *ngIf="hasSearchResultsAddress">
-              show search results
-            </button>
-
-            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(addressSearchForm)" [disabled]="isFormSearching(addressSearchForm)">
-              <span class="fal fa-search" *ngIf="!isFormSearching(addressSearchForm)"></span>
-              <span *ngIf="!isFormSearching(addressSearchForm)">Search</span>
-              <span class="far fa-spinner fa-pulse spinner" *ngIf="isFormSearching(addressSearchForm)"></span>
-              <span *ngIf="isFormSearching(addressSearchForm)">Searching...</span>
-            </button>
-          </div>
-        </form>
-
+        <app-mls-search #mlsSearch (resultsEvent)="onMlsResults($event)" (showResultsEvent)="showResults($event)" (clearAllSearchesEvent)="clearSearchResults($event)"></app-mls-search>
 
       </div>
 
-      <div id="mlsSearchTab" class="search-forms" *ngSwitchCase="'mlsSearchTab'">
-        <h4>Start a new file by retrieving subject property info</h4>
+      <div id="apnSearchTab" class="tab-pane search-forms">
 
-        <form id="mlsSearchForm" [formGroup]="mlsSearchForm">
-
-          <div class="form-group">
-            <label for="mlsNumber">
-              MLS Number
-              <span class="required" *ngIf="(mlsSearchForm.controls['mlsNumber'].invalid && mlsSearchForm.controls['mlsNumber'].touched)">required</span>
-            </label>
-            <input type="text" placeholder="MLS Number" formControlName="mlsNumber" />
-          </div>
-          <div class="submit search">
-            <button type="button" class="btn btn-link btn-sm show-results" (click)="showResults()" *ngIf="hasSearchResultsMls">
-              show search results
-            </button>
-
-            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(mlsSearchForm)" [disabled]="isFormSearching(mlsSearchForm)">
-              <span class="fal fa-search" *ngIf="!isFormSearching(mlsSearchForm)"></span>
-              <span *ngIf="!isFormSearching(mlsSearchForm)">Search</span>
-              <span class="far fa-spinner fa-pulse spinner" *ngIf="isFormSearching(mlsSearchForm)"></span>
-              <span *ngIf="isFormSearching(mlsSearchForm)">Searching...</span>
-            </button>
-          </div>
-
-        </form>
-
-      </div>
-
-      <div id="apnSearchTab" class="search-forms" *ngSwitchCase="'apnSearchTab'">
-        <h4>Start a new file by retrieving subject property info</h4>
-
-        <form id="apnSearchForm" [formGroup]="apnSearchForm">
-
-          <div class="form-group">
-            <label for="apnNumber">
-              APN Number
-              <span class="required" *ngIf="(apnSearchForm.controls['apnNumber'].invalid && apnSearchForm.controls['apnNumber'].touched)">required</span>
-            </label>
-            <input type="text" placeholder="APN Number" formControlName="apnNumber" />
-          </div>
-          <div class="form-row">
-            <div class="form-group col-5">
-              <label for="state">
-                State
-                <span class="required" *ngIf="(apnSearchForm.controls['state'].invalid && apnSearchForm.controls['state'].touched)">required</span>
-              </label>
-              <select formControlName="state">
-                <option *ngFor="let state of stateJson" [ngValue]="state.Abbreviation">{{state.State}}</option>
-              </select>
-            </div>
-            <div class="form-group col">
-              <label for="county">
-                County
-                <span class="required" *ngIf="(apnSearchForm.controls['county'].invalid && apnSearchForm.controls['county'].touched)">required</span>
-              </label>
-              <select formControlName="county">
-                <!--<option *ngFor="let county of countiesJson" [ngValue]="county.CountyName">{{county.CountyName}}</option>-->
-                <option *ngFor="let county of countiesJsonApnSearch" [ngValue]="county.CountyName">{{county.CountyName}}</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="submit search">
-            <button type="button" class="btn btn-link btn-sm show-results" (click)="showResults()" *ngIf="hasSearchResultsApn">
-              show search results
-            </button>
-
-            <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(apnSearchForm)" [disabled]="isFormSearching(apnSearchForm)">
-              <span class="fal fa-search" *ngIf="!isFormSearching(apnSearchForm)"></span>
-              <span *ngIf="!isFormSearching(apnSearchForm)">Search</span>
-              <span class="far fa-spinner fa-pulse spinner" *ngIf="isFormSearching(apnSearchForm)"></span>
-              <span *ngIf="isFormSearching(apnSearchForm)">Searching...</span>
-            </button>
-          </div>
-
-        </form>
+        <app-apn-search #apnSearch (resultsEvent)="onApnResults($event)" (showResultsEvent)="showResults($event)" (clearAllSearchesEvent)="clearSearchResults($event)"></app-apn-search>
 
       </div>
 

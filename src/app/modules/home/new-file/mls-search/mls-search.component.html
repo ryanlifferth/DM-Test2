@@ -1,0 +1,26 @@
+
+<h4>Start a new file by retrieving subject property info</h4>
+
+<form id="mlsSearchForm" [formGroup]="mlsSearchForm">
+
+  <div class="form-group">
+    <label for="mlsNumber">
+      MLS Number
+      <span class="required" *ngIf="(mlsSearchForm.controls['mlsNumber'].invalid && mlsSearchForm.controls['mlsNumber'].touched)">required</span>
+    </label>
+    <input type="text" placeholder="MLS Number" formControlName="mlsNumber" />
+  </div>
+  <div class="submit search">
+    <button type="button" class="btn btn-link btn-sm show-results" (click)="showResults()" *ngIf="hasSearchResultsMls">
+      show search results
+    </button>
+
+    <button type="submit" class="btn btn-primary btn-search" (click)="searchValidate(mlsSearchForm)" [disabled]="isFormSearching(mlsSearchForm)">
+      <span class="fal fa-search" *ngIf="!isFormSearching(mlsSearchForm)"></span>
+      <span *ngIf="!isFormSearching(mlsSearchForm)">Search</span>
+      <span class="far fa-spinner fa-pulse spinner" *ngIf="isFormSearching(mlsSearchForm)"></span>
+      <span *ngIf="isFormSearching(mlsSearchForm)">Searching...</span>
+    </button>
+  </div>
+
+</form>

@@ -34,6 +34,9 @@ import { SubjectSearchComponent } from './modules/subject/subject-search/subject
 import { SummaryComponent } from './modules/summary/summary.component';
 
 import { NgbDateCustomParserFormatter } from './core/formatter/ngb-date-parser-formatter';
+import { MlsSearchComponent } from './modules/home/new-file/mls-search/mls-search.component';
+import { ApnSearchComponent } from './modules/home/new-file/apn-search/apn-search.component';
+import { AddressSearchComponent } from './modules/home/new-file/address-search/address-search.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { NgbDateCustomParserFormatter } from './core/formatter/ngb-date-parser-f
     ImportComponent,
     UploadComponent,
     SubjectSearchComponent,
-    SummaryComponent
+    SummaryComponent,
+    MlsSearchComponent,
+    ApnSearchComponent,
+    AddressSearchComponent
   ],
   imports: [
     BrowserModule,
