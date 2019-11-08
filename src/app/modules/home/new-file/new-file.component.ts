@@ -42,9 +42,9 @@ export class NewFileComponent implements OnInit {
   //countiesJsonApnSearch: any;
 
   //@ViewChild(AddressSearchComponent) addressSearchChild: AddressSearchComponent;  // This should work, but doesn't
-  @ViewChild('addressSearch') addressSearchChild: AddressSearchComponent;       // It works when defined like this, where 'addressSearch' is a var on the html element
-  @ViewChild('apnSearch') apnSearchChild;
-  @ViewChild('mlsSearch') mlsSearchChild;
+  @ViewChild('addressSearch', { static: true }) addressSearchChild: AddressSearchComponent;       // It works when defined like this, where 'addressSearch' is a var on the html element
+  @ViewChild('apnSearch', { static: true }) apnSearchChild;
+  @ViewChild('mlsSearch', { static: true }) mlsSearchChild;
 
   @Input('newFileForm') newFileForm: FormGroup;
 

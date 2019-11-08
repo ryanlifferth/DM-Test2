@@ -113,6 +113,7 @@
     <!-- Modal -->
     <div class="modal fade" id="searchResultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
+        <!-- class="... modal-dialog-scrollable" -->
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Property Search Results</h5>
@@ -133,8 +134,8 @@
                     {{result.address.city}}, {{result.address.state}}  {{result.address.zip}}
                   </span>
                 </div>
-                <div class="ids" *ngIf="result.apn">{{result.apn}} <span class="label">apn</span></div>
-                <div class="ids" *ngIf="result.mlsNumber">{{result.mlsNumber}} <span class="label">mls num.</span></div>
+                <div class="ids" *ngIf="result.apn"><span class="label">apn</span> {{result.apn}}</div>
+                <div class="ids" *ngIf="result.mlsNumber"><span class="label">mls num.</span> {{result.mlsNumber}}</div>
               </div>
 
               <div class="sub-row second">
@@ -145,7 +146,9 @@
                     {{result.yearBuilt}}
                   </span>
                   <span class="item" *ngIf="result.lotSize">
-                    {{convertToAcres(result.lotSize)}}
+
+                    <!--{{convertToAcres(result.lotSize)}}-->
+                    {{result.lotSize}}
                     <span class="label">acres</span>
                   </span>
                   <span class="item">
@@ -178,6 +181,14 @@
                   </span>
                 </div>
 
+              </div>
+
+              <div class="select-this view-detail d-flex h-100" data-toggle="modal" data-target="#propertyDetailModal">
+                <span class="fal fa-list-alt fa-2x icon justify-content-center align-self-center"></span>
+                <div class="use">
+                  <span class="as">view</span>
+                  <span class="subject">detail</span>
+                </div>
               </div>
 
               <div class="select-this d-flex h-100 {{showNewFile[i] ? 'active' : ''}}" (click)="useAsSubject($event, i, selectThis)" #selectThis>
@@ -246,8 +257,19 @@
 
               </div>
 
+
             </div>
+
+            <div class="not-found" *ngIf="searchResults?.length <= 0">
+              <span class="fal fa-frown fa-5x emoji"></span>
+              <div class="err-information">
+                <div class="err-exclamation">Oh no!</div>
+                <div class="err-message">No results found.</div>
+              </div>
+            </div>
+
           </div>
+
           <!--<div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
@@ -256,6 +278,30 @@
       </div>
     </div>
 
+    <!-- Property Detail Modal -->
+    <div class="modal fade" id="propertyDetailModal" tabindex="-1" role="dialog" aria-labelledby="propertyDetailModalLabel" aria-hidden="true">
+      <div class="modal-dialog detail-modal modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="propertyDetailModalLabel">PROPERTY DETAIL</h5>
+            <span class="fal fa-print fa-lg print"></span>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </div>
+
+

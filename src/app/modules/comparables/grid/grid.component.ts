@@ -10,9 +10,9 @@ import { Comparable } from '../../../core/models/comparable';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent implements OnInit {
-  @ViewChild('subject') subjectGrid: ElementRef;
-  @ViewChild('compsContainer') compsContainer: ElementRef;
-  @ViewChild('comps') comps: ElementRef;
+  @ViewChild('subject', { static: true }) subjectGrid: ElementRef;
+  @ViewChild('compsContainer', { static: true }) compsContainer: ElementRef;
+  @ViewChild('comps', { static: true }) comps: ElementRef;
 
   compViewableAreaWidth: number = 0;
   comparables: Comparable[];

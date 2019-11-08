@@ -12,7 +12,7 @@ import { UserInfoService } from '../../core/services/user-info.service';
 })
 export class SidebarComponent implements OnInit, AfterViewChecked, AfterViewInit {
   sidebarExpanded: boolean = true;
-  @ViewChild('sideNavBar') sideNavbar: ElementRef;
+  @ViewChild('sideNavBar', { static: true }) sideNavbar: ElementRef;
   oldNavbarWidth: number = 0;
   userInfo: UserInfo;
   hasUserIcon: boolean = false;

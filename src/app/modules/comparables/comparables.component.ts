@@ -14,7 +14,7 @@ import { SidebarLogoService } from '../../core/services/sidebar-logo.service';
   styleUrls: ['./comparables.component.scss', '../../ui/header/header.component.scss']
 })
 export class ComparablesComponent implements OnInit, AfterViewInit, AfterViewChecked {
-  @ViewChild('compHeader') compHeader: ElementRef;
+  @ViewChild('compHeader', { static: true }) compHeader: ElementRef;
   oldCompHeaderWidth: number = 0;
   isActiveLink: string;
   dataSources: DataSource[];

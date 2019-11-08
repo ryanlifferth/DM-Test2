@@ -13,7 +13,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('logo') logo: ElementRef;
+  @ViewChild('logo', { static: true }) logo: ElementRef;
   //logoSrc = '/assets/images/dm-icon.svg';
   logoSrc = '/assets/images/web-logo-white.png';
   logoSrcExpanded = '/assets/images/web-logo-white.png';

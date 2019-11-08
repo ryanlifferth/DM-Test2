@@ -3,13 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\core",
     "\\src\\app\\modules",
     "\\src\\app\\modules\\home",
     "\\src\\app\\modules\\home\\new-file",
-    "\\src\\app\\modules\\home\\new-file\\address-search",
-    "\\src\\app\\modules\\home\\new-file\\apn-search",
-    "\\src\\app\\modules\\home\\new-file\\mls-search"
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\modules\\home\\new-file\\address-search\\address-search.component.html",
+  "SelectedNode": "\\src\\environments\\environment.ts",
   "PreviewInSolutionExplorer": false
 }
