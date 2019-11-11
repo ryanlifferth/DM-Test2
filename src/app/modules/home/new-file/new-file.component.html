@@ -92,19 +92,19 @@
 
       <div id="addressSearchTab" class="tab-pane search-forms">
 
-        <app-address-search #addressSearch (resultsEvent)="onAddressResults($event)" (showResultsEvent)="showResults($event)" (clearAllSearchesEvent)="clearSearchResults($event)"></app-address-search>
+        <app-address-search #addressSearch (resultsEvent)="onAddressResults($event)" (showResultsEvent)="showResults()" (clearAllSearchesEvent)="clearSearchResults()"></app-address-search>
 
       </div>
 
       <div id="mlsSearchTab" class="tab-pane search-forms">
 
-        <app-mls-search #mlsSearch (resultsEvent)="onMlsResults($event)" (showResultsEvent)="showResults($event)" (clearAllSearchesEvent)="clearSearchResults($event)"></app-mls-search>
+        <app-mls-search #mlsSearch (resultsEvent)="onMlsResults($event)" (showResultsEvent)="showResults()" (clearAllSearchesEvent)="clearSearchResults()"></app-mls-search>
 
       </div>
 
       <div id="apnSearchTab" class="tab-pane search-forms">
 
-        <app-apn-search #apnSearch (resultsEvent)="onApnResults($event)" (showResultsEvent)="showResults($event)" (clearAllSearchesEvent)="clearSearchResults($event)"></app-apn-search>
+        <app-apn-search #apnSearch (resultsEvent)="onApnResults($event)" (showResultsEvent)="showResults()" (clearAllSearchesEvent)="clearSearchResults()"></app-apn-search>
 
       </div>
 
