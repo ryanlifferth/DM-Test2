@@ -8,6 +8,7 @@ import { MlsSearchService } from '../../../core/services/mls-search.service.js';
 import { ApnSearchService } from '../../../core/services/apn-search.service.js';
 import { PropertySearchResult } from '../../../core/models/property-search-result';
 import { AddressSearchComponent } from './address-search/address-search.component.js';
+import { PropertySearchType } from '../../../core/enums/property-search-type';
 import { ApnSearchComponent } from './apn-search/apn-search.component.js';
 import { MlsSearchComponent } from './mls-search/mls-search.component.js';
 
@@ -32,6 +33,8 @@ export class NewFileComponent implements OnInit {
     selectedVendorImgAlt: string;
     readyToDrop: boolean = false;
     searching: boolean = false;
+    searchType: PropertySearchType;
+    TEMPsearchSource: string;
 
     searchResults: PropertySearchResult[];
     showNewFile: boolean[] = [];
@@ -105,6 +108,8 @@ export class NewFileComponent implements OnInit {
 
         this.searchResults = event;
         this.showResults()  // show the modal with the results
+        this.searchType = PropertySearchType.PublicRecords;
+        this.TEMPsearchSource = "CoreLogic";
     }
 
     onApnResults(event: PropertySearchResult[]) {
@@ -112,6 +117,8 @@ export class NewFileComponent implements OnInit {
 
         this.searchResults = event;
         this.showResults()  // show the modal with the results
+        this.searchType = PropertySearchType.PublicRecords;
+        this.TEMPsearchSource = "CoreLogic";
     }
 
     onMlsResults(event: PropertySearchResult[]) {
@@ -119,6 +126,8 @@ export class NewFileComponent implements OnInit {
 
         this.searchResults = event;
         this.showResults()  // show the modal with the results
+        this.searchType = PropertySearchType.MLS;
+        this.TEMPsearchSource = "UtahRealEstate.com";
     }
 
     clearSearchResults(): void {
@@ -132,6 +141,8 @@ export class NewFileComponent implements OnInit {
         this.apnSearchChild.clearSearchResults();
         this.addressSearchChild.clearSearchResults();
         this.mlsSearchChild.clearSearchResults();
+        this.searchType = null;
+        this.TEMPsearchSource = '';
     }
 
     showResults() {

@@ -282,8 +282,44 @@
     <div class="modal fade" id="propertyDetailModal" tabindex="-1" role="dialog" aria-labelledby="propertyDetailModalLabel" aria-hidden="true">
       <div class="modal-dialog detail-modal modal-lg" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="propertyDetailModalLabel">PROPERTY DETAIL</h5>
+          <div class="modal-header property-detail-header">
+            <h4 class="modal-title" id="propertyDetailModalLabel">
+              PROPERTY DETAIL
+            </h4>
+            <h5>
+              {{searchType}}
+              <span class="source-name">{{TEMPsearchSource}}</span>
+            </h5>
+
+            <span class="help fal fa-question-circle" [ngbPopover]="popHelpContent" placement="right auto" popoverClass="help-popover"></span>
+            <ng-template #popHelpContent>
+              <p>
+                The information shown on this sheet is detail from your <em>{{searchType}}</em> ({{TEMPsearchSource}}) data source.  For
+                quick reference and quick results the search you performed looks at that single data source.
+              </p>
+
+              <h6>How can I see data from all my data sources on this property?</h6>
+              <p>
+                The normal DataMaster magic happens when you use this property as a subject or comparable.  We contact
+                all your data sources (Public Records, MLS, and possibly past appraisal files) on your behalf, merge
+                that information according to your preferences, display it to you, and finally when the time is right, export
+                it to your report.
+              </p>
+              <p>
+                However, if you'd like to see a data sheet for this property with data from all your data sources, click on the "View
+                DataMaster datasheet for this property" link found on this page.  It may take a minute, but we'll reach out
+                to all of your data sources and display that for you.
+                [TBD]
+              </p>
+
+            </ng-template>
+
+            <span class="info">
+              <span class="bg">&nbsp;</span>
+              <span class="icon fas fa-info fa-xs"
+                    style=""></span>
+            </span>
+
             <span class="fal fa-print fa-lg print"></span>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>

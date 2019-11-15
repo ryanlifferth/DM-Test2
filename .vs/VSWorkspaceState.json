@@ -3,14 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\core",
     "\\src\\app\\core\\models",
     "\\src\\app\\modules",
     "\\src\\app\\modules\\home",
     "\\src\\app\\modules\\home\\new-file",
     "\\src\\app\\modules\\home\\new-file\\maps",
-    "\\src\\app\\modules\\home\\new-file\\mls-search"
+    "\\src\\app\\modules\\home\\new-file\\property-detail"
   ],
-  "SelectedNode": "\\src\\index.html",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }
