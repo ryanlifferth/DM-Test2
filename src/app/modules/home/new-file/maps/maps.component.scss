@@ -1,0 +1,53 @@
+
+
+.map-container {
+  //background-color: #e9ecef;
+  background-color: rgb(229, 227, 223);
+  border: 1px solid #000;
+  float: left;
+  height: 400px;
+  margin-right: 10px;
+  position: relative;
+  width: 425px;
+
+  .error-container {
+    position: absolute;
+    top: 0;
+  }
+}
+
+.loading {
+  color: hsla(189, 68%, 30%, .6);
+  left: 40%;
+  position: absolute;
+  top: 40%;
+}
+
+// For error element in the map (needs an absolute position)
+
+.not-found {
+  color: darkred;
+  margin: 40px auto;
+  max-width: 85%;
+
+  .emoji {
+    color: #077FAF;
+    float: left;
+    margin: 5px 20px 0
+  }
+
+  .err-exclamation {
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .err-message {
+    color: rgb(101, 119, 134);
+    font-size: 14px;
+    font-style: italic;
+    line-height: normal;
+    margin-left: 65px;
+    margin-top: -5px;
+  }
+}

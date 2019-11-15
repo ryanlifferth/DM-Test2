@@ -18,7 +18,7 @@ export class MlsSearchService {
         //return of(PROPERTYSEARCHRESULTS);    // Mock
         ////  .pipe(delay(1000));               // Pipe delay makes it mimic search/connection time
 
-        ///1505252
+        ////1505252
         const url = environment.dataMasterApi + 'datasources/Wfr/mlsSearchShallow?mlsNumbers=' + mlsNumber;
         const requestOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Controll-Allow-Origin': '*' }) };
         const results = this.http.get<PropertySearchResult[]>(url, requestOptions);

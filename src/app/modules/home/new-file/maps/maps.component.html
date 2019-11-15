@@ -1,0 +1,40 @@
+<div class="maps-collection">
+
+  <google-map width="423px" height="398px" class="map-container" [center]="center" [zoom]="zoom" [options]="options">
+    <map-marker #marker
+                [position]="markerPosition"
+                [options]="markerOptions"
+                (mapClick)="openInfoWindow(marker)"></map-marker>
+    <map-info-window>{{infoWindowContent}}</map-info-window>
+    <span class="fad fa-spinner fa-pulse fa-5x loading" *ngIf="!mapLoaded"></span>
+    <!--<span class="error-message" *ngIf="geocodeError!=''">{{geocodeError}}</span>-->
+    <span class="error-container">
+      <ng-container *ngTemplateOutlet="geocodeError!='' ? error : empty; context: {msg: geocodeError}"></ng-container>
+    </span>
+  </google-map>
+
+
+  <div id="pano" class="map-container">
+    <span class="fad fa-spinner fa-pulse fa-5x loading" *ngIf="!streetviewLoaded"></span>
+    <!--<span class="error-message" *ngIf="streetviewError!=''">{{streetviewError}}</span>-->
+    <ng-container *ngTemplateOutlet="streetviewError!='' ? error : empty; context: {msg: streetviewError}"></ng-container>
+  </div>
+
+</div>
+
+<ng-template #error let-msg="msg">
+
+  <div class="not-found">
+    <span class="fal fa-frown fa-4x emoji"></span>
+    <div class="err-information">
+      <div class="err-exclamation">Oh no!</div>
+      <div class="err-message">{{msg}}</div>
+    </div>
+  </div>
+
+</ng-template>
+
+<ng-template #empty></ng-template>
+
+
+

@@ -1,0 +1,18 @@
+
+  <div class="address-header first sub-row">
+    <div class="address">
+      <span class="address-line1">
+        {{property.address.addressLine1}}
+        <span *ngIf="property.address.addressLine2">, {{property.address.addressLine2}}</span>
+      </span>
+      <span class="address-line2">
+        {{property.address.city}}, {{property.address.state}}  {{property.address.zip}}
+      </span>
+    </div>
+    <div class="ids" *ngIf="property.apn"><span class="label">apn</span> {{property.apn}}</div>
+    <div class="ids" *ngIf="property.mlsNumber"><span class="label">mls num.</span> {{property.mlsNumber}}</div>
+  </div>
+
+<div class="maps">
+  <app-maps #maps></app-maps>
+</div>

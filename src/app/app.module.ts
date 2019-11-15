@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,51 +38,56 @@ import { NgbDateCustomParserFormatter } from './core/formatter/ngb-date-parser-f
 import { MlsSearchComponent } from './modules/home/new-file/mls-search/mls-search.component';
 import { ApnSearchComponent } from './modules/home/new-file/apn-search/apn-search.component';
 import { AddressSearchComponent } from './modules/home/new-file/address-search/address-search.component';
+import { MapsComponent } from './modules/home/new-file/maps/maps.component';
+import { PropertyDetailComponent } from './modules/home/new-file/property-detail/property-detail.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    FilesComponent,
-    FilesMapComponent,
-    NewsComponent,
-    HeaderComponent,
-    FooterComponent,
-    SidebarComponent,
-    NewFileComponent,
-    AnalyticsComponent,
-    ComparablesComponent,
-    AddendaComponent,
-    CompDeedsComponent,
-    GridComponent,
-    MapComponent,
-    MarketConditionsComponent,
-    GraphsComponent,
-    McDetailComponent,
-    ReportComponent,
-    SubjectComponent,
-    SubjectDetailComponent,
-    SubjectDeedsComponent,
-    ImportComponent,
-    UploadComponent,
-    SubjectSearchComponent,
-    SummaryComponent,
-    MlsSearchComponent,
-    ApnSearchComponent,
-    AddressSearchComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    AgmCoreModule.forRoot({ apiKey: 'AIzaSyAs_Y6kGdxcrtXwIaNvaexYCMsiw4o22i0' }),
-    NgbModule
-  ],
-  providers: [
-    { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        FilesComponent,
+        FilesMapComponent,
+        NewsComponent,
+        HeaderComponent,
+        FooterComponent,
+        SidebarComponent,
+        NewFileComponent,
+        AnalyticsComponent,
+        ComparablesComponent,
+        AddendaComponent,
+        CompDeedsComponent,
+        GridComponent,
+        MapComponent,
+        MarketConditionsComponent,
+        GraphsComponent,
+        McDetailComponent,
+        ReportComponent,
+        SubjectComponent,
+        SubjectDetailComponent,
+        SubjectDeedsComponent,
+        ImportComponent,
+        UploadComponent,
+        SubjectSearchComponent,
+        SummaryComponent,
+        MlsSearchComponent,
+        ApnSearchComponent,
+        AddressSearchComponent,
+        MapsComponent,
+        PropertyDetailComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        AgmCoreModule.forRoot({ apiKey: 'AIzaSyAs_Y6kGdxcrtXwIaNvaexYCMsiw4o22i0' }),
+        NgbModule,
+        GoogleMapsModule
+    ],
+    providers: [
+        { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,31 @@
+.maps-collection {
+  display: table;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.address-header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 20px 5px 0;
+  width: 100%;
+
+  .address {
+    flex: 4;
+    .address-line1 {
+      font-size: 28px;
+    }
+
+    .address-line2 {
+      font-size: 17px;
+    }
+
+  }
+
+  .ids {
+    flex: 2;
+    margin-top: 17px;
+    text-align: right;
+  }
+
+}

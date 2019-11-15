@@ -12,6 +12,8 @@ import { PropertySearchResult } from '../../../../core/models/property-search-re
   encapsulation: ViewEncapsulation.None  // TODO: shared CSS not working without this - not sure why
 })
 export class MlsSearchComponent implements OnInit {
+    // Test MLS: 1505252
+
 
   searchResults: PropertySearchResult[];
   searching: boolean = false;

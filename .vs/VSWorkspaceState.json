@@ -4,11 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\core",
+    "\\src\\app\\core\\models",
     "\\src\\app\\modules",
     "\\src\\app\\modules\\home",
     "\\src\\app\\modules\\home\\new-file",
-    "\\src\\environments"
+    "\\src\\app\\modules\\home\\new-file\\maps",
+    "\\src\\app\\modules\\home\\new-file\\mls-search"
   ],
-  "SelectedNode": "\\package-lock.json",
+  "SelectedNode": "\\src\\index.html",
   "PreviewInSolutionExplorer": false
 }

@@ -183,7 +183,7 @@
 
               </div>
 
-              <div class="select-this view-detail d-flex h-100" data-toggle="modal" data-target="#propertyDetailModal">
+              <div class="select-this view-detail d-flex h-100" data-toggle="modal" data-target="#propertyDetailModal" (click)="initDetail(result)">
                 <span class="fal fa-list-alt fa-2x icon justify-content-center align-self-center"></span>
                 <div class="use">
                   <span class="as">view</span>
@@ -289,8 +289,12 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            ...
+          <div class="modal-body search-detail-modal">
+
+
+            <app-property-detail #propertyDetail></app-property-detail>
+
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
