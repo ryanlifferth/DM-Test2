@@ -3,12 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\core\\models",
+    "\\src\\app\\core",
+    "\\src\\app\\core\\enums",
     "\\src\\app\\modules",
     "\\src\\app\\modules\\home",
     "\\src\\app\\modules\\home\\new-file",
-    "\\src\\app\\modules\\home\\new-file\\maps",
-    "\\src\\app\\modules\\home\\new-file\\property-detail"
+    "\\src\\app\\modules\\home\\new-file\\property-detail",
+    "\\src\\assets",
+    "\\src\\assets\\style"
   ],
   "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false

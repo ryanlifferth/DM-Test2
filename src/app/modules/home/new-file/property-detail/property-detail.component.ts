@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
 import { PropertySearchResult } from '../../../../core/models/property-search-result';
 import { Address } from '../../../../core/models/address';
+import { PropertySearchType } from '../../../../core/enums/property-search-type';
+import { environment } from '../../../../../environments/environment.prod';
 
 @Component({
     selector: 'app-property-detail',
@@ -11,6 +13,9 @@ import { Address } from '../../../../core/models/address';
 export class PropertyDetailComponent implements OnInit {
 
     @ViewChild('maps', { static: true }) mapsChild;
+    @Input() searchType: PropertySearchType;
+
+    mainMlsImg: string;
 
     property: PropertySearchResult;
 
@@ -28,6 +33,13 @@ export class PropertyDetailComponent implements OnInit {
         this.property = result;
 
         this.mapsChild.loadGoogleMap(this.formatAddress(result.address));
+
+        // Get the mls path, if this is an MLS search result and if there is a path in the results
+        if (this.property.propertyFields !== undefined) {
+            if (this.property.propertyFields['image'] !== null) {
+                this.mainMlsImg = this.searchType === PropertySearchType.MLS ? environment.mlsWfrImagePath + this.property.propertyFields['image'] : null;
+            }
+        }
     }
 
     formatAddress(address: Address): string {

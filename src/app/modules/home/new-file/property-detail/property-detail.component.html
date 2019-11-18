@@ -13,6 +13,13 @@
     <div class="ids" *ngIf="property.mlsNumber"><span class="label">mls num.</span> {{property.mlsNumber}}</div>
   </div>
 
-<div class="maps">
-  <app-maps #maps></app-maps>
+<div [ngClass]="mainMlsImg !== null ? 'maps mls' : 'maps'">
+  <img src="{{mainMlsImg}}" *ngIf="mainMlsImg !== null" />
+  <app-maps #maps [searchType]="searchType"></app-maps>
 </div>
+
+<!--<div class="maps">
+  <app-maps #maps></app-maps>
+</div>-->
+
+

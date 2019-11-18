@@ -3,6 +3,7 @@ import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
 
 import { PropertySearchResult } from '../../../../core/models/property-search-result';
 import { Address } from '../../../../core/models/address';
+import { PropertySearchType } from '../../../../core/enums/property-search-type';
 
 @Component({
     selector: 'app-maps',
@@ -14,11 +15,13 @@ export class MapsComponent implements OnInit {
     //@ViewChild(GoogleMap, { static: false }) map: GoogleMap;
     @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow;
     @ViewChild(MapMarker, { static: false }) marker: MapMarker;
+    @Input() searchType: PropertySearchType;
 
     mapLoaded: boolean = false;
     geocodeError: string = '';
     streetviewLoaded: boolean = false;
     streetviewError: string = '';
+    showMlsImg: boolean = false;
 
     geocoder = new google.maps.Geocoder();
     center: google.maps.LatLng;// = { lat: 24, lng: 12 };
@@ -54,6 +57,7 @@ export class MapsComponent implements OnInit {
         this.streetviewLoaded = false;
         this.geocodeError = '';
         this.streetviewError = '';
+        this.showMlsImg = this.searchType === PropertySearchType.MLS ? true : false;
 
         this.geocoder.geocode({
             'address': address

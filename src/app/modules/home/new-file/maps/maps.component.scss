@@ -1,18 +1,39 @@
+.maps-collection {
+  flex: 1;
+  margin: 0;
+}
 
+.maps-collection {
 
-.map-container {
-  //background-color: #e9ecef;
-  background-color: rgb(229, 227, 223);
-  border: 1px solid #000;
-  float: left;
-  height: 400px;
-  margin-right: 10px;
-  position: relative;
-  width: 425px;
+  .map-container {
+    //background-color: #e9ecef;
+    background-color: rgb(229, 227, 223);
+    border: 1px solid #000;
+    float: left;
+    height: 400px;
+    margin-right: 10px;
+    position: relative;
+    //width: 425px;
+    width: 475px;
 
-  .error-container {
-    position: absolute;
-    top: 0;
+    .error-container {
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  &.mls {
+    margin: 0;
+
+    .map-container {
+      height: 209px;
+      width: 400px;
+      margin: 0 0 5px 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 

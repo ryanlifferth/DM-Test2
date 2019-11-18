@@ -1,8 +1,4 @@
-.maps-collection {
-  display: table;
-  margin: 0 auto;
-  margin-top: 15px;
-}
+
 
 .address-header {
   display: flex;
@@ -28,4 +24,28 @@
     text-align: right;
   }
 
+}
+
+.maps-collection {
+  display: table;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.maps {
+  margin: 0;
+
+  &.mls {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+
+    img {
+      border: 1px solid #000;
+      height: 422px;
+      width: 565px;
+    }
+
+    
+  }
 }

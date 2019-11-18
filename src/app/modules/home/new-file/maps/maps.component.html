@@ -1,6 +1,11 @@
-<div class="maps-collection">
+<div class="maps-collection {{showMlsImg ? 'mls' : null}}">
 
-  <google-map width="423px" height="398px" class="map-container" [center]="center" [zoom]="zoom" [options]="options">
+  <google-map width="{{showMlsImg ? '398px' : '473px'}}"
+              height="{{showMlsImg ? '207px' : '398px'}}"
+              class="map-container"
+              [center]="center"
+              [zoom]="zoom"
+              [options]="options">
     <map-marker #marker
                 [position]="markerPosition"
                 [options]="markerOptions"
