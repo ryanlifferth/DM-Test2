@@ -18,6 +18,7 @@ export class PropertyDetailComponent implements OnInit {
     mainMlsImg: string;
 
     property: PropertySearchResult;
+    propertyFields: Map<string, string> = new Map<string, string>();
 
     constructor() { }
 
@@ -31,6 +32,7 @@ export class PropertyDetailComponent implements OnInit {
     initPropertyDetail(result: PropertySearchResult) {
 
         this.property = result;
+        this.propertyFields = result.propertyFields;
 
         this.mapsChild.loadGoogleMap(this.formatAddress(result.address));
 

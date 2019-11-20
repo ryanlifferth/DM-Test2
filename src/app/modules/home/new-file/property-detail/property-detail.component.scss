@@ -8,6 +8,7 @@
 
   .address {
     flex: 4;
+
     .address-line1 {
       font-size: 24px;
     }
@@ -15,7 +16,6 @@
     .address-line2 {
       font-size: 17px;
     }
-
   }
 
   .ids {
@@ -23,7 +23,6 @@
     margin-top: 17px;
     text-align: right;
   }
-
 }
 
 .maps-collection {
@@ -45,7 +44,27 @@
       height: 422px;
       width: 565px;
     }
-
-    
   }
 }
+
+
+.detail-row {
+
+  .info {
+    font-size: 18px;
+    margin-right: 40px;
+
+    .item {
+
+      .label {
+        font-size: 16px;
+      }
+
+      &:last-child {
+        margin-top: 12px;
+      }
+    }
+  }
+}
+
+

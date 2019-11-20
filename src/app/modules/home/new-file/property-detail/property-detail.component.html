@@ -18,8 +18,73 @@
   <app-maps #maps [searchType]="searchType"></app-maps>
 </div>
 
-<!--<div class="maps">
-  <app-maps #maps></app-maps>
-</div>-->
 
+<div class="detail-row details">
 
+  <div class="info">
+    <ng-container *ngTemplateOutlet="property.yearBuilt !== null ? detailItemPreLabel : empty; context: {label: 'built in', detail: property.yearBuilt}"></ng-container>
+
+    <ng-container *ngTemplateOutlet="property.squareFeet !== null ? detailItem : empty; context: {label: 'sq. ft.', detail: property.squareFeet}"></ng-container>
+
+    <ng-container *ngTemplateOutlet="property.lotSize !== null ? detailItem : empty; context: {label: 'acres', detail: property.lotSize}"></ng-container>
+
+  </div>
+
+  <div class="info">
+    <ng-container *ngTemplateOutlet="property.bedroomCount !== null ? detailItemIcon : empty; context: {label: 'bedrooms', detail: property.bedroomCount, iconClass: 'fa-bed'}"></ng-container>
+
+    <ng-container *ngTemplateOutlet="property.bathroomCount !== null ? detailItemIcon : empty; context: {label: 'bathrooms', detail: property.bathroomCount, iconClass: 'fa-bath'}"></ng-container>
+  </div>
+
+  <div class="info">
+    <ng-container *ngTemplateOutlet="property.type !== null ? detailItemIcon : empty; context: {label: '', detail: property.type, iconClass: 'fa-building'}"></ng-container>
+
+    <ng-container *ngTemplateOutlet="property.style  !== null ? detailItemIcon : empty; context: {label: '', detail: property.style, iconClass: 'fa-home'}"></ng-container>
+  </div>
+
+  <div class="info">
+    <ng-container *ngTemplateOutlet="propertyFields['aircon'] !== undefined ? detailItemIcon : empty; context: {label: '', detail: propertyFields['aircon'], iconClass: 'fa-temperature-frigid'}"></ng-container>
+
+    <ng-container *ngTemplateOutlet="propertyFields['heating'] !== undefined ? detailItemIcon : empty; context: {label: '', detail: propertyFields['heating'], iconClass: 'fa-temperature-hot'}"></ng-container>
+  </div>
+
+  <div class="info">
+
+    <ng-container *ngTemplateOutlet="propertyFields['capgarage'] !== undefined ? detailItemIcon : empty; context: {label: 'car', detail: propertyFields['capgarage'], iconClass: 'fa-parking'}"></ng-container>
+
+    <span class="item">&nbsp;</span>
+
+  </div>
+
+</div>
+
+<ng-template #detailItemPreLabel let-label="label" let-detail="detail">
+
+  <span class="item">
+    <span class="label">{{label}}</span>
+    {{detail}}
+  </span>
+
+</ng-template>
+
+<ng-template #detailItem let-label="label" let-detail="detail">
+
+  <span class="item">
+    {{detail}}
+    <span class="label">{{label}}</span>
+  </span>
+
+</ng-template>
+
+<ng-template #detailItemIcon let-label="label" let-detail="detail" let-iconClass="iconClass">
+
+  <span class="item">
+    <span class="fal {{iconClass}} fa-lg icon"></span>
+    {{detail}}
+    <span class="label">{{label}}</span>
+  </span>
+
+</ng-template>
+
+<ng-template #empty>
+</ng-template>

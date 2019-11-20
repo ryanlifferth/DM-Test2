@@ -18,7 +18,7 @@ export class ApnSearchService {
         //.pipe(delay(1000));               // Pipe delay makes it mimic search/connection time
 
         const url = environment.dataMasterApi + 'datasources/CoreLogic/apnSearchShallow?apn=' + apn + '&county=' + county + '&state=' + state;
-        const requestOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Controll-Allow-Origin': '*' }) };
+        const requestOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*'}) };
         const results = this.http.get<PropertySearchResult[]>(url, requestOptions);
         return results;
 

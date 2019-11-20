@@ -20,7 +20,7 @@ export class MlsSearchService {
 
         ////1505252
         const url = environment.dataMasterApi + 'datasources/Wfr/mlsSearchShallow?mlsNumbers=' + mlsNumber;
-        const requestOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Controll-Allow-Origin': '*' }) };
+        const requestOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*' }) };
         const results = this.http.get<PropertySearchResult[]>(url, requestOptions);
         return results;
 
