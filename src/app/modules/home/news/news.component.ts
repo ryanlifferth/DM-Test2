@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, LOCALE_ID, Input } from '@angular/core';
+import { Component, OnInit, Inject, LOCALE_ID, Input, Output, EventEmitter } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -14,6 +14,10 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./news.component.scss', '../home.component.scss']
 })
 export class NewsComponent implements OnInit {
+
+  @Output() toggleNewsEvent = new EventEmitter<string>();
+  toggleIcon: string = "up";
+  newsDisplayClass: string;
   newsFeed: NewsFeed[];       // This is the object straight from the API
   items: Item[];      // This is the new "flattened" article feed that combines all articles from each rss channel
   articlesToShow: number;
@@ -27,6 +31,17 @@ export class NewsComponent implements OnInit {
 
     this.getNewsFeed();
 
+  }
+
+  toggleNewsPanel() {
+    // Change the toggle icon
+    this.toggleIcon = this.toggleIcon === 'down' ? 'up' : 'down';
+
+    // Hide the body
+    this.newsDisplayClass = this.newsDisplayClass === 'd-none' ? '' : 'd-none';
+
+    // Notify the parent (CSS changes needed there too)
+    this.toggleNewsEvent.emit('toggled');
   }
 
   getNewsFeed(): void {

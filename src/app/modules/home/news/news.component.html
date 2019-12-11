@@ -1,8 +1,12 @@
-<div class="card">
-  <div class="card-header">
+<div class="news">
+
+  <div class="news-header">
     <h3>Appraisal News</h3>
+
+    <span class="fas fa-chevron-{{toggleIcon}} fa-xs toggle" (click)="toggleNewsPanel()"></span>
   </div>
-  <div class="card-body">
+
+  <div class="news-body {{newsDisplayClass}}">
 
 
     <div class="news-container">
@@ -23,6 +27,7 @@
     <span class="show-more" (click)="showMoreArticles()" *ngIf="this.articlesToShow < this.items?.length">Load more articles...</span>
 
   </div>
+
 </div>
 
 <ng-template #loading>

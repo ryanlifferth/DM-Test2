@@ -3,14 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\core",
-    "\\src\\app\\core\\services",
     "\\src\\app\\modules",
     "\\src\\app\\modules\\home",
-    "\\src\\app\\modules\\home\\new-file",
-    "\\src\\app\\modules\\home\\new-file\\maps",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\core\\services\\mls-search.service.ts",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

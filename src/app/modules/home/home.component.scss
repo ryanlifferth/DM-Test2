@@ -1,12 +1,17 @@
 $news-widget-width: 335px;
 
-.news {
+.news-app {
   //bottom: 0;
   height: 100%;
   position: absolute;
   right: 0;
   top: 0;
   width: $news-widget-width;
+  z-index: 100;
+
+  &.news-toggled {
+    height: auto;
+  }
 }
 
 
@@ -18,6 +23,10 @@ $news-widget-width: 335px;
   margin-right: $news-widget-width; // the width of the news widget
   padding: 1% 0;
   position: relative;
+
+  &.news-toggled {
+    margin-right: 20px;
+  }
 
   .my-row {
     padding: 0 1%;

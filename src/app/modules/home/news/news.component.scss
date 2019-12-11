@@ -1,20 +1,32 @@
 @import 'variables';
 
-.card {
+.news {
   height: 100%;
   margin-top: 0px;
   margin-bottom: $footer-height;
+  border: none;
   border-radius: 0;
   box-shadow: none !important;
   border-left: 1px solid rgba(16, 42, 67, 0.2) !important;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: #fff;
 
   &.top-margin {
     margin-top: 15px !important;
   }
 
-  .card-header {
+  .news-header {
     border-bottom: 1px solid rgba(0,0,0,.125);
+    background-color: transparent;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    padding-bottom: 0;
     padding-left: 12px;
+    padding-top: 0.50rem;
     position: relative !important;
     display: block;
     //position: fixed !important;
@@ -23,18 +35,40 @@
 
     h3 {
       //margin: 4px 0 12px;
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      font-weight: 500;
     }
+
+    .toggle {
+        color: #0C6288;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 11px;
+
+        &:hover {
+            color: #2680c2;
+        }
+    }
+
   }
 
-  .card-body {
+  .news-body {
     //margin-top: 38px;  // Only need if header is "fixed"
     min-height: 100px;
     overflow: auto;
 
+
+
     .news-container {
       /*max-height: 350px;
       overflow-y: scroll;*/
-      margin: 0 0 7px;
+      //margin: 0 0 7px;
+      margin: 0;
 
       .news-item {
         //border-left: 1px solid rgba(128, 128, 128, .2);
@@ -191,4 +225,5 @@
       }
     }
   }
+
 }

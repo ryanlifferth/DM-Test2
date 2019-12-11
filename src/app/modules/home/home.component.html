@@ -1,9 +1,9 @@
-<div class="news">
-  <app-news></app-news>
+<div class="news-app {{newsToggleStateClass}}">
+  <app-news #news (toggleNewsEvent)="onToggleNews($event)"></app-news>
 </div>
 
 
-<div class="home-cards">
+<div class="home-cards {{newsToggleStateClass}}">
   <div class="my-row">
     <div class="my-col left-col" style="flex: 2;">
 
