@@ -10,4 +10,9 @@
   <input type="file" class="file-input" id="mlsFileInput" style="display: none;" />
   <!--<input type="file" class="file-input" id="mlsFileInput" accept="text/plain, .csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .wfr, .dm" style="display: none;" />-->
 
+  <a href="#" (click)="resetMlsFile($event)" class="remove" *ngIf="mlsFile">
+    <span class="fal fa-times-circle close-icon"></span>
+    <span class="text">remove file</span>
+  </a>
+
 </div>

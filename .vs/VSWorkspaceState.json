@@ -3,7 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\core\\validators",
     "\\src\\app\\modules",
+    "\\src\\app\\modules\\common\\file-upload",
     "\\src\\app\\modules\\home",
     "\\src\\environments"
   ],

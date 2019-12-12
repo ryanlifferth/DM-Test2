@@ -13,6 +13,11 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     }
   ]
 })
+
+  ///
+  /// This approach comes from this site
+  /// https://netbasal.com/how-to-implement-file-uploading-in-angular-reactive-forms-89a3fffa1a03
+  ///
 export class FileUploadComponent implements OnInit, ControlValueAccessor {
   readyToDrop: boolean = false;
   onChange: Function;
@@ -72,14 +77,13 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
     this.onChange(file);
     //const file = e && e.item(0);
     this.mlsFile = file;
+  }
 
-    //this.newFileForm.controls['fileName'].setValue(e.dataTransfer.files[0].name);
-    //this.newFileForm.controls['mlsFileUpload'].setValue(e.dataTransfer.files[0].name);
-    //this.newFileForm.controls['mlsFileUpload'].files = e.dataTransfer.files;
+  resetMlsFile(e) {
+    e.preventDefault();
 
-    //this.handleFiles(e.dataTransfer.files[0]);
-    //document.querySelector('.file-upload').files = e.dataTransfer.files;  // this is a hack and it throws a TS error - but it works
-
+    this.host.nativeElement.value = '';
+    this.mlsFile = null;
   }
 
 }
