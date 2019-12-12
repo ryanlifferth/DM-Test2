@@ -22,69 +22,82 @@
 
     <div class="tab-content tab-slider-container">
 
-      <div id="newFileTab" class="tab-pane active new-file {{readyToDrop == true ? 'drop' : ''}}" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="doneDropping($event)">
+      <div id="newFileTab" class="tab-pane active new-file">
 
         <form id="newFileForm" [formGroup]="newFileForm">
-          <div class="form-group">
-            <label for="fileName">
-              Enter your file name/number
-              <span class="required" *ngIf="(newFileForm.controls['fileName'].invalid && newFileForm.controls['fileName'].touched)">required</span>
-            </label>
-            <input type="text" placeholder="file name/number" formControlName="fileName" />
-            <a href="#" onclick="return false;" class="create-file-name">[create one for me]</a>
-            <!--<small class="form-text text-muted">That's ok if you don't have one, we can create one for you.</small>-->
-          </div>
-          <div class="form-group">
 
-            <div class="custom-input-group">
-              <label for="formType">
-                Select your appraisal type
-                <span class="required" *ngIf="(newFileForm.controls['formType'].invalid && newFileForm.controls['formType'].touched)">required</span>
-              </label>
-              <select formControlName="formType">
-                <option *ngFor="let type of appraisalFormTypes" [ngValue]="type.value">{{type.text}}</option>
-              </select>
-            </div>
-            <div class="custom-input-group form-vendor">
-              <div class="dropdown show">
-                <div class="selected-item dropdown-toggle" data-toggle="dropdown">
-                  <img src="{{selectedVendorImgSrc}}" alt="{{selectedVendorImgAlt}}" #selectedVendor height="{{selectedVendorImgHeight}}" />
-                  <a href="#" onclick="return false;" class="change">[change]</a>
+          <div class="new-file-form-layout">
+
+            <div class="new-file-inputs">
+
+              <div class="form-group">
+                <label for="fileName">
+                  Enter your file name/number
+                  <span class="required" *ngIf="(newFileForm.controls['fileName'].invalid && newFileForm.controls['fileName'].touched)">required</span>
+                </label>
+                <input type="text" placeholder="file name/number" formControlName="fileName" />
+                <a href="#" onclick="return false;" class="create-file-name">[create one for me]</a>
+                <!--<small class="form-text text-muted">That's ok if you don't have one, we can create one for you.</small>-->
+              </div>
+
+              <div class="form-group">
+
+                <div class="custom-input-group">
+                  <label for="formType">
+                    Select your appraisal type
+                    <span class="required" *ngIf="(newFileForm.controls['formType'].invalid && newFileForm.controls['formType'].touched)">required</span>
+                  </label>
+                  <select formControlName="formType">
+                    <option *ngFor="let type of appraisalFormTypes" [ngValue]="type.value">{{type.text}}</option>
+                  </select>
                 </div>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" (click)="updateVendor($event)">
-                    <img src="/assets/images/vendors/alamode.png" alt="a la mode" height="25" />
-                  </a>
-                  <a class="dropdown-item" (click)="updateVendor($event)">
-                    <img src="/assets/images/vendors/aci.png" alt="ACI" width="40" />
-                  </a>
-                  <a class="dropdown-item" (click)="updateVendor($event)">
-                    <img src="/assets/images/vendors/bradford.png" alt="Bradford" height="30" />
-                  </a>
-                  <a class="dropdown-item" (click)="updateVendor($event)">
-                    <img src="/assets/images/vendors/sfrep.png" alt="SFREP" height="18" />
-                  </a>
+                <div class="custom-input-group form-vendor">
+                  <div class="dropdown show">
+                    <div class="selected-item dropdown-toggle" data-toggle="dropdown">
+                      <img src="{{selectedVendorImgSrc}}" alt="{{selectedVendorImgAlt}}" #selectedVendor height="{{selectedVendorImgHeight}}" />
+                      <a href="#" onclick="return false;" class="change">[change]</a>
+                    </div>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" (click)="updateVendor($event)">
+                        <img src="/assets/images/vendors/alamode.png" alt="a la mode" height="25" />
+                      </a>
+                      <a class="dropdown-item" (click)="updateVendor($event)">
+                        <img src="/assets/images/vendors/aci.png" alt="ACI" width="40" />
+                      </a>
+                      <a class="dropdown-item" (click)="updateVendor($event)">
+                        <img src="/assets/images/vendors/bradford.png" alt="Bradford" height="30" />
+                      </a>
+                      <a class="dropdown-item" (click)="updateVendor($event)">
+                        <img src="/assets/images/vendors/sfrep.png" alt="SFREP" height="18" />
+                      </a>
+                    </div>
+                  </div>
+
                 </div>
+
               </div>
 
             </div>
 
-          </div>
-          <div class="form-group">
-            <label>Open an MLS export file (<i>optional</i>)</label>
-            <input type="file" style="background-color: #f2f6fa;" class="file-upload" formControlName="mlsFileUpload" />
+            <div class="new-file-upload">
+
+              <app-file-upload formControlName="file"></app-file-upload>
+
+            </div>
+
           </div>
 
-          <!--<a routerLink="/Subject/" class="btn btn-success btn-go" (click)="validate()">
-            Create new file
-            <span class="fal fa-arrow-circle-right"></span>
-          </a>-->
+          <div class="d-flex flex-row-reverse submit-row">
 
-          <button type="submit" class="btn btn-success btn-go" (click)="validate()">
-            Create new file
-            <span class="fal fa-arrow-circle-right"></span>
-          </button>
+            <button type="submit" class="btn btn-success btn-go" (click)="validate()">
+              Create new file
+              <span class="fal fa-arrow-circle-right"></span>
+            </button>
+
+          </div>
+
 
         </form>
 
@@ -146,6 +159,8 @@
                     {{result.yearBuilt}}
                   </span>
                   <span class="item" *ngIf="result.lotSize">
+
+
 
                     <!--{{convertToAcres(result.lotSize)}}-->
                     {{result.lotSize}}

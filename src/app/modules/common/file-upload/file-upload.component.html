@@ -1,0 +1,13 @@
+<div class="upload-file {{readyToDrop == true ? 'drop' : ''}}" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="doneDropping($event)">
+  <span class="fal fa-cloud-upload fa-3x upload-icon"></span>
+  <span class="drag-text">{{mlsFile ? mlsFile.name : 'drag & drop'}}</span>
+  <span class="browse-text">
+    or
+    <a href="#" (click)="openFileDialog($event)">browse</a>
+    to your MLS export file
+  </span>
+
+  <input type="file" class="file-input" id="mlsFileInput" style="display: none;" />
+  <!--<input type="file" class="file-input" id="mlsFileInput" accept="text/plain, .csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .wfr, .dm" style="display: none;" />-->
+
+</div>

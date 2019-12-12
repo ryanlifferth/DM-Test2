@@ -40,6 +40,7 @@ import { ApnSearchComponent } from './modules/home/new-file/apn-search/apn-searc
 import { AddressSearchComponent } from './modules/home/new-file/address-search/address-search.component';
 import { MapsComponent } from './modules/home/new-file/maps/maps.component';
 import { PropertyDetailComponent } from './modules/home/new-file/property-detail/property-detail.component';
+import { FileUploadComponent } from './modules/common/file-upload/file-upload.component';
 
 @NgModule({
     declarations: [
@@ -73,7 +74,8 @@ import { PropertyDetailComponent } from './modules/home/new-file/property-detail
         ApnSearchComponent,
         AddressSearchComponent,
         MapsComponent,
-        PropertyDetailComponent
+        PropertyDetailComponent,
+        FileUploadComponent
     ],
     imports: [
         BrowserModule,

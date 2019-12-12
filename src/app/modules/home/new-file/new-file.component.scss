@@ -56,13 +56,9 @@
 
 .new-file,
 .search-forms {
-  border: 2px dashed transparent;
-  padding: 5px 15px !important;
+  //border: 2px dashed transparent;
+  padding: 7px 17px !important;
 
-
-  &.drop {
-    border: 2px dashed rgba(0,0,0,0.6);
-  }
 
   h4 {
     color: rgba(0, 0, 0, 0.4);
@@ -223,6 +219,22 @@
 
 .new-file {
 
+  .new-file-form-layout {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-width: 780px;
+    width: 100%;
+
+    .new-file-inputs {
+        flex: 1;
+    }
+
+    .new-file-upload {
+
+    }
+  }
+
   input[type=text] {
     width: 310px;
   }
@@ -235,11 +247,15 @@
     width: 225px;
   }
 
+  .submit-row {
+    margin: 5px -2px 2px 0;
+  }
+
   .btn-go {
     color: #fff;
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
+    //position: absolute;
+    //bottom: 15px;
+    //right: 15px;
   }
 }
 
@@ -684,7 +700,6 @@ $popover-bg: #e7f3fd;
 .help-popover {
   background-color: $popover-bg;
   //box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-
   h6 {
     font-size: 16px;
     margin-bottom: 0;
