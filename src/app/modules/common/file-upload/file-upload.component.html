@@ -1,6 +1,6 @@
 <div class="upload-file {{readyToDrop == true ? 'drop' : ''}}" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="doneDropping($event)">
   <span class="fal fa-cloud-upload fa-3x upload-icon"></span>
-  <span class="drag-text">{{mlsFile ? mlsFile.name : 'drag & drop'}}</span>
+  <span class="drag-text {{mlsFile ? 'active' : ''}}">{{mlsFile ? mlsFile.name : 'drag & drop'}}</span>
   <span class="browse-text">
     or
     <a href="#" (click)="openFileDialog($event)">browse</a>

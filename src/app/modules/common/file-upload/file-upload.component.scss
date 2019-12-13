@@ -37,7 +37,12 @@
     margin: 0 5px;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 0.3s ease;
     white-space: nowrap;
+
+    &.active {
+      color: #a61b1b;
+    }
   }
 
   .browse-text {
