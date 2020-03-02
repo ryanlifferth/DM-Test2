@@ -15,9 +15,9 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 export class HeaderComponent implements OnInit {
   @ViewChild('logo', { static: true }) logo: ElementRef;
   //logoSrc = '/assets/images/dm-icon.svg';
-  logoSrc = '/assets/images/web-logo-white.png';
   logoSrcExpanded = '/assets/images/web-logo-white.png';
   logoSrcCollapsed = '/assets/images/dm-icon-white.png';
+  logoSrc = this.logoSrcCollapsed;
   logoSize = '30';
   navVisible: boolean = false;
 

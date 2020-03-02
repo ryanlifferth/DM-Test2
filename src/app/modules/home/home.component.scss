@@ -1,3 +1,5 @@
+@import '../../../assets/style/mixins/_breakpoints.scss';
+
 $news-widget-width: 335px;
 
 .news-app {
@@ -13,7 +15,6 @@ $news-widget-width: 335px;
     height: auto;
   }
 }
-
 
 .home-cards {
   //margin-left: 20px;
@@ -47,7 +48,36 @@ $news-widget-width: 335px;
       }
     }
   }
+
 }
+
+@media (max-width: 1400px) {
+  .news-app {
+    width: calc(#{$news-widget-width} - 60px);
+    //height: calc(100% - (#{$footer-height} + #{$footer-margin} + 29px));
+  }
+
+  .home-cards {
+    margin-right: calc(#{$news-widget-width} - 60px);
+  }
+}
+
+.analytics {
+    display: none;
+}
+/*@include media-breakpoint-up(xl) {
+  .analytics {
+    display: block;
+  }
+}*/
+//@media (min-width: 1839px) {
+@media (min-width: 1700px) {
+  .analytics {
+    display: block;
+  }
+}
+
+
 
 :host .card {
   border: none;

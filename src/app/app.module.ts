@@ -41,6 +41,7 @@ import { AddressSearchComponent } from './modules/home/new-file/address-search/a
 import { MapsComponent } from './modules/home/new-file/maps/maps.component';
 import { PropertyDetailComponent } from './modules/home/new-file/property-detail/property-detail.component';
 import { FileUploadComponent } from './modules/common/file-upload/file-upload.component';
+import { SearchErrorComponent } from './modules/home/new-file/search-error/search-error.component';
 
 @NgModule({
     declarations: [
@@ -75,7 +76,8 @@ import { FileUploadComponent } from './modules/common/file-upload/file-upload.co
         AddressSearchComponent,
         MapsComponent,
         PropertyDetailComponent,
-        FileUploadComponent
+        FileUploadComponent,
+        SearchErrorComponent
     ],
     imports: [
         BrowserModule,
@@ -88,7 +90,7 @@ import { FileUploadComponent } from './modules/common/file-upload/file-upload.co
         GoogleMapsModule
     ],
     providers: [
-        { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
+      { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
     ],
     bootstrap: [AppComponent]
 })

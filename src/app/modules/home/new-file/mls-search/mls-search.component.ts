@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 
 import { MlsSearchService } from '../../../../core/services/mls-search.service.js';
 import { PropertySearchResult } from '../../../../core/models/property-search-result.js';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-mls-search',
@@ -12,17 +13,18 @@ import { PropertySearchResult } from '../../../../core/models/property-search-re
   encapsulation: ViewEncapsulation.None  // TODO: shared CSS not working without this - not sure why
 })
 export class MlsSearchComponent implements OnInit {
-    // Test MLS: 1505252
-
+  // Test MLS: 1505252
 
   searchResults: PropertySearchResult[];
   searching: boolean = false;
   hasSearchResultsMls: boolean = false;  // flag used to show search results if the modal gets closed
+  searchHttpError: HttpErrorResponse;
 
   @Input('mlsSearchForm') mlsSearchForm: FormGroup;
   @Output() resultsEvent = new EventEmitter<PropertySearchResult[]>();
   @Output() showResultsEvent = new EventEmitter<any>();
   @Output() clearAllSearchesEvent = new EventEmitter<any>();
+  @ViewChild('searchError', { static: true }) searchErrorChild;
 
   constructor(private mlsSearchService: MlsSearchService) { }
 
@@ -77,13 +79,16 @@ export class MlsSearchComponent implements OnInit {
 
           this.hasSearchResultsMls = true;
         },
-        (err) => {
-          // Do something with the error
-          console.log('error: ' + err);
+        (err: HttpErrorResponse) => {
+          // Log to the console - just for fun
+          console.log(`${err.statusText} (${err.status}):  ${err.message}`);
+          // Now display to the user
+          this.searchErrorChild.searchHttpError = err;
+          // TODO:  For prod, log somewhere for troubleshooting
         }
       );
   }
-  
+
   // This is a bit of a hack, prob need a more robust solution
   isFormSearching(formGroup): boolean {
     if (formGroup.valid && this.searching == true) {

@@ -17,6 +17,7 @@ import { ImportComponent } from './modules/market-conditions/import/import.compo
 import { UploadComponent } from './modules/comparables/upload/upload.component';
 import { SubjectSearchComponent } from './modules/subject/subject-search/subject-search.component';
 import { SummaryComponent } from './modules/summary/summary.component';
+
 const routes: Routes = [
   {
     path: '',

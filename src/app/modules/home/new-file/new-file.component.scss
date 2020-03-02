@@ -52,7 +52,9 @@
   }
 }
 
-
+.search-card {
+    //min-width: 814px;
+}
 
 .new-file,
 .search-forms {
@@ -227,11 +229,12 @@
     width: 100%;
 
     .new-file-inputs {
-        flex: 1;
+        //flex: 1;
+        margin-right: 45px;
     }
 
     .new-file-upload {
-
+        flex: 1;
     }
   }
 
@@ -263,6 +266,10 @@
 
   input[type=text], select {
     width: 100%;
+  }
+
+  .form-row, .form-group {
+      max-width: 900px;
   }
 
   .submit {

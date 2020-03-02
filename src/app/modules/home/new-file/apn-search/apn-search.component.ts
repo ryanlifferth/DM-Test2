@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 import { catchError, finalize } from 'rxjs/operators';
 
 import usaCounties from '../../../../../assets/data/UsaCounties.json';
 import { ApnSearchService } from '../../../../core/services/apn-search.service.js';
 import { PropertySearchResult } from '../../../../core/models/property-search-result.js';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-apn-search',
@@ -22,12 +23,13 @@ export class ApnSearchComponent implements OnInit {
   @Output() resultsEvent = new EventEmitter<PropertySearchResult[]>();
   @Output() showResultsEvent = new EventEmitter<any>();
   @Output() clearAllSearchesEvent = new EventEmitter<any>();
+  @ViewChild('searchError', { static: true }) searchErrorChild;
 
   stateJson: any = usaCounties;
   countiesJsonApnSearch: any;
 
   constructor(private apnSearchService: ApnSearchService) { }
-  
+
   ngOnInit() {
     this.searching = false;
 
@@ -90,9 +92,13 @@ export class ApnSearchComponent implements OnInit {
           this.hasSearchResultsApn = true;
 
         },
-        (err) => {
-          alert('error: ' + err);
-          //TODO:  Add error handling
+        (err: HttpErrorResponse) => {
+          // Log to the console - just for fun
+          console.log(`${err.statusText} (${err.status}):  ${err.message}`);
+          // Now display to the user
+          this.searchErrorChild.searchHttpError = err;
+          // TODO:  For prod, log somewhere for troubleshooting
+
         }
       );
   }

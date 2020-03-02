@@ -4,10 +4,11 @@
 
 export const environment = {
   production: false,
-  newsFeedUrl: 'https://localhost:44326/api/rssfeed',
+  //newsFeedUrl: 'https://localhost:44326/api/rssfeed',
+  newsFeedUrl: 'https://localhost:44320/rssfeed',
 
-  dataMasterApi: 'https://dm-api-web-us-w-apps-integration.azurewebsites.net/api/',
-  //dataMasterApi: 'https://localhost:44395/api/',
+  //dataMasterApi: 'https://dm-api-web-us-w-apps-integration.azurewebsites.net/api/',
+  dataMasterApi: 'https://localhost:44395/api/',
 
 
   // MLS image paths

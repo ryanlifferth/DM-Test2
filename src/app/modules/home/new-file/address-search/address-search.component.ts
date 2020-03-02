@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, HostListener, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, HostListener, Output, EventEmitter, ViewEncapsulation, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validator, Validators, NgForm } from '@angular/forms';
 import { catchError, finalize } from 'rxjs/operators';
 
@@ -6,6 +6,7 @@ import usaCounties from '../../../../../assets/data/UsaCounties.json';
 import { AddressSearchService } from '../../../../core/services/address-search.service.js';
 import { Address } from '../../../../core/models/address';
 import { PropertySearchResult } from '../../../../core/models/property-search-result.js';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-address-search',
@@ -23,6 +24,7 @@ export class AddressSearchComponent implements OnInit {
   @Output() resultsEvent = new EventEmitter<PropertySearchResult[]>();
   @Output() showResultsEvent = new EventEmitter<any>();
   @Output() clearAllSearchesEvent = new EventEmitter<any>();
+  @ViewChild('searchError', { static: true }) searchErrorChild;
 
   stateJson: any = usaCounties;
   countiesJsonAddressSearch: any;
@@ -111,9 +113,13 @@ export class AddressSearchComponent implements OnInit {
           this.hasSearchResultsAddress = true;
 
         },
-        (err) => {
-          alert('error: ' + err);
-          //TODO:  Add error handling
+        (err: HttpErrorResponse) => {
+          // Log to the console - just for fun
+          console.log(`${err.statusText} (${err.status}):  ${err.message}`);
+          // Now display to the user
+          this.searchErrorChild.searchHttpError = err;
+          // TODO:  For prod, log somewhere for troubleshooting
+
         }
       );
   }
