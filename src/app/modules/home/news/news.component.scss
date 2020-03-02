@@ -178,6 +178,12 @@
           }
         }
       }
+      .news-loader-message {
+          color: rgba(0,0,0,0.3);
+          font-size: 13px;
+          margin-top: 7px;
+          text-align: center;
+      }
 
       .connection-error {
         color: darkred;
