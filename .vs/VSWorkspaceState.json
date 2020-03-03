@@ -3,15 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\core",
-    "\\src\\app\\core\\enums",
-    "\\src\\app\\core\\services",
     "\\src\\app\\modules",
     "\\src\\app\\modules\\home",
+    "\\src\\app\\modules\\home\\new-file",
+    "\\src\\app\\modules\\home\\new-file\\search-error",
     "\\src\\assets",
     "\\src\\assets\\style",
     "\\src\\assets\\style\\mixins"
   ],
-  "SelectedNode": "\\src\\app\\core\\services\\news.service.ts",
+  "SelectedNode": "\\src\\app\\modules\\home\\new-file\\search-error\\search-error.component.html",
   "PreviewInSolutionExplorer": false
 }
