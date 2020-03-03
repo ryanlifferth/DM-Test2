@@ -132,6 +132,7 @@ export class AddressSearchComponent implements OnInit {
     this.searchResults = [];
     this.searching = false;
     this.hasSearchResultsAddress = false;
+    this.searchErrorChild.searchHttpError = null;
   }
 
 }

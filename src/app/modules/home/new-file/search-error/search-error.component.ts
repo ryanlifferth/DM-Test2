@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class SearchErrorComponent implements OnInit {
 
   searchHttpError: HttpErrorResponse;
-
+  showErrorDetails: boolean = true;
 
   constructor() { }
 

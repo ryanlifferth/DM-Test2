@@ -1,0 +1,33 @@
+.search-error {
+  color: darkred;
+  //margin: 2px auto;
+  //max-width: 85%;
+  margin: 2px 0 6px;
+
+  .emoji {
+    color: #077FAF;
+    float: left;
+    margin: 6px 10px 0
+  }
+
+  .err-exclamation {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .err-message {
+    color: rgb(101, 119, 134);
+    font-size: 14px;
+    font-style: italic;
+    line-height: normal;
+    margin-left: 45px;
+    margin-top: -4px;
+  }
+
+  .detail-text {
+    color: rgba(139,0,0,0.7);
+    font-size: 12px;
+    margin: 0 10px;
+  }
+}

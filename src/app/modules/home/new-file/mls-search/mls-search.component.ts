@@ -106,6 +106,7 @@ export class MlsSearchComponent implements OnInit {
     this.searchResults = [];
     this.searching = false;
     this.hasSearchResultsMls = false;
+    this.searchErrorChild.searchHttpError = null;
   }
 
 

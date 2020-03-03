@@ -120,6 +120,7 @@ export class ApnSearchComponent implements OnInit {
     this.searchResults = [];
     this.searching = false;
     this.hasSearchResultsApn = false;
+    this.searchErrorChild.searchHttpError = null;
   }
 
 }

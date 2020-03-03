@@ -4,13 +4,14 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\core",
+    "\\src\\app\\core\\enums",
+    "\\src\\app\\core\\services",
     "\\src\\app\\modules",
-    "\\src\\app\\modules\\common\\file-upload",
-    "\\src\\app\\ui\\header",
+    "\\src\\app\\modules\\home",
     "\\src\\assets",
     "\\src\\assets\\style",
     "\\src\\assets\\style\\mixins"
   ],
-  "SelectedNode": "\\src\\assets\\style\\mixins\\_breakpoints.scss",
+  "SelectedNode": "\\src\\app\\core\\services\\news.service.ts",
   "PreviewInSolutionExplorer": false
 }

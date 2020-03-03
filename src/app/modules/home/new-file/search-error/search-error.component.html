@@ -1,3 +1,17 @@
 <div class="error-message" *ngIf="searchHttpError">
-  <span class="error-text">{{searchHttpError.statusText}} ({{searchHttpError.status}}): {{searchHttpError.message}}</span>
+
+  <div class="search-error">
+    <span class="fal fa-surprise fa-2x emoji"></span>
+    <div class="err-information">
+      <div class="err-exclamation">Oh no!</div>
+      <div class="err-message">Something went wrong when we searched for that property.</div>
+
+      <div *ngIf="showErrorDetails" class="detail-text">
+        <!--{{searchHttpError.statusText}} ({{searchHttpError.status}}):-->
+        {{searchHttpError.message}}
+      </div>
+
+    </div>
+  </div>
+
 </div>
