@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
+    // Example of how to use screen size
     //this.windowSizeService.screenSize.subscribe(val => {
     //  this.screenSize = val;
     //  this.screenSizeName = this.getEnumKeyByEnumValue(val);

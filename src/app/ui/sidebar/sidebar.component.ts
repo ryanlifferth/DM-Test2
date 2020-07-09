@@ -4,6 +4,8 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { SidebarLogoService } from '../../core/services/sidebar-logo.service';
 import { UserInfo } from '../../core/models/user-info';
 import { UserInfoService } from '../../core/services/user-info.service';
+import { WindowSizeService } from '../../core/services/window-size.service';
+import { ScreenSize } from '../../core/enums/screen-size';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,10 +19,24 @@ export class SidebarComponent implements OnInit, AfterViewChecked, AfterViewInit
   userInfo: UserInfo;
   hasUserIcon: boolean = false;
 
-  constructor(private sidebarLogoService: SidebarLogoService, private userInfoService: UserInfoService) { }
+  private screenSize: ScreenSize;
+  private screenSizeName: string;
+
+
+  constructor(private sidebarLogoService: SidebarLogoService,
+    private userInfoService: UserInfoService,
+    private windowSizeService: WindowSizeService) { }
 
   ngOnInit() {
     this.getUserInfo();
+
+    //this.windowSizeService.screenSize.subscribe(val => {
+    //  this.screenSize = val;
+    //  this.screenSizeName = this.getEnumKeyByEnumValue(val);
+    //  this.sidebarExpanded = this.screenSize === ScreenSize.XXL ? true : this.sidebarExpanded;
+    //  console.log('screenSize: ' + this.screenSize);
+    //});
+
   }
 
   ngAfterViewInit() {
@@ -48,13 +64,18 @@ export class SidebarComponent implements OnInit, AfterViewChecked, AfterViewInit
     this.sidebarLogoService.setSidebarExpanded(this.sidebarExpanded);
   }
 
+  getEnumKeyByEnumValue(enumValue: number): string {
+    let keys = Object.keys(ScreenSize).filter(x => ScreenSize[x] === enumValue);
+    return keys.length > 0 ? keys[0] : '';
+  }
+
   getUserInfo(): void {
     this.userInfoService.getUserInfo().subscribe(userInfo => {
       this.userInfo = userInfo;
 
       if (userInfo.iconPath !== undefined && userInfo.iconPath.length > 0) {
         this.hasUserIcon = this.imageExists(userInfo.iconPath);
-        
+
         // If the userInfo.iconPath is not empty, but the image doesn't exist (i.e., hasUserIcon === false)
         if (this.hasUserIcon === false) {
           this.checkForGravatar(userInfo.email);
