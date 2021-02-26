@@ -13,8 +13,8 @@ import { PropertySearchType } from '../../../../core/enums/property-search-type'
 export class MapsComponent implements OnInit {
   //@ViewChild("myMap", { static: false }) myMap: ElementRef;
   //@ViewChild(GoogleMap, { static: false }) map: GoogleMap;
-  @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow;
-  @ViewChild(MapMarker, { static: false }) marker: MapMarker;
+  @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow;
+  @ViewChild(MapMarker) marker: MapMarker;
   @Input() searchType: PropertySearchType;
 
   mapLoaded: boolean = false;
